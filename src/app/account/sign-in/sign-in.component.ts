@@ -31,15 +31,11 @@ export class SignInComponent implements OnInit {
       buyerSignInForm.controls.userName.value,
       buyerSignInForm.controls.password.value,
     );
-    console.log(this.buyerSignInForm);
 
     this.accountService.signIn(this.userModel).subscribe(data => {
-      console.log(data);
-      if (data.length > 0) {
-        console.log(data[0]);
+      if (data._body.length > 0) {
         this.router.navigate(['/Welcome']);
       }
-
     }, error => {
       console.log(error);
     });
