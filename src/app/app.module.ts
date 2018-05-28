@@ -16,12 +16,15 @@ import { Routing } from './app.route';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { WelcomeComponent } from './home/welcome/welcome.component';
+import { SignInComponent } from './account/sign-in/sign-in.component';
+import {AccountService} from './account/account.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavHeaderComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
     NgbModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
