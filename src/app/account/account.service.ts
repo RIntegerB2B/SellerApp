@@ -27,14 +27,10 @@ export class AccountService {
 
     constructor(private http: Http) { }
 
-    ngOnInit() {
-    }
-
-
     signIn(adminUser: SignIn): Observable<any> {
         const adminUrl = 'admin/validate';
         return this.http.post(this.serviceUrl + adminUrl, adminUser, this.requestOptions).pipe(
-            tap((hero: Response) => console.log(hero)),
+            tap((response: Response) => console.log(response)),
             catchError(this.handleError<SignIn>('Sign In'))
           );
     }
