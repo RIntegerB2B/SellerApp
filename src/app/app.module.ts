@@ -18,13 +18,15 @@ import { environment } from '../environments/environment';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { SignInComponent } from './account/sign-in/sign-in.component';
 import {AccountService} from './account/account.service';
+import { HomePageComponent } from './home/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavHeaderComponent,
     WelcomeComponent,
-    SignInComponent
+    SignInComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

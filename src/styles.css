@@ -2,3 +2,4 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "./assets/Styles/bootstrapOverride.css";
 @import "./assets/Styles/angularStyle.css";
+@import "./assets/Styles/commonStyle.css";
