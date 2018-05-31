@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators, NgForm } from '@angular/
 import { SignIn } from './sign-in.model';
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
+import {NavHeaderService} from '../../shared/nav-header/nav-header.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,9 +14,11 @@ export class SignInComponent implements OnInit {
 
   buyerSignInForm: FormGroup;
   userModel: SignIn;
-  constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router) { }
+  constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router,
+    private navHeaderService: NavHeaderService) { }
 
   ngOnInit() {
+    this.navHeaderService.hideMenuTransparent();
     this.createForm();
   }
 

@@ -4,5 +4,9 @@ body {
   
 }
 .whiteColor{
-    color:rgba(255, 255, 255, 255)
+    color:rgba(255, 255, 255, 255) !important;
+}
+
+.menuTransparent{
+  background-color: transparent !important;
 }

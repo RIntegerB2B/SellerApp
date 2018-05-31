@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavHeaderService} from '../../shared/nav-header/nav-header.service';
 
 @Component({
   selector: 'app-nav-header',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavHeaderComponent implements OnInit {
   isMainCollapsed: Boolean = true;
   isMenMenuCollapsed: Boolean = true;
-  constructor() { }
+  menuVisible: boolean;
+  constructor(private navHeaderService: NavHeaderService) { }
 
   ngOnInit() {
   }
@@ -19,5 +21,9 @@ export class NavHeaderComponent implements OnInit {
   toggleMenMenu() {
     this.isMenMenuCollapsed = !this.isMenMenuCollapsed;
   }
+
+  hideMenu() { this.menuVisible = false; }
+
+  showMenu() { this.menuVisible = true; }
 
 }

@@ -1,0 +1,25 @@
+<form [formGroup]="categoryForm" (ngSubmit)="signInSubmit(categoryForm)" novalidate>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <input class="form-control required" required placeholder="Category Name" formControlName="categoryName" type="text">
+          <div *ngIf="categoryForm.controls['categoryName'].errors
+               && !categoryForm.controls['categoryName'].pristine" class="alert alert-danger">
+            <div [hidden]="!categoryForm.controls['categoryName'].errors.required">Category Name is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+          <div class="form-group">
+            <input class="form-control required" required placeholder="Category Name" formControlName="categoryName" type="text">
+            <div *ngIf="categoryForm.controls['categoryName'].errors
+                 && !categoryForm.controls['categoryName'].pristine" class="alert alert-danger">
+              <div [hidden]="!categoryForm.controls['categoryName'].errors.required">Category Name is required.</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</form>
+
