@@ -10,7 +10,7 @@ export class NavHeaderComponent implements OnInit {
   isMainCollapsed: Boolean = true;
   isMenMenuCollapsed: Boolean = true;
   menuVisible: boolean;
-  constructor(private navHeaderService: NavHeaderService) { }
+  constructor(public navHeaderService: NavHeaderService) { }
 
   ngOnInit() {
   }
