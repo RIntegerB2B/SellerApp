@@ -1,10 +1,9 @@
 <nav  class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary" [ngClass]="navHeaderService?.menuTransparent">
     <a class="navbar-brand whiteColor">Seller</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-        aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" (click)="toggleMenu()">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div id="navbarNavDropdown" class="navbar-collapse collapse">
+    <div id="navbarNavDropdown" class="navbar-collapse collapse sidebar" [ngClass]="toggleMenuBar">
         <ul class="navbar-nav mr-auto">
 
         </ul>
@@ -23,10 +22,10 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/SignIn']">Login</a>
+                <a class="nav-link" [routerLink]="['/SignIn']" (click)="toggleMenu()">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Register</a>
+                <a class="nav-link" href="" data-toggle="collapse" data-target=".navbar-collapse.show">Register</a>
             </li>
         </ul>
     </div>

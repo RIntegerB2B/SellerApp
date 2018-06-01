@@ -10,3 +10,7 @@ body {
 .menuTransparent{
   background-color: transparent !important;
 }
+
+.sidebar {
+  transition: all 1s;
+}

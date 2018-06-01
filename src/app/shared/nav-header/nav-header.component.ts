@@ -10,6 +10,7 @@ export class NavHeaderComponent implements OnInit {
   isMainCollapsed: Boolean = true;
   isMenMenuCollapsed: Boolean = true;
   menuVisible: boolean;
+  toggleMenuBar: string = 'colapseMenuBar';
   constructor(public navHeaderService: NavHeaderService) { }
 
   ngOnInit() {
@@ -20,6 +21,10 @@ export class NavHeaderComponent implements OnInit {
 
   toggleMenMenu() {
     this.isMenMenuCollapsed = !this.isMenMenuCollapsed;
+  }
+
+  toggleMenu() {
+    this.toggleMenuBar = this.toggleMenuBar === 'colapseMenuBar' ? 'expandMenuBar' : 'colapseMenuBar';
   }
 
   hideMenu() { this.menuVisible = false; }
