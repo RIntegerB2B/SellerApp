@@ -21,6 +21,8 @@ import { AccountService } from './account/account.service';
 import { NavHeaderService } from './shared/nav-header/nav-header.service';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-change-request.component';
+import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
     WelcomeComponent,
     SignInComponent,
     HomePageComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    PwdChangeRequestComponent,
+    PwdChangeResetComponent
   ],
   imports: [
     BrowserModule,
