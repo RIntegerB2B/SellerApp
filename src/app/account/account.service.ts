@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SignIn } from './sign-in/sign-in.model';
 import { AppSetting } from '../config/appSetting';
+import{ PwdChangeRequest} from './pwd-change-request/pwd-change-request.model'
+import { PwdChangeRequestComponent } from './pwd-change-request/pwd-change-request.component';
 
 
 @Injectable()
@@ -34,4 +36,15 @@ export class AccountService {
             catchError(this.handleError<SignIn>('Sign In'))
           );
     }
+
+    pwdReset(pwdReq:PwdChangeRequest): Observable<any> {
+        const adminUrl = '/pwdChange/:emailId';
+        return this.http.post(this.serviceUrl + adminUrl, pwdReq, this.requestOptions).pipe(
+            tap((response: Response) => console.log(response)),
+            catchError(this.handleError<PwdChangeRequest>('Recover Password'))
+          );
+        
+    }
+    
+
 }

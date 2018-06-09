@@ -1,18 +1,25 @@
-<form [formGroup]="buyerSignInForm" (ngSubmit)="signInSubmit(buyerSignInForm)" novalidate style="padding-top:60px">
+<form [formGroup]="passwordRequestForm" (ngSubmit)="sendResetSubmit(passwordRequestForm)" novalidate style="padding-top:60px">
   <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 mx-auto">
                 <div class="">
+                  <div class="center">
+                    <h2>Forgot Password ?</h2>
+                    <p>We will send you a link to reset your password.</p>
+                    <p>Enter email address</p>
+                  </div>
                         <div class="form-group">
                             <input class="form-control required"  required placeholder="Enter email id" formControlName="emailId" type="email">
-                              <div *ngIf="buyerSignInForm.controls['emailId'].errors
-                               && !buyerSignInForm.controls['emailId'].pristine" class="alert alert-danger">
-                                  <div [hidden]="!buyerSignInForm.controls['emailId'].errors.required">Enter email id</div>
+                              <div *ngIf="passwordRequestForm.controls['emailId'].errors
+                               && !passwordRequestForm.controls['emailId'].pristine" class="alert alert-danger">
+                                  <div [hidden]="!passwordRequestForm.controls['emailId'].errors.required">Enter email id</div>
                                 </div>
                         </div>
                         
-                        <input class="btn btn-primary btn-block" value="Send Reset Link" type="submit" [disabled]='!buyerSignInForm.valid'>
-                        <a routerLink="/SignIn"> Login</a>
+                        <input class="btn btn-primary btn-block" value="Send Reset Link" type="submit" [disabled]='!passwordRequestForm.valid'>
+                        <div class="link">
+                            <a   routerLink="/SignIn"> Login</a>
+                        </div>
                 </div>
         </div>
     </div>
