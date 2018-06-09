@@ -36,9 +36,9 @@ export class PwdChangeRequestComponent implements OnInit {
 
     );
 
-    this.accountService.pwdReset(this.userModel).subscribe(data => {
+    this.accountService.pwdRequest(this.userModel).subscribe(data => {
       if (data._body.length > 0) {
-        this.router.navigate(['/PwdChangeReset']);
+        this.router.navigate(['/PwdChangeRequest']);
       }
     }, error => {
       console.log(error);

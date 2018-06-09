@@ -6,6 +6,7 @@ import { SignIn } from './sign-in/sign-in.model';
 import { AppSetting } from '../config/appSetting';
 import{ PwdChangeRequest} from './pwd-change-request/pwd-change-request.model'
 import { PwdChangeRequestComponent } from './pwd-change-request/pwd-change-request.component';
+import { PwdChangeReset } from './pwd-change-reset/pwd-change-reset.model';
 
 
 @Injectable()
@@ -37,13 +38,21 @@ export class AccountService {
           );
     }
 
-    pwdReset(pwdReq:PwdChangeRequest): Observable<any> {
-        const adminUrl = '/pwdChange/:emailId';
-        return this.http.post(this.serviceUrl + adminUrl, pwdReq, this.requestOptions).pipe(
+    pwdRequest(pwdReq:PwdChangeRequest): Observable<any> {
+        const pwdReqUrl = '/pwdChange/:emailId';
+        return this.http.post(this.serviceUrl + pwdReqUrl, pwdReq, this.requestOptions).pipe(
             tap((response: Response) => console.log(response)),
             catchError(this.handleError<PwdChangeRequest>('Recover Password'))
           );
-        
+
+    }
+
+    pwdChangeReset(pwdReset: PwdChangeReset): Observable<any> {
+        const pwResUrl = '/pwdChange/reset/:key/:pwd';
+        return this.http.post(this.serviceUrl + pwResUrl, pwdReset, this.requestOptions).pipe(
+            tap((response: Response) => console.log(response)),
+            catchError(this.handleError<PwdChangeReset>('Pwd Change Reset'))
+          );
     }
     
 
