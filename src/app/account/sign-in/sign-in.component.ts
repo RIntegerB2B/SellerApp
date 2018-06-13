@@ -4,16 +4,32 @@ import { SignIn } from './sign-in.model';
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 import {NavHeaderService} from '../../shared/nav-header/nav-header.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['./sign-in.component.css'],
+  animations: [
+    trigger('heroState', [
+      state('inactive', style({
+        backgroundColor: '#eee',
+        transform: 'scale(1)'
+      })),
+      state('active',   style({
+        backgroundColor: '#cfd8dc',
+        transform: 'rotate(-3deg)'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class SignInComponent implements OnInit {
 
   buyerSignInForm: FormGroup;
   userModel: SignIn;
+  public state = 'inactive';
   constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router,
     private navHeaderService: NavHeaderService) { }
 
@@ -28,7 +44,9 @@ export class SignInComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
+  toggleState() {
+    this.state = this.state === 'active' ? 'inactive' : 'active';
+  }
   signInSubmit(buyerSignInForm: FormGroup) {
     this.userModel = new SignIn(
       buyerSignInForm.controls.userName.value,

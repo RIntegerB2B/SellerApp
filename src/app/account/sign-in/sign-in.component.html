@@ -1,28 +1,31 @@
-<form [formGroup]="buyerSignInForm" (ngSubmit)="signInSubmit(buyerSignInForm)" novalidate style="padding-top:60px">
-  <div class="container-fluid">
-    <div class="row">
+<div class="signInMasterDiv"  (click) ="toggleState()">
+  <form [formGroup]="buyerSignInForm" (ngSubmit)="signInSubmit(buyerSignInForm)" novalidate style="padding-top:60px">
+    <div class="container-fluid">
+      <div class="row">
         <div class="col-md-6 mx-auto">
-                <div class="">
-                        <div class="form-group">
-                            <input class="form-control required"  required placeholder="User Name" formControlName="userName" type="text">
-                              <div *ngIf="buyerSignInForm.controls['userName'].errors
+          <div class="">
+            <div class="form-group">
+              <input class="form-control required" required placeholder="User Name" formControlName="userName" type="text">
+              <div *ngIf="buyerSignInForm.controls['userName'].errors
                                && !buyerSignInForm.controls['userName'].pristine" class="alert alert-danger">
-                                  <div [hidden]="!buyerSignInForm.controls['userName'].errors.required">User Name is required.</div>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                          <input class="form-control required" required placeholder="Password" formControlName="password" type="password">
-                            <div *ngIf="buyerSignInForm.controls['password'].errors
+                <div [hidden]="!buyerSignInForm.controls['userName'].errors.required">User Name is required.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="form-control required" required placeholder="Password" formControlName="password" type="password">
+              <div *ngIf="buyerSignInForm.controls['password'].errors
                              && !buyerSignInForm.controls['password'].pristine" class="alert alert-danger">
-                                <div [hidden]="!buyerSignInForm.controls['password'].errors.required">
-                                    Password is required.
-                                  </div>
-                            </div>
-                        </div>
-                        <input class="btn btn-primary btn-block" value="Sign In" type="submit" [disabled]='!buyerSignInForm.valid'>
-                        <a routerLink="/PwdChangeReq"> Recover Password</a>
+                <div [hidden]="!buyerSignInForm.controls['password'].errors.required">
+                  Password is required.
                 </div>
+              </div>
+            </div>
+            <input class="btn btn-primary btn-block" value="Sign In" type="submit" [disabled]='!buyerSignInForm.valid'>
+            <a routerLink="/PwdChangeReq"> Recover Password</a>
+          </div>
         </div>
+      </div>
     </div>
-  </div>
   </form>
+
+</div>

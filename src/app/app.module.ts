@@ -24,6 +24,7 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-change-request.component';
 import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
 import { SuperCategoryComponent } from './category/super-category/super-category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SuperCategoryComponent } from './category/super-category/super-category
     HttpClientModule,      // (Required) for share counts
     HttpClientJsonpModule, // (Optional) For Tumblr counts
     RouterModule,
+    BrowserAnimationsModule,
     NgbModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
