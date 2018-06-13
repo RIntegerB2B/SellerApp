@@ -13,12 +13,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('heroState', [
       state('inactive', style({
-        backgroundColor: '#eee',
-        transform: 'scale(1)'
       })),
       state('active',   style({
-        backgroundColor: '#cfd8dc',
-        transform: 'rotate(-3deg)'
+        transform: 'scale(1.05, 1.05)'
       })),
       transition('inactive => active', animate('100ms ease-in')),
       transition('active => inactive', animate('100ms ease-out'))

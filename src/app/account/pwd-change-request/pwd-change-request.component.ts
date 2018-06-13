@@ -4,17 +4,30 @@ import { PwdChangeRequest } from './pwd-change-request.model'
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-pwd-change-request',
   templateUrl: './pwd-change-request.component.html',
-  styleUrls: ['./pwd-change-request.component.css']
+  styleUrls: ['./pwd-change-request.component.css'],
+  animations: [
+    trigger('heroState', [
+      state('inactive', style({
+      })),
+      state('active',   style({
+        transform: 'scale(1.05, 1.05)'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class PwdChangeRequestComponent implements OnInit {
   passwordRequestForm: FormGroup;
 
   userModel: PwdChangeRequest;
+
+  public state = 'inactive';
 
   constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router,
     private navHeaderService: NavHeaderService) { }
@@ -29,7 +42,9 @@ export class PwdChangeRequestComponent implements OnInit {
 
     });
   }
-
+  toggleState() {
+    this.state = this.state === 'active' ? 'inactive' : 'active';
+  }
   sendResetSubmit(passwordRequestForm: FormGroup) {
     this.userModel = new PwdChangeRequest(
       passwordRequestForm.controls.emailId.value

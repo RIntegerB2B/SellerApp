@@ -1,4 +1,4 @@
-<div class="signInMasterDiv"  (click) ="toggleState()">
+<div class="signInMasterDiv" [@heroState]="state"  (click) ="toggleState()">
   <form [formGroup]="buyerSignInForm" (ngSubmit)="signInSubmit(buyerSignInForm)" novalidate style="padding-top:60px">
     <div class="container-fluid">
       <div class="row">
