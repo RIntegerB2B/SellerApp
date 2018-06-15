@@ -2,12 +2,15 @@ html,
 body {
   height: 100%;
   background-color: #e9e7e7;
-}
-.whiteColor{
-    color:rgba(255, 255, 255, 255) !important;
+  font-size: 13px;
+  font-weight: 500;
 }
 
-.menuTransparent{
+.whiteColor {
+  color: rgba(255, 255, 255, 255) !important;
+}
+
+.menuTransparent {
   background-color: transparent !important;
 }
 
@@ -15,15 +18,19 @@ body {
   transition: all 1s;
 }
 
-.btnPink, .btnPink:disabled{
+.btnPink,
+.btnPink:disabled {
   background-color: #FF527B;
-    color: #FFFFFF;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 2px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
 }
 
-.btnPink:hover{
+.btnPink:hover {
   background-color: #b7022f;
   color: #fff;
+}
+
+.paddingMarginZero{
+  padding: 0;
+  margin: 0 ;
 }
