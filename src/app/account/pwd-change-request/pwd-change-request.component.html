@@ -7,7 +7,6 @@
                   <div class="center">
                     <h2>Forgot Password ?</h2>
                     <p>We will send you a link to reset your password.</p>
-                    <p>Enter email address</p>
                   </div>
                         <div class="form-group">
                             <input class="form-control required"  required placeholder="Enter email id" formControlName="emailId" type="email">
@@ -17,7 +16,7 @@
                                 </div>
                         </div>
                         
-                        <input class="btn btn-primary btn-block" value="Send Reset Link" type="submit" [disabled]='!passwordRequestForm.valid'>
+                        <input class="btn btnPink btn-block" value="Send Reset Link" type="submit" [disabled]='!passwordRequestForm.valid'>
                         <div class="link">
                             <a   routerLink="/SignIn"> Login</a>
                         </div>

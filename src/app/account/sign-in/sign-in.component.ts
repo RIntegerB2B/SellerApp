@@ -12,8 +12,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   styleUrls: ['./sign-in.component.css'],
   animations: [
     trigger('heroState', [
-      state('inactive', style({
-      })),
       state('active',   style({
         transform: 'scale(1.05, 1.05)'
       })),
