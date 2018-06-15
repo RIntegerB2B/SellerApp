@@ -18,7 +18,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       transition('active => inactive', animate('100ms ease-out')),
       transition('void => inactive', [
         style({transform: 'translateX(-100%) scale(1)'}),
-        animate(100)
+        animate(200)
       ]),
       transition('inactive => void', [
         animate(100, style({transform: 'translateX(100%) scale(1)'}))
