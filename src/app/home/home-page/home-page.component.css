@@ -1,8 +1,0 @@
-.backgroundStyle{
-    background-image: url('../../../assets/images/B2B.jpg') ; 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 680px;
-}
