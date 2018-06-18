@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -24,7 +27,6 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-change-request.component';
 import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
 import { SuperCategoryComponent } from './category/super-category/super-category.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientJsonpModule, // (Optional) For Tumblr counts
     RouterModule,
     BrowserAnimationsModule,
+    AngularFontAwesomeModule,
     NgbModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
