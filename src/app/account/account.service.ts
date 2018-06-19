@@ -39,11 +39,10 @@ export class AccountService {
     }
 
     pwdRequest(pwdReq:PwdChangeRequest): Observable<any> {
-        const pwdReqUrl = '/pwdChange/:emailId';
-        return this.http.post(this.serviceUrl + pwdReqUrl, pwdReq, this.requestOptions).pipe(
-            tap((response: Response) => console.log(response)),
-            catchError(this.handleError<PwdChangeRequest>('Recover Password'))
-          );
+        const pwdReqUrl = 'pwdChange/';
+        var url = this.serviceUrl + pwdReqUrl + pwdReq.email;
+        var data =  this.http.get(url);
+        return data;
 
     }
 
