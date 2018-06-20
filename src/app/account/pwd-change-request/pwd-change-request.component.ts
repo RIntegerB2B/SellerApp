@@ -36,7 +36,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class PwdChangeRequestComponent implements OnInit {
   passwordRequestForm: FormGroup;
 
-  userModel: PwdChangeRequest;
+  userModel: PwdChangeRequest; 
+  
+
+  resetemailsent :boolean = false;
+  emailmismatch :boolean=false;
+  error :boolean=false;
 
   public state = 'inactive';
 
@@ -49,25 +54,50 @@ export class PwdChangeRequestComponent implements OnInit {
   }
   createForm() {
     this.passwordRequestForm = this.fb.group({
-      emailId: ['', Validators.required],
-
-    });
+      emailId: ['', Validators.required] 
+});
   }
   toggleState() {
     this.state = this.state === 'active' ? 'inactive' : 'active';
   }
-  sendResetSubmit(passwordRequestForm: FormGroup) {
-    this.userModel = new PwdChangeRequest(
-      passwordRequestForm.controls.emailId.value
 
-    );
+
+  sendResetSubmit(passwordRequestForm: FormGroup) {
+//email validation
+      
+        
+     
+    
+this.userModel = new PwdChangeRequest(
+      passwordRequestForm.controls.emailId.value
+);
 
     this.accountService.pwdRequest(this.userModel).subscribe(data => {
-      if (data._body.length > 0) {
-        this.router.navigate(['/PwdChangeRequest']);
+      var value=data._body; 
+      if(value.indexOf("1") > -1){
+        this.resetemailsent=true;
+     
       }
+  if(value.indexOf("2") > -1)
+  {
+    this.emailmismatch=true;
+  }
+  if(value.indexOf("0") > -1)
+      {
+        this.error=true;
+      }
+
+      //if (data._body.length > 0) {
+        //this.router.navigate(['/PwdChangeRequest']);
+     // }
     }, error => {
       console.log(error);
     });
+
+
+
+
   }
+
+
 }
