@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 import { HttpModule } from '@angular/http';
@@ -51,6 +53,7 @@ import { SuperCategoryComponent } from './category/super-category/super-category
     RouterModule,
     BrowserAnimationsModule,
     AngularFontAwesomeModule,
+    MatInputModule,
     NgbModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
