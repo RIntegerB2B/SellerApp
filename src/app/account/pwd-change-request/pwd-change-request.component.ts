@@ -31,6 +31,15 @@ import { ServiceResult } from '../../shared/model/service-result.model';
       transition('active => void', [
         animate(200, style({ transform: 'translateX(0) scale(0)' }))
       ])
+    ]),
+    trigger('fadeOutState', [
+      state('load', style({
+      opacity: '1' , color: 'red'
+      })),
+      transition('void => load', [
+        style({ opacity: '0' }),
+        animate(500)
+      ])
     ])
   ]
 })
@@ -45,6 +54,8 @@ export class PwdChangeRequestComponent implements OnInit {
   error: boolean = false;
 
   public state = 'inactive';
+
+  public loadState  = 'load';
 
   constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router,
     private navHeaderService: NavHeaderService) { }
