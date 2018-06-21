@@ -9,3 +9,26 @@
 .alert{
     padding: 0.30rem 1.25rem;
 }
+
+.dropdown-menu {
+    transform: scale(1);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    padding: 4px;
+}
+
+
+  
+  .dropdown-item {
+   
+    transition: 0.5s;
+  }
+  
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    color: white;
+    text-decoration: none;
+    background-color: #FF527B;
+    box-shadow:   0 4px 20px 0 rgba(0,0,0,.14),0 7px 10px -5px rgba(156,39,176,.4);
+  }
+  
+  
