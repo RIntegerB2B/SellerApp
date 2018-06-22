@@ -45,14 +45,21 @@ export class AccountService {
         return data;
 
     }
-
     pwdChangeReset(pwdReset: PwdChangeReset): Observable<any> {
+        const pwResUrl = 'pwdChange/reset/';
+        return this.http.post(this.serviceUrl + pwResUrl, pwdReset, this.requestOptions).pipe(
+            tap((response: Response) => console.log(response)),
+            catchError(this.handleError<PwdChangeReset>('Pwd Reset'))
+          );
+    }
+
+   /* pwdChangeReset(pwdReset: PwdChangeReset): Observable<any> {
         const pwResUrl = '/pwdChange/reset/:key/:pwd';
         return this.http.post(this.serviceUrl + pwResUrl, pwdReset, this.requestOptions).pipe(
             tap((response: Response) => console.log(response)),
             catchError(this.handleError<PwdChangeReset>('Pwd Change Reset'))
           );
-    }
+    } */
     
 
 }

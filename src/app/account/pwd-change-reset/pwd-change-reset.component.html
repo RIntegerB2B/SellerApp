@@ -20,8 +20,28 @@
             </div>
           </div>
           <input class="btn btnPink btn-block" value="CHANGE PASSWORD" type="submit" [disabled]='!resetPasswordForm.valid'>
-
         </div>
+        <div *ngIf="urlnomorevalid">
+
+          <div class="center">
+            <p>
+              <b>The URL is no more valid</b>
+            </p>
+          </div>
+        </div>
+        <div *ngIf="error">
+
+          <div class="center">
+            <h2> <div *ngIf="error">
+
+              <div class="center">
+                <h2>Something went wrong, please try again after some time.</h2>
+                
+              </div>
+              </div></h2>
+            
+          </div>
+          </div>
       </div>
     </div>
   </div>
