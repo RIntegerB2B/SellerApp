@@ -18,4 +18,4 @@ const routes: Routes = [
     { path: '**', redirectTo: 'Home', pathMatch: 'full' }
 ];
 
-export const Routing = RouterModule.forRoot(routes);
+export const Routing = RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'});
