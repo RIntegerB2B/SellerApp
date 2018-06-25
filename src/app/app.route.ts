@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'SignIn', component: SignInComponent },
     { path: 'Home', component: HomePageComponent },
     { path: 'PwdChangeReq', component: PwdChangeRequestComponent },
-    {path: 'PwdChangeReset', component: PwdChangeResetComponent},
+    {path: 'PwdChangeReset/:key', component: PwdChangeResetComponent},
     {path: 'SuperCategory', component: SuperCategoryComponent},
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: '**', redirectTo: 'Home', pathMatch: 'full' }
