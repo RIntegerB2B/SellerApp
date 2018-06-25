@@ -28,3 +28,7 @@
   font-weight: bold;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(156, 39, 176, .4);
 }
+
+.btn:focus{
+  box-shadow: 0 0 0 0.2rem rgb(228, 67, 104); 
+}
