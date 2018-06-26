@@ -5,7 +5,9 @@ import { HomePageComponent } from './home/home-page/home-page.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import {PwdChangeRequestComponent} from './account/pwd-change-request/pwd-change-request.component';
 import {PwdChangeResetComponent} from './account/pwd-change-reset/pwd-change-reset.component';
-import { SuperCategoryComponent} from './category/super-category/super-category.component'
+import { SuperCategoryComponent} from './category/super-category/super-category.component';
+import{MainCategoryComponent} from './category/main-category/main-category.component';
+
 const routes: Routes = [
     { path: 'AddCategory', component: AddCategoryComponent },
     { path: 'Welcome', component: WelcomeComponent },
@@ -14,6 +16,9 @@ const routes: Routes = [
     { path: 'PwdChangeReq', component: PwdChangeRequestComponent },
     {path: 'PwdChangeReset/:key', component: PwdChangeResetComponent},
     {path: 'SuperCategory', component: SuperCategoryComponent},
+    {path: 'MainCategory', component: MainCategoryComponent},
+    
+
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: '**', redirectTo: 'Home', pathMatch: 'full' }
 ];

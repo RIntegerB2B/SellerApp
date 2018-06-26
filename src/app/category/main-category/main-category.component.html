@@ -1,0 +1,115 @@
+<form [formGroup]="mainCategoryForm" novalidate style="padding-top:60px" (ngSubmit)="save(mainCategoryForm)">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+
+        <div class="">
+          <div class="form-group">
+            <input class="form-control required" required placeholder="Super category Id" formControlName="_id" type="text">
+            <div *ngIf="mainCategoryForm.controls['_id'].errors
+                                         && !mainCategoryForm.controls['_id'].pristine" class="alert alert-danger">
+              <div [hidden]="!mainCategoryForm.controls['_id'].errors.required">Category Name is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input class="form-control required" required placeholder="Category Name" formControlName="mainCategoryName" type="text">
+            <div *ngIf="mainCategoryForm.controls['mainCategoryName'].errors
+                                     && !mainCategoryForm.controls['mainCategoryName'].pristine" class="alert alert-danger">
+              <div [hidden]="!mainCategoryForm.controls['mainCategoryName'].errors.required">Category Name is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input class="form-control required" required placeholder="Category Description" formControlName="mainCategoryDescription"
+              type="text">
+            <div *ngIf="mainCategoryForm.controls['mainCategoryDescription'].errors
+                                   && !mainCategoryForm.controls['mainCategoryDescription'].pristine" class="alert alert-danger">
+              <div [hidden]="!mainCategoryForm.controls['mainCategoryDescription'].errors.required">
+                Category Description is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" [disabled]='!mainCategoryForm.valid'>
+              Save
+            </button>
+          </div>
+        </div>
+        <!--show the table-->
+        <div *ngIf="showDetails">
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="col-md-4">
+
+                <div class="form-group">
+                  <label>Category Name</label>
+
+                </div>
+              </div>
+
+              <div class="col-md-4 ">
+                <div class="form-group">
+                  <label>Category Description</label>
+
+                </div>
+              </div>
+              <div class="col-md-4 ">
+                <div>
+                  <label>Edit</label>
+                </div>
+              </div>
+              <!--data-->
+              <div class="container">
+                <div *ngIf="!showEdit">
+                  <div class="row" *ngFor="let cat of mainCategories">
+                    <div class="col-md-4 form-group">
+                      {{cat.mainCategoryName}}
+                    </div>
+                    <div class="col-md-4 form-group">
+                      {{cat.mainCategoryDescription}}
+                    </div>
+                    <div class="col-md-4">
+                      <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
+                    </div>
+                  </div>
+                </div>
+
+
+                <div *ngIf="showEdit">
+                  <div class="row" *ngFor="let cat of mainCategories">
+
+
+                    <!--  <input class="form-control" hidden type="text" formControlName="mainid" [value]="cat._id" #mainCatId />
+                    
+ -->
+
+                    <div class="col-md-4 form-group">
+                      <input class="form-control" type="text" formControlName="uName" [value]="cat.maincategoryName" #mainCatName/>
+                    </div>
+
+                    <div class="col-md-4">
+                      <input class="form-control" type="text" formControlName="uDesc" [value]="cat.mainCategoryDescription" #mainCatDesc/>
+                    </div>
+
+                    <div class="col-md-2">
+                      <input type="button" class="btn btn-success btn-block" value="Update" (click)="edit(mainCategoryForm, mainCatId,mainCatName,mainCatDesc)"
+                      />
+                    </div>
+                    <div class="col-md-2">
+                      <input type="button" class="btn btn-danger btn-block" value="Delete" (click)="delete(mainCategoryForm, mainCatId)" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--data closing-->
+            </div>
+          </div>
+        </div>
+        <!--clossing-->
+      </div>
+    </div>
+  </div>
+</form>

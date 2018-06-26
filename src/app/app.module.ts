@@ -29,6 +29,7 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-change-request.component';
 import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
 import { SuperCategoryComponent } from './category/super-category/super-category.component';
+import { MainCategoryComponent } from './category/main-category/main-category.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SuperCategoryComponent } from './category/super-category/super-category
     AddCategoryComponent,
     PwdChangeRequestComponent,
     PwdChangeResetComponent,
-    SuperCategoryComponent
+    SuperCategoryComponent,
+    MainCategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -48,7 +48,7 @@ export class SignInComponent implements OnInit {
 
   createForm() {
     this.buyerSignInForm = this.fb.group({
-      userName: ['', Validators.required],
+      userName: ['', Validators.required,],
       password: ['', Validators.required]
     });
   }
@@ -62,6 +62,8 @@ export class SignInComponent implements OnInit {
     );
 
     this.accountService.signIn(this.userModel).subscribe(data => {
+
+      
       if (data._body.length > 0) {
         this.router.navigate(['/Welcome']);
       }
