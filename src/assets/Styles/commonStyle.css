@@ -34,3 +34,30 @@ body {
   padding: 0;
   margin: 0 ;
 }
+
+.textContainer {
+  position: relative;
+  padding-top: 10px;
+}
+
+.appTextBox {
+  padding: 10px 10px 10px 5px;
+}
+
+.appTextBoxSpan {
+  visibility: hidden;
+}
+
+.textContainer input:focus ~ span , .textContainer input:valid ~ span  {
+  visibility: visible;
+
+  position: absolute;
+  top: 0;
+  left: 10px;
+  background-color: white;
+  padding: 0px 5px;
+  transition: padding 3s ;
+  -moz-transition: padding 3s ;
+  -webkit-transition: padding 3s ;
+}
+
