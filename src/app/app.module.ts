@@ -30,6 +30,9 @@ import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-chan
 import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
 import { SuperCategoryComponent } from './category/super-category/super-category.component';
 import { MainCategoryComponent } from './category/main-category/main-category.component';
+import { CatalogUploadComponent } from './product/catalog-upload/catalog-upload.component';
+import { SubProdUploadComponent } from './product/sub-prod-upload/sub-prod-upload.component';
+import { ProductService } from './product/product.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { MainCategoryComponent } from './category/main-category/main-category.co
     PwdChangeRequestComponent,
     PwdChangeResetComponent,
     SuperCategoryComponent,
-    MainCategoryComponent
+    MainCategoryComponent,
+    CatalogUploadComponent,
+    SubProdUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,8 @@ import { MainCategoryComponent } from './category/main-category/main-category.co
   ],
   providers: [
     AccountService,
-    NavHeaderService],
+    NavHeaderService,
+    ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
