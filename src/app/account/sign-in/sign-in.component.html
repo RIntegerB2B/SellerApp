@@ -1,36 +1,36 @@
-<div class="signInMasterDiv" [@heroState]="state"  (click) ="toggleState()">
+<div class="signInMasterDiv" [@heroState]="state" (click)="toggleState()">
   <form [formGroup]="buyerSignInForm" (ngSubmit)="signInSubmit(buyerSignInForm)" novalidate style="padding-top:60px">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div class="">
-            <div class="form-group">
-              
-              <div class="textContainer">
-                <input type="text" placeholder="User Name" class= "form-control required appTextBox" required formControlName="userName"/>
-                <span class="appTextBoxSpan" >User Name</span>
-              </div>
-              <div *ngIf="buyerSignInForm.controls['userName'].errors
+          <div class="form-group" [ngClass]="{'has-error': (buyerSignInForm.controls['userName'].touched || 
+            buyerSignInForm.controls['userName'].dirty) &&
+                                      !buyerSignInForm.controls['userName'].valid }">
+
+            <div class="textContainer">
+              <input type="text" placeholder="User Name" class="form-control required appTextBox" required formControlName="userName" />
+              <span class="appTextBoxSpan">User Name</span>
+            </div>
+            <div *ngIf="buyerSignInForm.controls['userName'].errors
                                && !buyerSignInForm.controls['userName'].pristine" class="alert alert-danger">
-                <div [hidden]="!buyerSignInForm.controls['userName'].errors.required">User Name is required.</div>
-              </div>
+              <div [hidden]="!buyerSignInForm.controls['userName'].errors.required">User Name is required.</div>
             </div>
-            <div class="form-group">
-              
-              <div class="textContainer">
-                <input class="form-control required appTextBox" required placeholder="Password" formControlName="password" type="password">
-                <span class="appTextBoxSpan" >Password</span>
-              </div>
-              <div *ngIf="buyerSignInForm.controls['password'].errors
-                             && !buyerSignInForm.controls['password'].pristine" class="alert alert-danger">
-                <div [hidden]="!buyerSignInForm.controls['password'].errors.required">
-                  Password is required.
-                </div>
-              </div>
-            </div>
-            <input class="btn btnPink btn-block" value="SIGN IN" type="submit" [disabled]='!buyerSignInForm.valid'>
-            <a routerLink="/PwdChangeReq"> Recover Password</a>
           </div>
+          <div class="form-group">
+
+            <div class="textContainer">
+              <input class="form-control required appTextBox" required placeholder="Password" formControlName="password" type="password">
+              <span class="appTextBoxSpan">Password</span>
+            </div>
+            <div *ngIf="buyerSignInForm.controls['password'].errors
+                             && !buyerSignInForm.controls['password'].pristine" class="alert alert-danger">
+              <div [hidden]="!buyerSignInForm.controls['password'].errors.required">
+                Password is required.
+              </div>
+            </div>
+          </div>
+          <input class="btn btnPink btn-block" value="SIGN IN" type="submit" [disabled]='!buyerSignInForm.valid'>
+          <a routerLink="/PwdChangeReq"> Recover Password</a>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from "../product.service";
+import { ProductService } from '../product.service';
+import {NavHeaderService} from '../../shared/nav-header/nav-header.service';
 
 @Component({
   selector: 'app-catalog-upload',
@@ -8,9 +9,10 @@ import { ProductService } from "../product.service";
 })
 export class CatalogUploadComponent implements OnInit {
   fileToUpload: File = null;
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private navHeaderService: NavHeaderService) {}
 
   ngOnInit() {
+    this.navHeaderService.hideMenuTransparent();
   }
 
   handleFileInput(files: FileList) {

@@ -10,6 +10,7 @@ export class ProductService {
     const endpoint = 'your-destination-url';
     const formData: FormData = new FormData();
     formData.append('fileKey', fileToUpload, fileToUpload.name);
+    console.log(formData);
     return true;
 }
 }
