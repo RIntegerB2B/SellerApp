@@ -33,6 +33,7 @@ import { MainCategoryComponent } from './category/main-category/main-category.co
 import { CatalogUploadComponent } from './product/catalog-upload/catalog-upload.component';
 import { SubProdUploadComponent } from './product/sub-prod-upload/sub-prod-upload.component';
 import { ProductService } from './product/product.service';
+import { SuperCatAddComponent } from './product/super-cat-add/super-cat-add.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ProductService } from './product/product.service';
     SuperCategoryComponent,
     MainCategoryComponent,
     CatalogUploadComponent,
-    SubProdUploadComponent
+    SubProdUploadComponent,
+    SuperCatAddComponent
   ],
   imports: [
     BrowserModule,
