@@ -3,9 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div class="form-group" [ngClass]="{'has-error': (buyerSignInForm.controls['userName'].touched || 
-            buyerSignInForm.controls['userName'].dirty) &&
-                                      !buyerSignInForm.controls['userName'].valid }">
+          <div class="form-group">
 
             <div class="textContainer">
               <input type="text" placeholder="User Name" class="form-control required appTextBox" required formControlName="userName" />
@@ -13,7 +11,7 @@
             </div>
             <div *ngIf="buyerSignInForm.controls['userName'].errors
                                && !buyerSignInForm.controls['userName'].pristine" class="alert alert-danger">
-              <div [hidden]="!buyerSignInForm.controls['userName'].errors.required">User Name is required.</div>
+              <div [hidden]="!buyerSignInForm.controls['userName'].errors.required">Please enter User NAme</div>
             </div>
           </div>
           <div class="form-group">
