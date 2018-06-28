@@ -44,8 +44,8 @@ export class CatalogUploadComponent implements OnInit {
       var reader1 = new FileReader();
       reader1.readAsDataURL(blob);
       console.log(blob);
-      reader1.onload = function(e) {
-        loadedImage.src = e.target.result;
+      reader1.onload = function() {
+        loadedImage.src = reader1.result;
    };
   
     };
