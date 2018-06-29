@@ -30,10 +30,14 @@ import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-chan
 import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
 import { SuperCategoryComponent } from './category/super-category/super-category.component';
 import { MainCategoryComponent } from './category/main-category/main-category.component';
-import { CatalogUploadComponent } from './product/catalog-upload/catalog-upload.component';
 import { SubProdUploadComponent } from './product/sub-prod-upload/sub-prod-upload.component';
 import { ProductService } from './product/product.service';
-import { SuperCatAddComponent } from './product/super-cat-add/super-cat-add.component';
+import { SuperCatalogAddComponent } from './product/super-catalog-add/super-catalog-add.component';
+import { SuperCatalogViewComponent } from './product/super-catalog-view/super-catalog-view.component';
+import { MainCatalogAddComponent } from './product/main-catalog-add/main-catalog-add.component';
+import { MainCatalogViewComponent } from './product/main-catalog-view/main-catalog-view.component';
+import { SubProductViewComponent } from './product/sub-product-view/sub-product-view.component';
+import { SubProductAddComponent } from './product/sub-product-add/sub-product-add.component';
 
 @NgModule({
   declarations: [
@@ -47,9 +51,13 @@ import { SuperCatAddComponent } from './product/super-cat-add/super-cat-add.comp
     PwdChangeResetComponent,
     SuperCategoryComponent,
     MainCategoryComponent,
-    CatalogUploadComponent,
     SubProdUploadComponent,
-    SuperCatAddComponent
+    SuperCatalogAddComponent,
+    SuperCatalogViewComponent,
+    MainCatalogAddComponent,
+    MainCatalogViewComponent,
+    SubProductViewComponent,
+    SubProductAddComponent
   ],
   imports: [
     BrowserModule,

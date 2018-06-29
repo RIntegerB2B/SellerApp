@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuperCatAddComponent } from './super-cat-add.component';
+import { MainCatalogViewComponent } from './main-catalog-view.component';
 
-describe('SuperCatAddComponent', () => {
-  let component: SuperCatAddComponent;
-  let fixture: ComponentFixture<SuperCatAddComponent>;
+describe('MainCatalogViewComponent', () => {
+  let component: MainCatalogViewComponent;
+  let fixture: ComponentFixture<MainCatalogViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SuperCatAddComponent ]
+      declarations: [ MainCatalogViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuperCatAddComponent);
+    fixture = TestBed.createComponent(MainCatalogViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

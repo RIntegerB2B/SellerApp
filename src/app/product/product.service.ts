@@ -6,11 +6,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
-  uploadCatalog(fileToUpload: File): true {
-    const endpoint = 'your-destination-url';
-    const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload, fileToUpload.name);
-    console.log(formData);
-    return true;
-}
+  
+  superCategoryAdd(arg0: any): any {
+    throw new Error('Method not implemented.');
+  }
+
 }

@@ -3,12 +3,11 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { SignInComponent } from './account/sign-in/sign-in.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
-import {PwdChangeRequestComponent} from './account/pwd-change-request/pwd-change-request.component';
-import {PwdChangeResetComponent} from './account/pwd-change-reset/pwd-change-reset.component';
-import { SuperCategoryComponent} from './category/super-category/super-category.component';
-import {MainCategoryComponent} from './category/main-category/main-category.component';
-import {CatalogUploadComponent} from './product/catalog-upload/catalog-upload.component';
-import {SubProdUploadComponent} from './product/sub-prod-upload/sub-prod-upload.component';
+import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-change-request.component';
+import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
+import { SuperCategoryComponent } from './category/super-category/super-category.component';
+import { MainCategoryComponent } from './category/main-category/main-category.component';
+import { SuperCatalogAddComponent } from './product/super-catalog-add/super-catalog-add.component';
 
 const routes: Routes = [
     { path: 'AddCategory', component: AddCategoryComponent },
@@ -16,13 +15,12 @@ const routes: Routes = [
     { path: 'SignIn', component: SignInComponent },
     { path: 'Home', component: HomePageComponent },
     { path: 'PwdChangeReq', component: PwdChangeRequestComponent },
-    {path: 'PwdChangeReset/:key', component: PwdChangeResetComponent},
-    {path: 'SuperCategory', component: SuperCategoryComponent},
-    {path: 'MainCategory', component: MainCategoryComponent},
-    {path: 'CatalogUpload', component: CatalogUploadComponent},
-    {path: 'SubProdUpload', component: SubProdUploadComponent},
+    { path: 'PwdChangeReset/:key', component: PwdChangeResetComponent },
+    { path: 'SuperCategory', component: SuperCategoryComponent },
+    { path: 'MainCategory', component: MainCategoryComponent },
+    { path: 'SuperCatalogAdd', component: SuperCatalogAddComponent },
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: '**', redirectTo: 'Home', pathMatch: 'full' }
 ];
 
-export const Routing = RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'});
+export const Routing = RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' });
