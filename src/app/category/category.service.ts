@@ -10,6 +10,7 @@ import { SuperCategoryComponent } from './super-category/super-category.componen
 import { Edit } from './super-category/edit.model';
 import { Delete } from '../category/super-category/delete-model'
 import { MainCategory } from '../category/main-category/main-category.model'
+import {SuperCategoryName} from '../category/main-category/superCategoryName.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -35,7 +36,7 @@ export class CategoryService {
       return of(result as T);
     };
   }
-  constructor(private http: Http) { }
+  constructor(private http: Http,private httpClient :HttpClient) { }
 
 
   addCategory(add: SuperCategory): Observable<any> {
@@ -76,5 +77,12 @@ export class CategoryService {
       catchError(this.handleError<MainCategory>('Super Category '))
     );
 
+  }
+
+
+  findDetail(): Observable<any> {
+    const addurl = 'superCategory/';
+    const url: string=this.serviceUrl + addurl  ;
+    return this.httpClient.get<SuperCategoryName[]>(url);  
   }
 }

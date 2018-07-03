@@ -3,7 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators, NgForm } from '@angular/
 import { Router } from '@angular/router';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import { CategoryService } from '../category.service';
-import { MainCategory } from './main-category.model'
+import { MainCategory } from './main-category.model';
+import {SuperCategoryName} from './superCategoryName.model'
 
 @Component({
   selector: 'app-main-category',
@@ -17,6 +18,9 @@ export class MainCategoryComponent implements OnInit {
   mainCategoryForm: FormGroup;
   mainModel: MainCategory;
   showDetails: boolean = false;
+  Categoryname:SuperCategoryName[]=[]
+
+  
 
   constructor(private fb: FormBuilder, private router: Router, private categoryService: CategoryService,
     private navHeaderService: NavHeaderService) { }
@@ -24,13 +28,15 @@ export class MainCategoryComponent implements OnInit {
   ngOnInit() {
     this.navHeaderService.hideMenuTransparent();
     this.createForm();
+    this.superCategory();
   }
 
   createForm() {
     this.mainCategoryForm = this.fb.group({
-      _id: ['', Validators.required],
+     
       mainCategoryName: ['', Validators.required],
-      mainCategoryDescription: ['', Validators.required]
+      mainCategoryDescription: ['', Validators.required],
+      superCat:['']
 
     });
   }
@@ -40,7 +46,7 @@ export class MainCategoryComponent implements OnInit {
 
 
     this.mainModel = new MainCategory(
-      mainCategoryForm.controls._id.value,
+      mainCategoryForm.controls.superCat.value,
       mainCategoryForm.controls.mainCategoryName.value,
       mainCategoryForm.controls.mainCategoryDescription.value
     );
@@ -63,5 +69,20 @@ export class MainCategoryComponent implements OnInit {
   toggleEdit() {
     this.showEdit = !this.showEdit;
   }
+
+
+  superCategory() {
+    
+    this.categoryService.findDetail().subscribe(name => {
+
+      this.Categoryname.push(name);
+
+      console.log(name)
+     
+    }, error => {
+      console.log(error);
+    });
+  }
+
 
 }
