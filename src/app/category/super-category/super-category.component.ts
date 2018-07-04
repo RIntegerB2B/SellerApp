@@ -51,7 +51,7 @@ export class SuperCategoryComponent implements OnInit {
   }
 
 
-  save(superCategoryForm: FormGroup) {
+  /* save(superCategoryForm: FormGroup) {
 
 
     this.showDetails = true;
@@ -74,8 +74,31 @@ export class SuperCategoryComponent implements OnInit {
       console.log(error);
     });
 
-  }
+  } */
 
+  add(superCategoryForm: FormGroup) {
+
+    this.showDetails = true;
+    this.userModel = new SuperCategory(
+
+      superCategoryForm.controls.categoryName.value,
+      superCategoryForm.controls.categoryDescription.value
+    );
+
+
+    superCategoryForm.reset()
+    this.categoryService.addCat(this.userModel).subscribe(data => {
+      var res = JSON.parse(data._body)
+      this.superCategories.push(res);
+
+      console.log(res)
+      console.log(this.superCategories);
+
+    }, error => {
+      console.log(error);
+    });
+
+  }
 
   edit(superCategoryForm: FormGroup, superCatId: any, superCatName: any, superCatDesc: any) {
     this.showEdit = !this.showEdit;

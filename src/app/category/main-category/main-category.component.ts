@@ -20,7 +20,8 @@ export class MainCategoryComponent implements OnInit {
   showDetails: boolean = false;
   Categoryname:SuperCategoryName[]=[]
 
-  
+  headerCatSelectedData
+  headCatSelected
 
   constructor(private fb: FormBuilder, private router: Router, private categoryService: CategoryService,
     private navHeaderService: NavHeaderService) { }
@@ -36,17 +37,17 @@ export class MainCategoryComponent implements OnInit {
      
       mainCategoryName: ['', Validators.required],
       mainCategoryDescription: ['', Validators.required],
-      superCat:['']
+      ID:['']
 
     });
   }
 
-  save(mainCategoryForm: FormGroup) {
+  save(mainCategoryForm: FormGroup,superCat:any) {
     this.showDetails = true;
 
 
     this.mainModel = new MainCategory(
-      mainCategoryForm.controls.superCat.value,
+      superCat,
       mainCategoryForm.controls.mainCategoryName.value,
       mainCategoryForm.controls.mainCategoryDescription.value
     );
@@ -75,7 +76,7 @@ export class MainCategoryComponent implements OnInit {
     
     this.categoryService.findDetail().subscribe(name => {
 
-      this.Categoryname.push(name);
+      this.Categoryname=name;
 
       console.log(name)
      
@@ -84,5 +85,14 @@ export class MainCategoryComponent implements OnInit {
     });
   }
 
+
+  onHeaderCategoryChange(headCategory) {
+    console.log(headCategory)
+
+    
+    this.headerCatSelectedData=  headCategory.categoryName;
+    console.log(this.headerCatSelectedData)
+    this.headCatSelected=headCategory;
+  }
 
 }

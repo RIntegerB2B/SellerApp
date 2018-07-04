@@ -1,14 +1,14 @@
 export class MainCategory {
-    _id:Number;
+    categoryName:String;
     mainCategoryName: string;
     mainCategoryDescription: string;
     constructor(
-        _id:Number,
+        categoryName:String,
         mainCategoryName: string,
         mainCategoryDescription: string
        ) 
        {
-           this._id=_id;
+           this.categoryName=categoryName;
         this.mainCategoryName = mainCategoryName;
         this.mainCategoryDescription=mainCategoryDescription;
     }

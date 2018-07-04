@@ -1,7 +1,6 @@
 export class SuperCategoryName {
     _id:Number;
     categoryName: string;
-    
     constructor(
         _id:Number,
         categoryName: string,

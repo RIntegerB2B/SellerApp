@@ -10,7 +10,8 @@ import { SuperCategoryComponent } from './super-category/super-category.componen
 import { Edit } from './super-category/edit.model';
 import { Delete } from '../category/super-category/delete-model'
 import { MainCategory } from '../category/main-category/main-category.model'
-import {SuperCategoryName} from '../category/main-category/superCategoryName.model';
+import { SuperCategoryName } from '../category/main-category/superCategoryName.model';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -36,10 +37,10 @@ export class CategoryService {
       return of(result as T);
     };
   }
-  constructor(private http: Http,private httpClient :HttpClient) { }
+  constructor(private http: Http, private httpClient: HttpClient) { }
 
 
-  addCategory(add: SuperCategory): Observable<any> {
+  /* addCategory(add: SuperCategory): Observable<any> {
 
     const addCaturl = 'addCategory/';
     return this.http.post(this.serviceUrl + addCaturl, add, this.requestOptions).pipe(
@@ -47,7 +48,17 @@ export class CategoryService {
       catchError(this.handleError<SuperCategory>('Super Category '))
     );
 
+  } */
+
+  addCat(add: SuperCategory): Observable<any> {
+    const Caturl = 'addCategory/';
+    return this.http.post(this.serviceUrl + Caturl, add, this.requestOptions).pipe(
+      tap((response: Response) => console.log(response)),
+      catchError(this.handleError<Edit>('Super Category edit '))
+    );
   }
+
+
 
   editCategory(edit: Edit): Observable<any> {
 
@@ -82,7 +93,7 @@ export class CategoryService {
 
   findDetail(): Observable<any> {
     const addurl = 'superCategory/';
-    const url: string=this.serviceUrl + addurl  ;
-    return this.httpClient.get<SuperCategoryName[]>(url);  
+    const url: string = this.serviceUrl + addurl;
+    return this.httpClient.get<SuperCategoryName[]>(url);
   }
 }
