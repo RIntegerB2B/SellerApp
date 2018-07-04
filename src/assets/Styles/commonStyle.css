@@ -46,6 +46,7 @@ body {
 
 .appTextBoxSpan {
   visibility: hidden;
+  position: absolute;
 }
 
 .textContainer input:focus ~ span , .textContainer input:valid ~ span  {

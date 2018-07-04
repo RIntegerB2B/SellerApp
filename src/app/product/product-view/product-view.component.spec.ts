@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubProductViewComponent } from './sub-product-view.component';
+import { ProductViewComponent } from './product-view.component';
 
-describe('SubProductViewComponent', () => {
-  let component: SubProductViewComponent;
-  let fixture: ComponentFixture<SubProductViewComponent>;
+describe('ProductViewComponent', () => {
+  let component: ProductViewComponent;
+  let fixture: ComponentFixture<ProductViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubProductViewComponent ]
+      declarations: [ ProductViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubProductViewComponent);
+    fixture = TestBed.createComponent(ProductViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

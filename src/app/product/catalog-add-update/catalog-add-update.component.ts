@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 
-
 @Component({
-  selector: 'app-super-catalog-add',
-  templateUrl: './super-catalog-add.component.html',
-  styleUrls: ['./super-catalog-add.component.css']
+  selector: 'app-catalog-add-update',
+  templateUrl: './catalog-add-update.component.html',
+  styleUrls: ['./catalog-add-update.component.css']
 })
-export class SuperCatalogAddComponent implements OnInit {
+export class CatalogAddUpdateComponent implements OnInit {
+
   fileToUpload: File = null;
   reader: FileReader = new FileReader();
   constructor(private productService: ProductService, private navHeaderService: NavHeaderService) { }
@@ -36,9 +36,6 @@ export class SuperCatalogAddComponent implements OnInit {
   }
 
   uploadFileToActivity() {
-   
   }
-
-
 
 }
