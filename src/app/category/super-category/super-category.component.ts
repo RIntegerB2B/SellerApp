@@ -20,7 +20,7 @@ export class SuperCategoryComponent implements OnInit {
   newModel: Edit;
   userModel: SuperCategory;
   deleteModel: Delete;
-  showDetails: boolean = false;
+  showDetails: boolean = true;
   showEdit: boolean;
 
 
@@ -30,6 +30,7 @@ export class SuperCategoryComponent implements OnInit {
   ngOnInit() {
     this.navHeaderService.hideMenuTransparent();
     this.createForm();
+    this.category()
 
   }
 
@@ -50,41 +51,13 @@ export class SuperCategoryComponent implements OnInit {
     this.showEdit = !this.showEdit;
   }
 
-
-  /* save(superCategoryForm: FormGroup) {
-
-
-    this.showDetails = true;
-    this.userModel = new SuperCategory(
-
-      superCategoryForm.controls.categoryName.value,
-      superCategoryForm.controls.categoryDescription.value
-    );
-
-    superCategoryForm.reset()
-
-    this.categoryService.addCategory(this.userModel).subscribe(data => {
-      var res = JSON.parse(data._body)
-      this.superCategories.push(res);
-
-      console.log(res)
-      console.log(this.superCategories);
-
-    }, error => {
-      console.log(error);
-    });
-
-  } */
-
   add(superCategoryForm: FormGroup) {
-
     this.showDetails = true;
     this.userModel = new SuperCategory(
 
       superCategoryForm.controls.categoryName.value,
       superCategoryForm.controls.categoryDescription.value
     );
-
 
     superCategoryForm.reset()
     this.categoryService.addCat(this.userModel).subscribe(data => {
@@ -97,8 +70,9 @@ export class SuperCategoryComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-
   }
+
+
 
   edit(superCategoryForm: FormGroup, superCatId: any, superCatName: any, superCatDesc: any) {
     this.showEdit = !this.showEdit;
@@ -133,7 +107,7 @@ export class SuperCategoryComponent implements OnInit {
     this.showDetails = true;
     this.deleteModel = new Delete(
       superCatId.value,
-      // superCategoryForm.controls._id.value
+      
 
     );
     superCategoryForm.reset()
@@ -145,6 +119,22 @@ export class SuperCategoryComponent implements OnInit {
     });
 
   }
+
+
+
+
+ category() {
+    
+    this.categoryService.showCategory().subscribe(name => {
+
+      this.superCategories=name;
+
+      console.log(name)
+     
+    }, error => {
+      console.log(error);
+    });
+  } 
 
 }
 

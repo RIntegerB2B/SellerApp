@@ -11,7 +11,7 @@ import { Edit } from './super-category/edit.model';
 import { Delete } from '../category/super-category/delete-model'
 import { MainCategory } from '../category/main-category/main-category.model'
 import { SuperCategoryName } from '../category/main-category/superCategoryName.model';
-
+import{MainCategoryDetail} from '../category/main-category/main-categoryDetail.model'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -72,10 +72,10 @@ export class CategoryService {
   deleteCategory(del: Delete): Observable<any> {
 
     const Caturl = 'categoryDelete/';
-    return this.http.post(this.serviceUrl + Caturl, del, this.requestOptions).pipe(
-      tap((response: Response) => console.log(response)),
-      catchError(this.handleError<Delete>('Super Category delete '))
-    );
+    
+    const url: string = this.serviceUrl + Caturl +del._id;
+    return this.httpClient.delete<SuperCategoryName[]>(url);
+   
   }
 
 
@@ -87,7 +87,6 @@ export class CategoryService {
       tap((response: Response) => console.log(response)),
       catchError(this.handleError<MainCategory>('Super Category '))
     );
-
   }
 
 
@@ -95,5 +94,19 @@ export class CategoryService {
     const addurl = 'superCategory/';
     const url: string = this.serviceUrl + addurl;
     return this.httpClient.get<SuperCategoryName[]>(url);
+  }
+
+  showCategory(): Observable<any> {
+    const addurl = 'categoryDetails/';
+    const url: string = this.serviceUrl + addurl;
+    return this.httpClient.get<SuperCategoryName[]>(url);
+  }
+
+  
+
+  showMainCategory(): Observable<any> {
+    const addurl = 'mainCategoryDetails/';
+    const url: string = this.serviceUrl + addurl;
+    return this.httpClient.get<MainCategoryDetail[]>(url);
   }
 }

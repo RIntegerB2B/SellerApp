@@ -35,23 +35,21 @@
             </button>
           </div>
         </div>
+
         <!--show the table-->
         <div *ngIf="showDetails">
           <div class="container-fluid">
             <div class="row">
 
               <div class="col-md-4">
-
                 <div class="form-group">
                   <label>Category Name</label>
-
                 </div>
               </div>
 
               <div class="col-md-4 ">
                 <div class="form-group">
                   <label>Category Description</label>
-
                 </div>
               </div>
 
@@ -65,9 +63,7 @@
                 <div *ngIf="!showEdit">
                   <div class="row" *ngFor="let cat of superCategories">
 
-
                     <div class="col-md-4 form-group">
-
                       {{cat.categoryName}}
                     </div>
 

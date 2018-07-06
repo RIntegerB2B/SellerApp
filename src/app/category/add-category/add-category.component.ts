@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
+import {CategoryService} from '../../category/category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -7,17 +10,22 @@ import { FormArray, FormBuilder, FormGroup, Validators, NgForm } from '@angular/
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent implements OnInit {
-  categoryForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  subCategoryForm: FormGroup;
+  constructor(private fb: FormBuilder, private router: Router, private categoryService: CategoryService,
+    private navHeaderService: NavHeaderService) { }
 
   ngOnInit() {
     this.createForm();
   }
 
   createForm() {
-    this.categoryForm = this.fb.group({
-      categoryName: ['', Validators.required]
+    this.subCategoryForm = this.fb.group({
+      subCategoryName: ['', Validators.required],
+      subCategoryDescription:['', Validators.required]
     });
   }
+
+
+
 
 }
