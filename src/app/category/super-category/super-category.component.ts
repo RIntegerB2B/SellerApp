@@ -84,6 +84,7 @@ export class SuperCategoryComponent implements OnInit {
       superCatDesc.value
     );
 
+    
     superCategoryForm.reset()
 
     this.categoryService.editCategory(this.newModel).subscribe(data => {

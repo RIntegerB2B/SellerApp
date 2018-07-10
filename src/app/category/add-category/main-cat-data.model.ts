@@ -1,19 +1,15 @@
-export class MainCategory {
-    _id:Number;
-    
+export class MainCatData {
+    _id: string;
     mainCategoryName: string;
     mainCategoryDescription: string;
     constructor(
-        _id:Number,
-        
+        _id: string,
         mainCategoryName: string,
         mainCategoryDescription: string
-       ) 
-       {
-           
-           this._id=_id;
-          
+
+    ) {
+        this._id = _id;
         this.mainCategoryName = mainCategoryName;
-        this.mainCategoryDescription=mainCategoryDescription;
+        this.mainCategoryDescription = mainCategoryDescription;
     }
 }

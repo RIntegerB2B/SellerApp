@@ -9,6 +9,7 @@ import { SuperCategoryComponent } from './category/super-category/super-category
 import { MainCategoryComponent } from './category/main-category/main-category.component';
 import { CatalogAddUpdateComponent } from './product/catalog-add-update/catalog-add-update.component';
 
+
 const routes: Routes = [
     { path: 'AddCategory', component: AddCategoryComponent },
     { path: 'Welcome', component: WelcomeComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: 'MainCategory', component: MainCategoryComponent },
     { path: 'Catalog', component: CatalogAddUpdateComponent },
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
-    { path: '**', redirectTo: 'Home', pathMatch: 'full' }
+    { path: '**', redirectTo: 'Home', pathMatch: 'full' },
+    
 ];
 
 export const Routing = RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' });
