@@ -25,6 +25,7 @@ import { SignInComponent } from './account/sign-in/sign-in.component';
 import { AccountService } from './account/account.service';
 import { NavHeaderService } from './shared/nav-header/nav-header.service';
 import { HomePageComponent } from './home/home-page/home-page.component';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { PwdChangeRequestComponent } from './account/pwd-change-request/pwd-change-request.component';
 import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-reset.component';
 import { SuperCategoryComponent } from './category/super-category/super-category.component';
@@ -42,6 +43,7 @@ import { ProductViewComponent } from './product/product-view/product-view.compon
     WelcomeComponent,
     SignInComponent,
     HomePageComponent,
+    AddCategoryComponent,
     PwdChangeRequestComponent,
     PwdChangeResetComponent,
     SuperCategoryComponent,
