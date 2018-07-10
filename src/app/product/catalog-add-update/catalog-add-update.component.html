@@ -1,18 +1,19 @@
-<div class="container-fluid">
+<div class="container-fluid pageBox">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-9">
       <!-- Put the Text Boxes over here -->
     </div>
-    <div class="col-md-6">
-      <div class="form-group pageBox">
-        <label for="file">Choose File</label>
-        <input type="file" id="file" (change)="handleFileInput($event.target.files, loadedImage)">
-        
-        <img #loadedImage />
+    <div class="col-md-3 form-group">
+      <div>
+        <img #loadedImage style="width: 180px; height: 345px;" />
+      </div>
+      <div>
+        <input type="file"  class="btn btnPink btn-block" id="file" (change)="handleFileInput($event.target.files, loadedImage)">
       </div>
     </div>
   </div>
+  <input type="button" class="btn btnPink btn-block" (click)="save()" value="Save" />
 </div>
 <div>
-  <input type="button" (click)="save()" value="Save" />
+
 </div>
