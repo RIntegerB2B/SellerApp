@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
+import { CatalogModel } from './catalog.model';
 
 @Component({
   selector: 'app-catalog-add-update',
@@ -11,6 +12,8 @@ export class CatalogAddUpdateComponent implements OnInit {
 
   fileToUpload: File = null;
   reader: FileReader = new FileReader();
+  catalogModel: CatalogModel = new CatalogModel();
+  catalogImageBlob: Blob;
   constructor(private productService: ProductService, private navHeaderService: NavHeaderService) { }
 
   ngOnInit() {
@@ -24,10 +27,10 @@ export class CatalogAddUpdateComponent implements OnInit {
     this.reader.onload = () => {
       const fileResult = this.reader.result;
       const bytes = new Uint8Array(fileResult);
-      const blob = new Blob([bytes.buffer]);
+      this.catalogImageBlob = new Blob([bytes.buffer]);
       const reader1 = new FileReader();
-      reader1.readAsDataURL(blob);
-      console.log(blob);
+      reader1.readAsDataURL(this.catalogImageBlob);
+      console.log(this.catalogImageBlob);
       reader1.onload = function () {
         loadedImage.src = reader1.result;
       };
@@ -35,7 +38,9 @@ export class CatalogAddUpdateComponent implements OnInit {
     };
   }
 
-  uploadFileToActivity() {
+  save() {
+    this.catalogModel.catalogName = ''; // Get the data from the Template
+    this.catalogModel.catalogImage = this.catalogImageBlob;
   }
 
 }
