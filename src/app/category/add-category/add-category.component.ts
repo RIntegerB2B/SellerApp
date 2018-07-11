@@ -7,7 +7,9 @@ import {SuperCatID} from './sup-cat-id.model';
 import{SuperCatName} from './super-cat-name.model'
 import{CategoryDetail} from './cat-detail.model';
 import {MainCatData} from './main-cat-data.model'
-import{CategoryEdit} from './cat-edit.model'
+import{CategoryEdit} from './cat-edit.model';
+import {MainCatDelete} from './main-cat-del.model';
+import {CategoryDelete} from './cat-del.model'
 
 @Component({
   selector: 'app-add-category',
@@ -23,7 +25,9 @@ export class AddCategoryComponent implements OnInit {
   CategoryName:SuperCatName[]=[]
   showEdit:boolean
   mainCategoryModel:MainCatData
-  editModel:CategoryEdit
+  editModel:CategoryEdit;
+  deleteModel:CategoryDelete;
+  mainCatDelete:MainCatDelete
 
   constructor(private fb: FormBuilder, private router: Router, private categoryService: CategoryService,
     private navHeaderService: NavHeaderService) { }
@@ -39,7 +43,6 @@ export class AddCategoryComponent implements OnInit {
       _id:[],
       name:[],
       desc:[]
-
     });
   }
   
@@ -100,6 +103,23 @@ edit(editCategoryForm: FormGroup, supId: any,mainCatId:any, mainCatName: any, ma
   }); 
 }
  
+
+delete(editCategoryForm: FormGroup, supId: any,mainCatId:any){
+  this.showEdit = !this.showEdit;
+
+
+
+  this.mainCatDelete=new MainCatDelete(mainCatId.value);
+  this.deleteModel=new CategoryDelete (supId.value,this.mainCatDelete)
+
+  this.categoryService.deleteMainCategory(this.deleteModel).subscribe(data => {
+    
+     
+   }, error => {
+     console.log(error);
+   }); 
+
+}
 
 
 

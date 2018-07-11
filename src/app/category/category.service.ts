@@ -17,7 +17,7 @@ import{SuperCategoryID} from './main-category/super-cat-detail.model';
 import{SuperCatID} from './add-category/sup-cat-id.model';
 import {CategoryDetail} from './add-category/cat-detail.model';
 import {CategoryEdit} from './add-category/cat-edit.model'
-
+import {CategoryDelete} from './add-category/cat-del.model'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -133,8 +133,16 @@ export class CategoryService {
   }
 
   editMainCategory(edit:CategoryEdit): Observable<any>{
-    const Caturl = 'categoryUpdate/:categoryId/mainCategory/:mainCategoryId/';
-    const url: string = this.serviceUrl + Caturl 
-    return this.httpClient.put<CategoryEdit>(url,edit); 
+    const Caturl = 'category/';
+    const mainurl="/mainCategory/"
+    const url: string = this.serviceUrl + Caturl +edit._id +mainurl +edit.mainCategory._id 
+    return this.httpClient.put<CategoryEdit>(url,edit.mainCategory,httpOptions); 
+  }
+
+  deleteMainCategory(del:CategoryDelete): Observable<any>{
+    const Caturl = 'category/';
+    const mainurl="/mainCategory/"
+    const url: string = this.serviceUrl + Caturl +del._id +mainurl +del.mainCategory._id 
+    return this.httpClient.delete<CategoryEdit>(url); 
   }
 }
