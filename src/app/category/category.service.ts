@@ -17,7 +17,10 @@ import{SuperCategoryID} from './main-category/super-cat-detail.model';
 import{SuperCatID} from './add-category/sup-cat-id.model';
 import {CategoryDetail} from './add-category/cat-detail.model';
 import {CategoryEdit} from './add-category/cat-edit.model'
-import {CategoryDelete} from './add-category/cat-del.model'
+import {CategoryDelete} from './add-category/cat-del.model';
+import{SuperID} from './sub-category/sup-cat-id.model';
+import {SuperCatDetail} from './sub-category/sup-cat-detail.model';
+import {MainCatDetail} from './sub-category/main-cat.model'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -144,5 +147,20 @@ export class CategoryService {
     const mainurl="/mainCategory/"
     const url: string = this.serviceUrl + Caturl +del._id +mainurl +del.mainCategory._id 
     return this.httpClient.delete<CategoryEdit>(url); 
+  }
+
+
+
+  showSuperCategoryOnSub(): Observable<any>{
+    const addurl = 'mainCategoryData/';
+    const url: string = this.serviceUrl + addurl;
+    return this.httpClient.get<SuperCatDetail[]>(url);
+
+  }
+
+  showMainCategoryOnSub(id:SuperID): Observable<any>{
+    const Caturl = 'mainCategoryOnSub/';
+    const url: string = this.serviceUrl + Caturl +id._id;
+    return this.httpClient.get<MainCatDetail[]>(url);
   }
 }
