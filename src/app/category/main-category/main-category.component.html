@@ -1,31 +1,22 @@
 <form [formGroup]="mainCategoryForm" novalidate style="padding-top:60px" >
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 mx-auto">
+      <div class="col-md-4 mx-auto">
 
         <div class="">
 
           <div class="form-group">
-            <div>
-              <button type="button" class="btn btn-outline-primary">Select  Main Category</button>
+           
 
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary mr-2" ngbDropdownToggle>{{this.headerCatSelectedData}}</button>
-             
+          <select #selectElem (change)="setNewUser(selectElem.value)"  class="hideLabel form-control" >
+            <option>Select super category</option>
+            <option *ngFor="let name of Categoryname" [value]="name._id">
+                {{name.categoryName}}
+            </option>
+        </select>
+           </div>    
 
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button class="dropdown-item" *ngFor="let headCategory of Categoryname"  (click)="onHeaderCategoryChange(headCategory)">{{headCategory.categoryName}}</button>
-              </div>
 
-              
-                
-            </div>
-
-            
-            
-            </div>
-            
-          </div>
 
           <div class="form-group">
           <div class="textContainer">
@@ -58,72 +49,67 @@
             </button>
           </div>
         </div>
-        <!--show the table-->
-        <div *ngIf="showDetails">
-          <div class="container-fluid">
-            <div class="row">
+      
+  
 
-              <div class="col-md-4">
+        <div class="form-group">
+           
+                 <div class="col-md-6"><label>Please select Super Category</label></div>
+          <select #select (change)="getCategory(select.value)"  class="hideLabel form-control" >
+           <option> </option>
+            <option *ngFor="let name of Categoryname" [value]="name._id">
+                {{name.categoryName}}
+            </option>
+        </select>
 
-                <div class="form-group">
-                  <label>Category Name</label>
-                </div>
-              </div>
+        <input class="form-control" hidden   type="text" formControlName="supID" [value]="this.headCatSelected" #supId />
 
-              <div class="col-md-4 ">
-                <div class="form-group">
-                  <label>Category Description</label>
+       
+           </div>  
 
-                </div>
-              </div>
-              <div class="col-md-4 ">
-                <div>
-                  <label>Edit</label>
-                </div>
-              </div>
-              <!--data-->
-              <div class="container">
-                <div *ngIf="!showEdit">
-                  <div class="row" *ngFor="let cat of mainCategories">
-                    <div class="col-md-4 form-group">
-                      {{cat.mainCategoryName}}
-                    </div>
-                    <div class="col-md-4 form-group">
-                      {{cat.mainCategoryDescription}}
-                    </div>
-                    <div class="col-md-4">
-                      <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
+
+           <div *ngIf="showMaincat">
+              <div class="container-fluid">
+                <div class="row">
+    
+                  <div class="col-md-6">
+    
+                    <div class="form-group">
+                      <label>Main Category Name</label>
                     </div>
                   </div>
-                </div>
-
-
-                <div *ngIf="showEdit">
-                  <div class="row" *ngFor="let cat of mainCategories">
-                    <!--  <input class="form-control" hidden type="text" formControlName="mainid" [value]="cat._id" #mainCatId />-->
-                    <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="uName" [value]="cat.mainCategoryName" #mainCatName/>
-                    </div>
-
-                    <div class="col-md-4">
-                      <input class="form-control" type="text" formControlName="uDesc" [value]="cat.mainCategoryDescription" #mainCatDesc/>
-                    </div>
-
-                    <div class="col-md-2">
-                      <input type="button" class="btn btn-success btn-block" value="Update" (click)="edit(mainCategoryForm, mainCatId,mainCatName,mainCatDesc)"
-                      />
-                    </div>
-                    <div class="col-md-2">
-                      <input type="button" class="btn btn-danger btn-block" value="Delete" (click)="delete(mainCategoryForm, mainCatId)" />
+    
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label> Main Category Description</label>
+    
                     </div>
                   </div>
-                </div>
-              </div>
-              <!--data closing-->
+                  
+
+                  <div class="container">
+                        <div class="row" *ngFor="let cat of mainCat.mainCategory">
+                          <div class="col-md-6 form-group">
+                            {{cat.mainCategoryName}}
+                          </div>
+                          <div class="col-md-6 form-group">
+                            {{cat.mainCategoryDescription}}
+                          </div>
+                          
+                         
+                        </div>
+                     </div>
+                     <div class="col-md-4 ">
+                        <div class="form-group">
+                            <a  [routerLink]="['/AddCategory']"><button class="btn btn-success pull-right" >Edit</button></a>
+        
+                        </div>
+                      </div>
+                     
+                   </div>
+               </div>
             </div>
-          </div>
-        </div>
-        <!--clossing-->
+        
       </div>
     </div>
   </div>

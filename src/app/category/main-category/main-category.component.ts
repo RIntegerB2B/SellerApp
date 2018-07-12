@@ -6,6 +6,9 @@ import { CategoryService } from '../category.service';
 import { MainCategory } from './main-category.model';
 import {SuperCategoryName} from './superCategoryName.model';
 import{MainCategoryDetail} from './main-categoryDetail.model'
+import {MainCat} from '../main-category/main-cat.model';
+import {SuperCategoryID} from './super-cat-detail.model';
+
 
 @Component({
   selector: 'app-main-category',
@@ -14,25 +17,32 @@ import{MainCategoryDetail} from './main-categoryDetail.model'
 })
 export class MainCategoryComponent implements OnInit {
 
+  
   mainCategories: MainCategory[] = [];
   showEdit: boolean;
   mainCategoryForm: FormGroup;
   mainModel: MainCategory;
-  showDetails: boolean = true;
+  showDetails: boolean = false;
   Categoryname:SuperCategoryName[]=[];
   mainCategoryDetail:MainCategoryDetail[]=[]
-
+  id:SuperCategoryID
   headerCatSelectedData
   headCatSelected
+  showMaincat:boolean 
+  mainCat:MainCat[]=[]
 
   constructor(private fb: FormBuilder, private router: Router, private categoryService: CategoryService,
-    private navHeaderService: NavHeaderService) { }
+    private navHeaderService: NavHeaderService) {
+
+
+     }
 
   ngOnInit() {
     this.navHeaderService.hideMenuTransparent();
     this.createForm();
+    /* this.getCategory(this.id); */
     this.superCategory();
-    this.mainCategory();
+   
   }
 
   createForm() {
@@ -40,10 +50,13 @@ export class MainCategoryComponent implements OnInit {
      
       mainCategoryName: ['', Validators.required],
       mainCategoryDescription: ['', Validators.required],
-      ID:['']
+      ID:[''],
+      supID:[]
 
     });
   }
+
+
 
   save(mainCategoryForm: FormGroup,superCat:any) {
     this.showDetails = true;
@@ -55,9 +68,10 @@ export class MainCategoryComponent implements OnInit {
 
     mainCategoryForm.reset()
     this.categoryService.addMainCategory(this.mainModel).subscribe(data => {
-      var res = JSON.parse(data._body)
-      this.mainCategories.push(res);
-      console.log(res)
+      console.log(data)
+     
+      this.mainCategories=data
+    
       console.log(this.mainCategories);
     }, error => {
       console.log(error);
@@ -79,22 +93,32 @@ export class MainCategoryComponent implements OnInit {
   }
 
 
-  onHeaderCategoryChange(headCategory) {
-    console.log(headCategory)
-    this.headerCatSelectedData=  headCategory.categoryName;
-    console.log(this.headerCatSelectedData)
-    this.headCatSelected=headCategory;
-  }
+  setNewUser(id) {
+    console.log(id);
+  this.headerCatSelectedData=id;
+ 
+}
+
+getCategory(id){
+  this.showMaincat=true
+this.headCatSelected=id;
+this.id=new SuperCategoryID(
+this.headCatSelected
+)
+
+this.categoryService.showMainCategoryDetails(this.id).subscribe(data => {
+
+  this.mainCat=data;
+  console.log(this.mainCat)
+  console.log(data)
+}, error => {
+  console.log(error);
+});
+
+}
 
 
-  mainCategory() {
-    this.categoryService.showMainCategory().subscribe(data => {
-      this.mainCategoryDetail=data;
-      console.log(data)
-    }, error => {
-      console.log(error);
-    });
-  }
+
 
 
 }

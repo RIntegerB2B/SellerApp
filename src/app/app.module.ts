@@ -36,6 +36,7 @@ import { ProductAddUpdateComponent } from './product/product-add-update/product-
 import { CatalogViewComponent } from './product/catalog-view/catalog-view.component';
 import { ProductViewComponent } from './product/product-view/product-view.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

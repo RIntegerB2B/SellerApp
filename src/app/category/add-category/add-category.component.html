@@ -1,57 +1,96 @@
-<form [formGroup]="subCategoryForm" novalidate style="padding-top:60px" >
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
+<form [formGroup]="editCategoryForm" novalidate style="padding-top:60px" >
+    <div class="container-fluid">
+      <div class="row">
 
-        <div class="">
-
+        <div class="col-md-6 mx-auto">
+  
           <div class="form-group">
-            <div>
-              <button type="button" class="btn btn-outline-primary">Select  Main Category</button>
+             
+                   <div class="col-md-6"><label>Please select Super Category</label></div>
+            <select #select (change)="getCategory(select.value)"  class="hideLabel form-control" >
+             <option> </option>
+              <option *ngFor="let name of CategoryName" [value]="name._id">
+                  {{name.categoryName}}
+              </option>
+          </select>
+  
+         
+             </div>  
+  
+  
+             <div *ngIf="showMaincat">
+                <div class="container-fluid">
+                  <div class="row">
+      
+                    <div class="col-md-4">
+      
+                      <div class="form-group">
+                        <label>Main Category Name</label>
+                      </div>
+                    </div>
+      
+                    <div class="col-md-4 ">
+                      <div class="form-group">
+                        <label> Main Category Description</label>
+      
+                      </div>
+                    </div>
 
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary mr-2" ngbDropdownToggle>{{this.headerCatSelectedData}}</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button class="dropdown-item" *ngFor="let headCategory of Categoryname"  (click)="onHeaderCategoryChange(headCategory)">{{headCategory.categoryName}}</button>
-              </div>
-            </div>
-            </div>
+                    <div class="col-md-4 ">
+                      <div>
+                        <label>Edit</label>
+                      </div>
+                    </div>
+  
+                    <div class="container">
+                      <div *ngIf="!showEdit">
+                          <div class="row" *ngFor="let cat of catData.mainCategory">
+                            <div class="col-md-4 form-group">
+                              {{cat.mainCategoryName}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                              {{cat.mainCategoryDescription}}
+                            </div>
+                            
+                            <div class="col-md-4">
+  
+                              <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
+                            </div>
+                          </div>
+                           
+                          </div>
+                          <div *ngIf="showEdit">
+                              <input class="form-control" hidden   type="text" formControlName="supID" [value]="this.headCatSelected" #supId />
+                              
+                              <div class="row" *ngFor="let cat of catData.mainCategory">
+                                <input class="form-control" hidden type="text" formControlName="_id" [value]="cat._id" #mainCatId />
             
-          </div>
-
-          <div class="form-group">
-          <div class="textContainer">
-              <input type="text" placeholder="Category Name" class="form-control required appTextBox" required formControlName="subCategoryName"
-              />
-              <span class="appTextBoxSpan">Category Name</span>
-            </div>
-            <div *ngIf="subCategoryForm.controls['subCategoryName'].errors
-                               && !subCategoryForm.controls['subCategoryName'].pristine" class="alert alert-danger">
-              <div [hidden]="!subCategoryForm.controls['subCategoryName'].errors.required">Category Name is required</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-              <div class="textContainer">
-                  <input type="text" placeholder="Category Description" class="form-control required appTextBox" required formControlName="subCategoryDescription"
-                  />
-                  <span class="appTextBoxSpan">Category Description</span>
-                </div>
-                <div *ngIf="subCategoryForm.controls['subCategoryDescription'].errors
-                                   && !subCategoryForm.controls['subCategoryDescription'].pristine" class="alert alert-danger">
-                  <div [hidden]="!subCategoryForm.controls['subCategoryDescription'].errors.required">Category Description is required</div>
-                </div>
+                                <div class="col-md-3 form-group">
+                                  <input class="form-control" type="text" formControlName="name" [value]="cat.mainCategoryName" #mainCatName/>
+                                </div>
+            
+                                <div class="col-md-3">
+                                  <input class="form-control" type="text" formControlName="desc" [value]="cat.mainCategoryDescription" #mainCatDesc/>
+                                </div>
+            
+                                <div class="col-md-3">
+                                  <input type="button" class="btn btn-success btn-block" value="Update" (click)="edit(editCategoryForm, supId, mainCatId,mainCatName,mainCatDesc)"
+                                  />
+                                </div>
+                                
+                                <div class="col-md-3">
+                                  <input type="button" class="btn btn-danger btn-block" value="Delete" (click)="delete(editCategoryForm, supId,mainCatId)" />
+                                </div>
+                              </div>
+                            </div>
+                       </div>
+                       <a  [routerLink]="['/MainCategory']"><button class="btn btn-success pull-right" >Cancel</button></a>
+                       
+                     </div>
+                 </div>
               </div>
-
-          <div class="form-group">
-              <input class="form-control"   hidden type="text" formControlName="ID" [value]="this.headerCatSelectedData" #superCat />
-            <button class="btn btn-primary btn-block"   (click)="save(subCategoryForm,superCat.value)" >
-              Save
-            </button>
-          </div>
+          
         </div>
-        
       </div>
     </div>
-  </div>
-</form>
+  </form>

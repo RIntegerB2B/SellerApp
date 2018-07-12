@@ -11,7 +11,16 @@ import { Edit } from './super-category/edit.model';
 import { Delete } from '../category/super-category/delete-model'
 import { MainCategory } from '../category/main-category/main-category.model'
 import { SuperCategoryName } from '../category/main-category/superCategoryName.model';
-import{MainCategoryDetail} from '../category/main-category/main-categoryDetail.model'
+import{MainCategoryDetail} from '../category/main-category/main-categoryDetail.model';
+import { MainCat } from "./main-category/main-cat.model";
+import{SuperCategoryID} from './main-category/super-cat-detail.model';
+import{SuperCatID} from './add-category/sup-cat-id.model';
+import {CategoryDetail} from './add-category/cat-detail.model';
+import {CategoryEdit} from './add-category/cat-edit.model'
+import {CategoryDelete} from './add-category/cat-del.model';
+import{SuperID} from './sub-category/sup-cat-id.model';
+import {SuperCatDetail} from './sub-category/sup-cat-detail.model';
+import {MainCatDetail} from './sub-category/main-cat.model'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -40,15 +49,7 @@ export class CategoryService {
   constructor(private http: Http, private httpClient: HttpClient) { }
 
 
-  /* addCategory(add: SuperCategory): Observable<any> {
-
-    const addCaturl = 'addCategory/';
-    return this.http.post(this.serviceUrl + addCaturl, add, this.requestOptions).pipe(
-      tap((response: Response) => console.log(response)),
-      catchError(this.handleError<SuperCategory>('Super Category '))
-    );
-
-  } */
+ 
 
   addCat(add: SuperCategory): Observable<any> {
     const Caturl = 'addCategory/';
@@ -81,7 +82,6 @@ export class CategoryService {
 
 
   addMainCategory(add: MainCategory): Observable<any> {
-
     const addMainCaturl = 'mainCategory/';
     return this.http.post(this.serviceUrl + addMainCaturl, add, this.requestOptions).pipe(
       tap((response: Response) => console.log(response)),
@@ -108,5 +108,59 @@ export class CategoryService {
     const addurl = 'mainCategoryDetails/';
     const url: string = this.serviceUrl + addurl;
     return this.httpClient.get<MainCategoryDetail[]>(url);
+  }
+
+  getMainCategory(): Observable<MainCat> {
+    const addurl = 'superCategory/';
+    const url: string = this.serviceUrl + addurl;
+    return this.httpClient.get<MainCat>(url);
+  }
+
+
+
+  showMainCategoryDetails(superID: SuperCategoryID): Observable<any> {
+
+    const Caturl = 'superCategorydetail/';
+    const url: string = this.serviceUrl + Caturl +superID._id;
+    return this.httpClient.get<MainCategoryDetail[]>(url);
+   
+  }
+
+
+  showMainCategoryData(superID: SuperCatID): Observable<any> {
+
+    const Caturl = 'categoryData/';
+    const url: string = this.serviceUrl + Caturl +superID._id;
+    return this.httpClient.get<CategoryDetail[]>(url);
+   
+  }
+
+  editMainCategory(edit:CategoryEdit): Observable<any>{
+    const Caturl = 'category/';
+    const mainurl="/mainCategory/"
+    const url: string = this.serviceUrl + Caturl +edit._id +mainurl +edit.mainCategory._id 
+    return this.httpClient.put<CategoryEdit>(url,edit.mainCategory,httpOptions); 
+  }
+
+  deleteMainCategory(del:CategoryDelete): Observable<any>{
+    const Caturl = 'category/';
+    const mainurl="/mainCategory/"
+    const url: string = this.serviceUrl + Caturl +del._id +mainurl +del.mainCategory._id 
+    return this.httpClient.delete<CategoryEdit>(url); 
+  }
+
+
+
+  showSuperCategoryOnSub(): Observable<any>{
+    const addurl = 'mainCategoryData/';
+    const url: string = this.serviceUrl + addurl;
+    return this.httpClient.get<SuperCatDetail[]>(url);
+
+  }
+
+  showMainCategoryOnSub(id:SuperID): Observable<any>{
+    const Caturl = 'mainCategoryOnSub/';
+    const url: string = this.serviceUrl + Caturl +id._id;
+    return this.httpClient.get<MainCatDetail[]>(url);
   }
 }
