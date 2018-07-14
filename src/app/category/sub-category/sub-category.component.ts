@@ -23,26 +23,26 @@ import { SubCatDelete } from './delete.model'
 })
 export class SubCategoryComponent implements OnInit {
 
-  subCategoryForm: FormGroup
-  showMaincat: boolean
-  showDetails: boolean
-  headCatSelected
-  headerCatSelectedData
-  headCatSelected1
-  superId: SuperID
-  superCategoryDetail: SuperCatDetail[] = []
-  mainCat: MainCatDetail[] = []
-  superModel: SuperCatIdAndMainCat
-  subCategoryModel: SubCategory
-  mainCategoryModel: MainCatIdAndSub
-  superCategoryIdModel: SuperCatView
-  mainCategoryIdModel: MainCatView
-  mainCategoryDetail: MainCategoryData[] = []
-  subCategoryData: SubCategoryData[] = []
-  showEdit
-  subCatEdit: SubCatEdit
-  showSubData: boolean
-  subCatDelete: SubCatDelete
+  subCategoryForm: FormGroup;
+  showMaincat: boolean;
+  showDetails: boolean;
+  headCatSelected;
+  headerCatSelectedData;
+  headCatSelected1;
+  superId: SuperID;
+  superCategoryDetail: SuperCatDetail[] = [];
+  mainCat: MainCatDetail;
+  superModel: SuperCatIdAndMainCat;
+  subCategoryModel: SubCategory;
+  mainCategoryModel: MainCatIdAndSub;
+  superCategoryIdModel: SuperCatView;
+  mainCategoryIdModel: MainCatView;
+  mainCategoryDetail: MainCategoryData[] = [];
+  subCategoryData: SubCategoryData[] = [];
+  showEdit;
+  subCatEdit: SubCatEdit;
+  showSubData: boolean;
+  subCatDelete: SubCatDelete;
 
   constructor(private fb: FormBuilder, private router: Router, private categoryService: CategoryService,
     private navHeaderService: NavHeaderService) { }
@@ -73,12 +73,12 @@ export class SubCategoryComponent implements OnInit {
     this.headerCatSelectedData = id;
     this.superId = new SuperID
       (this.headerCatSelectedData
-      )
+      );
     this.categoryService.showMainCategoryOnSub(this.superId).subscribe(data => {
 
       this.mainCat = data;
-      console.log(this.mainCat)
-      console.log(data)
+      console.log(this.mainCat);
+      console.log(data);
     }, error => {
       console.log(error);
     });
@@ -87,38 +87,38 @@ export class SubCategoryComponent implements OnInit {
 
   getCategory(id) {
     this.headCatSelected = id;
-    console.log(this.headCatSelected)
+    console.log(this.headCatSelected);
   }
 
 
 
   getSubCategory(id, id1) {
-    this.showSubData = true
+    this.showSubData = true;
     this.headCatSelected = id;
-    console.log(this.headCatSelected)
-    this.headCatSelected1 = id1
-    console.log(this.headCatSelected1)
+    console.log(this.headCatSelected);
+    this.headCatSelected1 = id1;
+    console.log(this.headCatSelected1);
 
     this.mainCategoryIdModel = new MainCatView(this.headCatSelected1)
 
     this.superCategoryIdModel = new SuperCatView(
       this.headCatSelected,
       this.mainCategoryIdModel
-    )
+    );
 
     this.categoryService.showSubCategory(this.superCategoryIdModel).subscribe(data => {
-      this.subCategoryData = data
-      console.log(this.subCategoryData)
+      this.subCategoryData = data;
+      console.log(this.subCategoryData);
 
-      console.log(data)
-    })
+      console.log(data);
+    });
 
   }
 
   superCategory() {
     this.categoryService.showSuperCategoryOnSub().subscribe(name => {
       this.superCategoryDetail = name;
-      console.log(name)
+      console.log(name);
     }, error => {
       console.log(error);
     });
@@ -147,9 +147,9 @@ export class SubCategoryComponent implements OnInit {
       this.mainCategoryModel
     )
 
-    subCategoryForm.reset()
+    subCategoryForm.reset();
     this.categoryService.addSubCategory(this.superModel).subscribe(data => {
-      console.log(data)
+      console.log(data);
 
 
     }, error => {
@@ -159,16 +159,16 @@ export class SubCategoryComponent implements OnInit {
 
 
   edit(subCategoryForm, selectData: any, selectData2: any, subCatId: any, subCatName: any, subCatDesc: any) {
-    this.showEdit = false
+    this.showEdit = false;
     this.subCatEdit = new SubCatEdit(
       selectData,
       selectData2,
       subCatId,
       subCatName,
       subCatDesc
-    )
+    );
     this.categoryService.editSubCategory(this.subCatEdit).subscribe(data => {
-      console.log(data)
+      console.log(data);
 
 
     }, error => {
@@ -183,10 +183,10 @@ export class SubCategoryComponent implements OnInit {
       selectData,
       selectData2,
       subCatId
-    )
+    );
 
     this.categoryService.deleteSubCategory(this.subCatDelete).subscribe(data => {
-      console.log(data)
+      console.log(data);
 
 
     }, error => {
