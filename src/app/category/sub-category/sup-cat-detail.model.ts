@@ -1,14 +1,13 @@
 export class SuperCatDetail {
-    _id:Number;
+    _id: Number;
     categoryName: string;
     constructor(
-        _id:Number,
+        _id: Number,
         categoryName: string,
-       
-       ) 
-       {
-           this._id=_id;
+
+    ) {
+        this._id = _id;
         this.categoryName = categoryName;
-        
+
     }
 }

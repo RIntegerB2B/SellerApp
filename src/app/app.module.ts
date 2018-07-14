@@ -35,6 +35,8 @@ import { CatalogAddUpdateComponent } from './product/catalog-add-update/catalog-
 import { ProductAddUpdateComponent } from './product/product-add-update/product-add-update.component';
 import { CatalogViewComponent } from './product/catalog-view/catalog-view.component';
 import { ProductViewComponent } from './product/product-view/product-view.component';
+import { SubCategoryComponent } from './category/sub-category/sub-category.component';
+
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { ProductViewComponent } from './product/product-view/product-view.compon
     CatalogAddUpdateComponent,
     ProductAddUpdateComponent,
     CatalogViewComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    SubCategoryComponent
   ],
   imports: [
     BrowserModule,

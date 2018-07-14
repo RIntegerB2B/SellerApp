@@ -8,10 +8,12 @@ import { PwdChangeResetComponent } from './account/pwd-change-reset/pwd-change-r
 import { SuperCategoryComponent } from './category/super-category/super-category.component';
 import { MainCategoryComponent } from './category/main-category/main-category.component';
 import { CatalogAddUpdateComponent } from './product/catalog-add-update/catalog-add-update.component';
+import {SubCategoryComponent} from './category/sub-category/sub-category.component';
 
 
 const routes: Routes = [
     { path: 'AddCategory', component: AddCategoryComponent },
+    { path: 'SubCategory', component: SubCategoryComponent },
     { path: 'Welcome', component: WelcomeComponent },
     { path: 'SignIn', component: SignInComponent },
     { path: 'Home', component: HomePageComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
     { path: 'Catalog', component: CatalogAddUpdateComponent },
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: '**', redirectTo: 'Home', pathMatch: 'full' },
+   
+
     
 ];
 

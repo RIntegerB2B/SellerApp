@@ -1,20 +1,19 @@
 import { MainCatOnSub } from "./mai-cat-detail.model";
 export class MainCatDetail {
-    _id:string;
-    categoryName:string;
-    categoryDescription:string;
-    mainCategory : MainCatOnSub;
+    _id: string;
+    categoryName: string;
+    categoryDescription: string;
+    mainCategory: MainCatOnSub;
     constructor(
-        _id:string,
+        _id: string,
         categoryName: string,
-        categoryDescription:string,
+        categoryDescription: string,
         mainCategory: MainCatOnSub
-       ) 
-       {
-           this._id=_id;
+    ) {
+        this._id = _id;
         this.categoryName = categoryName;
-        this.categoryDescription=categoryDescription;
-        this.mainCategory=mainCategory;
-        
+        this.categoryDescription = categoryDescription;
+        this.mainCategory = mainCategory;
+
     }
 }

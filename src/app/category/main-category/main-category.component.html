@@ -45,7 +45,7 @@
           <div class="form-group">
               <input class="form-control"   hidden type="text" formControlName="ID" [value]="this.headerCatSelectedData" #superCat />
             <button class="btn btn-primary btn-block"   (click)="save(mainCategoryForm,superCat.value)" >
-              Save
+              Add
             </button>
           </div>
         </div>
@@ -99,13 +99,12 @@
                          
                         </div>
                      </div>
+
                      <div class="col-md-4 ">
                         <div class="form-group">
                             <a  [routerLink]="['/AddCategory']"><button class="btn btn-success pull-right" >Edit</button></a>
-        
                         </div>
                       </div>
-                     
                    </div>
                </div>
             </div>
