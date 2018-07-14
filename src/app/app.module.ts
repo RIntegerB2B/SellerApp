@@ -36,6 +36,7 @@ import { ProductAddUpdateComponent } from './product/product-add-update/product-
 import { CatalogViewComponent } from './product/catalog-view/catalog-view.component';
 import { ProductViewComponent } from './product/product-view/product-view.component';
 import { SubCategoryComponent } from './category/sub-category/sub-category.component';
+import { CatalogAddComponent } from './product/catalog-add/catalog-add.component';
 
 
 
@@ -55,7 +56,8 @@ import { SubCategoryComponent } from './category/sub-category/sub-category.compo
     ProductAddUpdateComponent,
     CatalogViewComponent,
     ProductViewComponent,
-    SubCategoryComponent
+    SubCategoryComponent,
+    CatalogAddComponent
   ],
   imports: [
     BrowserModule,

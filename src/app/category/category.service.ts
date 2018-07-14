@@ -68,20 +68,25 @@ export class CategoryService {
 
 
   editCategory(edit: Edit): Observable<any> {
+    const Caturl = 'category/';
+    const url: string = this.serviceUrl + Caturl +edit._id
+    return this.httpClient.put<SuperCategory[]>(url,edit);
+  }
 
+  /* editCategory(edit: Edit): Observable<any> {
     const Caturl = 'category/';
     return this.http.post(this.serviceUrl + Caturl, edit, this.requestOptions).pipe(
       tap((response: Response) => console.log(response)),
-      catchError(this.handleError<Edit>('Super Category edit '))
+      catchError(this.handleError<SuperCategory[]>('Super Category edit '))
     );
-  }
+  } */
 
   deleteCategory(del: Delete): Observable<any> {
 
     const Caturl = 'categoryDelete/';
 
     const url: string = this.serviceUrl + Caturl + del._id;
-    return this.httpClient.delete<SuperCategoryName[]>(url);
+    return this.httpClient.delete<SuperCategory[]>(url);
 
   }
 
@@ -152,7 +157,7 @@ export class CategoryService {
     const Caturl = 'category/';
     const mainurl = "/mainCategory/"
     const url: string = this.serviceUrl + Caturl + del._id + mainurl + del.mainCategory._id
-    return this.httpClient.delete<CategoryEdit>(url);
+    return this.httpClient.delete<CategoryDetail[]>(url);
   }
 
 

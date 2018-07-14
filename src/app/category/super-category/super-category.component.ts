@@ -88,9 +88,10 @@ export class SuperCategoryComponent implements OnInit {
     superCategoryForm.reset()
 
     this.categoryService.editCategory(this.newModel).subscribe(data => {
-      var res = JSON.parse(data._body)
-      this.superCategories.push(res);
-      console.log(res)
+
+    
+     this.superCategories=data
+    
       console.log(this.superCategories);
 
     }, error => {
@@ -114,7 +115,7 @@ export class SuperCategoryComponent implements OnInit {
     superCategoryForm.reset()
 
     this.categoryService.deleteCategory(this.deleteModel).subscribe(data => {
-
+this.superCategories=data
     }, error => {
       console.log(error);
     });

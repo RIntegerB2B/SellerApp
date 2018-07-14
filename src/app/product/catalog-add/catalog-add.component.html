@@ -1,0 +1,123 @@
+<form [formGroup]="catalogForm"  style="padding-top:60px" (ngSubmit)="catalogSave(catalogForm)" novalidate>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6  mx-auto">
+  
+          <div class="form-group">
+            <div class="textContainer">
+              <input type="text" placeholder="Catalog Name" class="form-control required appTextBox" required formControlName="catalogName"
+              />
+              <span class="appTextBoxSpan">Catalog Name</span>
+            </div>
+            <div *ngIf="catalogForm.get('catalogName').errors
+                                 && !catalogForm.get('catalogName').pristine" class="alert alert-danger">
+              <div [hidden]="!catalogForm.get('catalogName').errors.required">Please enter Catalog Name</div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="textContainer">
+              <input type="text" placeholder="Catalog Type" class="form-control required appTextBox" required formControlName="catalogType"
+              />
+              <span class="appTextBoxSpan">Catalog type</span>
+            </div>
+            <div *ngIf="catalogForm.get('catalogType').errors
+                                 && !catalogForm.get('catalogType').pristine" class="alert alert-danger">
+              <div [hidden]="!catalogForm.get('catalogType').errors.required">Please enter Catalog type</div>
+            </div>
+          </div>
+  
+  
+          <div class="form-group">
+              <div class="textContainer">
+                <input type="text" placeholder="Material" class="form-control required appTextBox" required formControlName="material"
+                />
+                <span class="appTextBoxSpan">Material</span>
+              </div>
+              <div *ngIf="catalogForm.get('material').errors
+                                   && !catalogForm.get('material').pristine" class="alert alert-danger">
+                <div [hidden]="!catalogForm.get('material').errors.required">Please enter Material</div>
+              </div>
+            </div>
+  
+  
+            <div class="form-group">
+                <div class="textContainer">
+                  <input type="text" placeholder="Capacity" class="form-control required appTextBox" required formControlName="capacity"
+                  />
+                  <span class="appTextBoxSpan">Capacity</span>
+                </div>
+                <div *ngIf="catalogForm.get('capacity').errors
+                                     && !catalogForm.get('capacity').pristine" class="alert alert-danger">
+                  <div [hidden]="!catalogForm.get('capacity').errors.required">Please enter Capacity</div>
+                </div>
+              </div>
+              
+  
+              <div class="form-group">
+                  <div class="textContainer">
+                    <input type="text" placeholder="Catalog Description" class="form-control required appTextBox" required formControlName="catalogDescription"
+                    />
+                    <span class="appTextBoxSpan">Catalog Description</span>
+                  </div>
+                  <div *ngIf="catalogForm.get('catalogDescription').errors
+                                       && !catalogForm.get('catalogDescription').pristine" class="alert alert-danger">
+                    <div [hidden]="!catalogForm.get('catalogDescription').errors.required">Please enter catalogDescription</div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="textContainer">
+                      <input type="text" placeholder="Work" class="form-control required appTextBox" required formControlName="work"
+                      />
+                      <span class="appTextBoxSpan">Work</span>
+                    </div>
+                    <div *ngIf="catalogForm.get('work').errors
+                                         && !catalogForm.get('work').pristine" class="alert alert-danger">
+                      <div [hidden]="!catalogForm.get('work').errors.required">Please enter Work</div>
+                    </div>
+                  </div>
+  
+                  
+  
+                  
+                <div class="form-group">
+                    <div class="textContainer">
+                      <input type="text" placeholder="Dispatch" class="form-control required appTextBox" required formControlName="dispatch"
+                      />
+                      <span class="appTextBoxSpan">Dispatch</span>
+                    </div>
+                    <div *ngIf="catalogForm.get('dispatch').errors
+                                         && !catalogForm.get('dispatch').pristine" class="alert alert-danger">
+                      <div [hidden]="!catalogForm.get('dispatch').errors.required">Please enter Dispatch</div>
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                      <div class="textContainer">
+                        <input type="text" placeholder="ImageType" class="form-control required appTextBox" required formControlName="imageType"
+                        />
+                        <span class="appTextBoxSpan">ImageType</span>
+                      </div>
+                      <div *ngIf="catalogForm.get('imageType').errors
+                                           && !catalogForm.get('imageType').pristine" class="alert alert-danger">
+                        <div [hidden]="!catalogForm.get('imageType').errors.required">Please enter ImageType</div>
+                      </div>
+                    </div>
+                    
+  
+          <input type="submit" class="btn btnPink btn-block"  value="Save" />
+        </div>
+  
+        <div class="col-md-3 form-group">
+          <div>
+            <img #loadedImage style="width: 180px; height: 345px;" />
+          </div>
+          <!-- <div>
+            <input type="file" formControlName="catalogImage" class="btn btnPink btn-block" id="file" (change)="handleFileInput($event.target.files, loadedImage)">
+          </div> -->
+        </div>
+      </div>
+     
+    </div>
+  </form>

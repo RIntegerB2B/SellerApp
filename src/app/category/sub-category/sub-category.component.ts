@@ -178,6 +178,7 @@ export class SubCategoryComponent implements OnInit {
   }
 
   delete(subCategoryForm, selectData: any, selectData2: any, subCatId: any) {
+    this.showEdit = false
 
     this.subCatDelete = new SubCatDelete(
       selectData,
@@ -186,6 +187,7 @@ export class SubCategoryComponent implements OnInit {
     )
 
     this.categoryService.deleteSubCategory(this.subCatDelete).subscribe(data => {
+     this.subCategoryData = data
       console.log(data)
 
 

@@ -93,7 +93,6 @@ edit(editCategoryForm: FormGroup, supId: any,mainCatId:any, mainCatName: any, ma
    this.mainCategoryModel
   );
 
-
   this.categoryService.editMainCategory(this.editModel).subscribe(data => {
    this.catData=data
     console.log(data)
@@ -105,15 +104,15 @@ edit(editCategoryForm: FormGroup, supId: any,mainCatId:any, mainCatName: any, ma
  
 
 delete(editCategoryForm: FormGroup, supId: any,mainCatId:any){
-  this.showEdit = !this.showEdit;
-
-
+  
 
   this.mainCatDelete=new MainCatDelete(mainCatId.value);
   this.deleteModel=new CategoryDelete (supId.value,this.mainCatDelete)
 
   this.categoryService.deleteMainCategory(this.deleteModel).subscribe(data => {
-    
+    this.catData=data
+    this.showEdit = !this.showEdit;
+    console.log(this.catData)
      
    }, error => {
      console.log(error);

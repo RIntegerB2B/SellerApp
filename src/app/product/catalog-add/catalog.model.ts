@@ -1,4 +1,4 @@
-export class CatalogViewModel {
+export class CatalogModel {
     catalogName: string;
     catalogType: string;
     material: string;
