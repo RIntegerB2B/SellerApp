@@ -84,7 +84,7 @@
 
 
       <div class="container-fluid">
-
+        <div *ngIf="!showEdit">
         <div class="row" *ngFor="let catalog of catalogs">
 
           <div class="col-md-4 mx-auto">
@@ -146,7 +146,7 @@
                 <div class="col-md-4">
                   <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
                 </div>
-
+              </div>
               </div>
             </div>
           </div>
@@ -165,17 +165,17 @@
   
               <div class="container-fluid">
                 <div class="row">
-                    <input class="form-control" type="text"  hidden formControlName="catalogName"  [value]="catalog._id"/>
+                    <input class="form-control" type="text"  hidden formControlName="catalogName"  [value]="catalog._id" #catalogID/>
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="catalogName" [value]="catalog.catalogName"/>
+                      <input class="form-control" type="text" formControlName="catalogName" [value]="catalog.catalogName" #catalogName/>
                   </div>
   
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="catalogType" [value]="catalog.catalogType"/>
+                      <input class="form-control" type="text" formControlName="catalogType" [value]="catalog.catalogType" #catalogType/>
                   </div>
   
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="material" [value]="catalog.material"/>
+                      <input class="form-control" type="text" formControlName="material" [value]="catalog.material" #material/>
                   </div>
                 </div>
               </div>
@@ -189,17 +189,17 @@
   
   
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="capacity" [value]="catalog.capacity"/>
+                      <input class="form-control" type="text" formControlName="capacity" [value]="catalog.capacity" #capacity/>
                    
                   </div>
   
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="catalogDescription" [value]="catalog.catalogDescription"/>
+                      <input class="form-control" type="text" formControlName="catalogDescription" [value]="catalog.catalogDescription" #catalogDescription/>
                    
                   </div>
   
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="work" [value]="catalog.work"/>
+                      <input class="form-control" type="text" formControlName="work" [value]="catalog.work" #work/>
                    
                   </div>
   
@@ -213,28 +213,24 @@
                 <div class="row">
   
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="dispatch" [value]="catalog.dispatch"/>
-                    
+                      <input class="form-control" type="text" formControlName="dispatch" [value]="catalog.dispatch" #dispatch/>
                   </div>
   
                   <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="imageType" [value]="catalog.imageType"/>
-                    
+                      <input class="form-control" type="text" formControlName="imageType" [value]="catalog.imageType" #imageType/>
                   </div>
   
                   <div class="col-md-2">
-                    <input type="button" class="btn btn-success btn-block" value="update" (click)="edit()" />
+                    <input type="button" class="btn btn-success btn-block" value="update" (click)="edit(editCatalogForm,catalogID,catalogName,catalogType,material,capacity,catalogDescription,work,dispatch,imageType)" />
                   </div>
 
                   <div class="col-md-2">
-                      <input type="button" class="btn btn-danger btn-block" value="delete" (click)="toggleEdit()" />
+                      <input type="button" class="btn btn-danger btn-block" value="delete" (click)="del(editCatalogForm,catalogID)" />
                     </div>
   
                 </div>
               </div>
             </div>
-  
-  
           </div>
         </div>
         </div>

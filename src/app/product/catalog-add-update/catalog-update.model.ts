@@ -1,4 +1,5 @@
-export class CatalogData {
+export class CatalogUpdateModel {
+    _id:string;
     catalogName: string;
     catalogType: string;
     material: string;
@@ -9,7 +10,7 @@ export class CatalogData {
     imageType: string;
 
     constructor(
-       
+       _id:string,
         catalogName: string,
         catalogType: string,
         material: string,
@@ -21,7 +22,7 @@ export class CatalogData {
 
 
     ) {
-        
+        this._id=_id;
         this.catalogName = catalogName;
         this.catalogType = catalogType;
         this.material=material;

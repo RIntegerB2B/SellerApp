@@ -17,7 +17,7 @@
           <div class="form-group">
 
 
-            <select #selectItem (change)="getCategory(selectItem.value)" class="hideLabel form-control">
+            <select *ngIf ="mainCat" #selectItem (change)="getCategory(selectItem.value)" class="hideLabel form-control">
               <option>Select main category</option>
               <option *ngFor="let category of mainCat.mainCategory" [value]="category._id">
                 {{category.mainCategoryName}}
@@ -71,8 +71,8 @@
 
           </div>
 
-          <div class="form-group">
-            <select #selectData2 (change)="getSubCategory(selectData.value,selectData2.value)" class="hideLabel form-control">
+          <div  class="form-group">
+            <select *ngIf ="mainCat" #selectData2 (change)="getSubCategory(selectData.value,selectData2.value)" class="hideLabel form-control">
               <option>Select main category</option>
               <option *ngFor="let name of mainCat.mainCategory" [value]="name._id">
                 {{name.mainCategoryName}}

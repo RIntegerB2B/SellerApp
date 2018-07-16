@@ -49,6 +49,7 @@ export class CatalogAddComponent implements OnInit {
       catalogForm.controls.dispatch.value,
       catalogForm.controls.imageType.value
     )
+    this.catalogForm.reset()
 
     this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
       console.log(createdCatalog);

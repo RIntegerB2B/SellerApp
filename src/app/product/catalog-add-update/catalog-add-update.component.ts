@@ -4,7 +4,9 @@ import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 /* import { CatalogModel } from './catalog.model'; */
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {CatalogViewModel} from './catalog.model'
+import {CatalogData}from '././catalog.model'
+import {CatalogUpdateModel} from './catalog-update.model';
+import {CatalogDeleteModel} from './catalog-delete.model'
 
 @Component({
   selector: 'app-catalog-add-update',
@@ -20,7 +22,9 @@ export class CatalogAddUpdateComponent implements OnInit {
   catalogImageBlob: Blob;
   loadedCatalogModel: CatalogModel = new CatalogModel(); */
 
-  catalogs:CatalogViewModel
+  catalogs:CatalogData
+  updateModel:CatalogUpdateModel
+  deleteModel:CatalogDeleteModel
   showEdit:boolean
   editCatalogForm:FormGroup
 
@@ -91,5 +95,48 @@ export class CatalogAddUpdateComponent implements OnInit {
   toggleEdit() {
     this.showEdit = !this.showEdit;
   }
+
+  edit(editCatalogForm:FormGroup,catalogID:any,catalogName:any,catalogType:any,material:any,capacity:any,catalogDescription:any,work:any,dispatch:any,imageType:any){
+    this.showEdit = !this.showEdit;
+    this.updateModel=new CatalogUpdateModel(
+      catalogID.value,
+      catalogName.value,
+      catalogType.value,
+      material.value,
+      capacity.value,
+      catalogDescription.value,
+      work.value,
+      dispatch.value,
+      imageType.value
+    )
+
+
+    this.productService.editCatalog(this.updateModel).subscribe(data => {
+      this.catalogs=data
+       console.log(this.catalogs);
+ 
+     }, error => {
+       console.log(error);
+     });
+  }
+
+
+  del(editCatalogForm:FormGroup,catalogID:any){
+    this.showEdit = !this.showEdit;
+    this.deleteModel=new CatalogDeleteModel(
+      catalogID.value
+    )
+
+    this.productService.deleteCatalog(this.deleteModel).subscribe(data => {
+      this.catalogs=data
+       console.log(this.catalogs);
+ 
+     }, error => {
+       console.log(error);
+     });
+
+
+  }
+
 
 }

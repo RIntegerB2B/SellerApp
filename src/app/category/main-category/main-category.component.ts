@@ -5,7 +5,7 @@ import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import { CategoryService } from '../category.service';
 import { MainCategory } from './main-category.model';
 import {SuperCategoryName} from './superCategoryName.model';
-import{MainCategoryDetail} from './main-categoryDetail.model'
+import {MainCategoryDetail} from './main-categoryDetail.model';
 import {MainCat} from '../main-category/main-cat.model';
 import {SuperCategoryID} from './super-cat-detail.model';
 

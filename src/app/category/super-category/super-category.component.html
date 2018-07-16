@@ -1,12 +1,10 @@
-<form [formGroup]="superCategoryForm" novalidate style="padding-top:60px" (ngSubmit)="add(superCategoryForm)">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-
-        <div class="">
-
-          <div class="form-group">
-
+<div class="pageBoxLg ">
+  <label class="pageBoxLg-label d-sm-none d-md-block">Super Category</label>
+  <div>
+    <form [formGroup]="superCategoryForm" novalidate (ngSubmit)="add(superCategoryForm)">
+      <div class="container-fluid">
+        <div class="row ">
+          <div class="form-group col-sm-12 col-md-5">
             <div class="textContainer">
               <input type="text" placeholder="Category Name" class="form-control required appTextBox" required formControlName="categoryName"
               />
@@ -17,10 +15,10 @@
               <div [hidden]="!superCategoryForm.controls['categoryName'].errors.required">Category Name is required</div>
             </div>
           </div>
-
-          <div class="form-group">
+          <div class="form-group col-sm-12 col-md-5">
             <div class="textContainer">
-              <input type="text" placeholder="Category Description" class="form-control required appTextBox" required formControlName="categoryDescription"/>
+              <input type="text" placeholder="Category Description" class="form-control required appTextBox" required formControlName="categoryDescription"
+              />
               <span class="appTextBoxSpan">Category Description</span>
             </div>
             <div *ngIf="superCategoryForm.controls['categoryDescription'].errors
@@ -28,86 +26,73 @@
               <div [hidden]="!superCategoryForm.controls['categoryDescription'].errors.required">Category Description is required</div>
             </div>
           </div>
+          <div class="col-sm-12 col-md-2 btnpink-textbox-inline">
+            <input class="btn btnPink btn-block" value="SAVE" type="submit" [disabled]='!superCategoryForm.valid'>
 
-          <div class="form-group">
-            <button class="btn btn-primary btn-block" [disabled]='!superCategoryForm.valid'>
-              Save
-            </button>
           </div>
         </div>
+
 
         <!--show the table-->
         <div *ngIf="showDetails">
-          <div class="container-fluid">
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Category Name</label>
-                </div>
+          <div class="row gridRow d-sm-none d-md-block">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label>Category Name</label>
               </div>
-
-              <div class="col-md-4 ">
-                <div class="form-group">
-                  <label>Category Description</label>
-                </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label>Category Description</label>
               </div>
-
-              <div class="col-md-4 ">
-                <div>
-                  <label>Edit</label>
-                </div>
+            </div>
+            <div class="col-md-2">
+              <div>
+                <label>Edit</label>
               </div>
-              <!--data-->
-              <div class="container">
-                <div *ngIf="!showEdit">
-                  <div class="row" *ngFor="let cat of superCategories">
-
-                    <div class="col-md-4 form-group">
-                      {{cat.categoryName}}
-                    </div>
-
-                    <div class="col-md-4 form-group">
-                      {{cat.categoryDescription}}
-                    </div>
-
-                    <div class="col-md-4">
-                      <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
-                    </div>
-                  </div>
-
-                </div>
-
-
-                <div *ngIf="showEdit">
-                  <div class="row" *ngFor="let cat of superCategories">
-                    <input class="form-control" hidden type="text" formControlName="_id" [value]="cat._id" #superCatId />
-
-                    <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="uName" [value]="cat.categoryName" #superCatName/>
-                    </div>
-
-                    <div class="col-md-4">
-                      <input class="form-control" type="text" formControlName="uDesc" [value]="cat.categoryDescription" #superCatDesc/>
-                    </div>
-
-                    <div class="col-md-2">
-                      <input type="button" class="btn btn-success btn-block" value="Update" (click)="edit(superCategoryForm, superCatId,superCatName,superCatDesc)"
-                      />
-                    </div>
-                    
-                    <div class="col-md-2">
-                      <input type="button" class="btn btn-danger btn-block" value="Delete" (click)="delete(superCategoryForm, superCatId)" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--data closing-->
             </div>
           </div>
+          <!--data-->
+          <div *ngIf="!showEdit">
+            <div class="row gridRow" *ngFor="let cat of superCategories">
+              <div class="col-md-5 form-group">
+                {{cat.categoryName}}
+              </div>
+              <div class="col-md-5 form-group">
+                {{cat.categoryDescription}}
+              </div>
+              <div class="col-md-2">
+                <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
+              </div>
+            </div>
+          </div>
+          <div *ngIf="showEdit">
+            <div class="row gridRow" *ngFor="let cat of superCategories">
+              <input class="form-control" hidden type="text" formControlName="_id" [value]="cat._id" #superCatId />
+
+              <div class="col-md-5 form-group">
+                <input class="form-control" type="text" formControlName="uName" [value]="cat.categoryName" #superCatName/>
+              </div>
+
+              <div class="col-md-5">
+                <input class="form-control" type="text" formControlName="uDesc" [value]="cat.categoryDescription" #superCatDesc/>
+              </div>
+
+              <div class="col-md-1">
+                <input type="button" class="btn btn-success btn-block" value="Update" (click)="edit(superCategoryForm, superCatId,superCatName,superCatDesc)"
+                />
+              </div>
+
+              <div class="col-md-1">
+                <input type="button" class="btn btn-danger btn-block" value="Delete" (click)="delete(superCategoryForm, superCatId)" />
+              </div>
+            </div>
+          </div>
+          <!--data closing-->
+
+          <!--clossing-->
         </div>
-        <!--clossing-->
       </div>
-    </div>
+    </form>
   </div>
-</form>
+</div>
