@@ -1,4 +1,4 @@
-export class CatalogDeleteModel {
+export class CatalogDelete{
     _id:string;
     constructor(
         _id:string

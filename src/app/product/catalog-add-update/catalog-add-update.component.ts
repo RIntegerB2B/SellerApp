@@ -6,7 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {CatalogData}from '././catalog.model'
 import {CatalogUpdateModel} from './catalog-update.model';
-import {CatalogDeleteModel} from './catalog-delete.model'
+
+
 
 @Component({
   selector: 'app-catalog-add-update',
@@ -22,37 +23,44 @@ export class CatalogAddUpdateComponent implements OnInit {
   catalogImageBlob: Blob;
   loadedCatalogModel: CatalogModel = new CatalogModel(); */
 
-  catalogs:CatalogData
+  catalogId: string;
+  catalogModel:CatalogData
+  loadedCatalogModel:CatalogData
   updateModel:CatalogUpdateModel
-  deleteModel:CatalogDeleteModel
   showEdit:boolean
-  editCatalogForm:FormGroup
+  catalogForm:FormGroup
+ 
+
 
   constructor(private fb: FormBuilder,
     private productService: ProductService, private navHeaderService: NavHeaderService,
     private activatedRoute: ActivatedRoute) {
-      /* this.catalogId = this.activatedRoute.snapshot.paramMap.get('key') */;
+      this.catalogId = this.activatedRoute.snapshot.paramMap.get('id') ;
+      console.log(this.catalogId)
     }
+
+    
 
   ngOnInit() {
     this.createForm();
     this.navHeaderService.hideMenuTransparent();
-    this.catalog()
-    /* if (this.catalogId) {
+    /* this.catalog(); */
+
+    if (this.catalogId) {
       this.loadCatalog(this.catalogId);
-    } */
+    } 
   }
 
- /*  loadCatalog(catId: string) {
-    // loadedCatalogModel = getCatalog(catId);
+  loadCatalog(catId: string) {
+   /*  loadedCatalogModel = getCatalog(catId);
     this.catalogForm.setValue({
-      catalogName:    this.loadedCatalogModel.catalogName,
-      catalogImage: this.loadedCatalogModel.catalogImage
-   });
-  } */
+      catalogName:    this.loadedCatalogModel.catalogName
+     
+   }); */
+  }
 
   createForm() {
-    this.editCatalogForm = this.fb.group({
+    this.catalogForm = this.fb.group({
       catalogName: [''],
       catalogType:[''],
       material:[''],
@@ -65,6 +73,17 @@ export class CatalogAddUpdateComponent implements OnInit {
 
    
   }
+
+ /*  getCatalog(id){
+   
+      this.productService.catalog(id).subscribe(data => {
+       
+        console.log(data)
+      }, error => {
+        console.log(error);
+      });
+    
+  } */
 
   /* handleFileInput(files: FileList, loadedImage) {
     this.fileToUpload = files.item(0);
@@ -83,20 +102,42 @@ export class CatalogAddUpdateComponent implements OnInit {
     };
   } */
 
-  catalog() {
+ /*  catalog() {
     this.productService.showCatalog().subscribe(data => {
-      this.catalogs=data;
+      this.catalogModel=data;
       console.log(data)
     }, error => {
       console.log(error);
     });
   }
-  
+   */
   toggleEdit() {
     this.showEdit = !this.showEdit;
   }
 
-  edit(editCatalogForm:FormGroup,catalogID:any,catalogName:any,catalogType:any,material:any,capacity:any,catalogDescription:any,work:any,dispatch:any,imageType:any){
+
+  catalogSave(catalogForm:FormGroup){
+
+
+    this.catalogModel=new CatalogData(
+      catalogForm.controls.catalogName.value,
+      catalogForm.controls.catalogType.value,
+      catalogForm.controls.material.value,
+      catalogForm.controls.capacity.value,
+      catalogForm.controls.catalogDescription.value,
+      catalogForm.controls.work.value,
+      catalogForm.controls.dispatch.value,
+      catalogForm.controls.imageType.value
+    )
+    this.catalogForm.reset()
+
+    this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
+      console.log(createdCatalog);
+    });
+  }
+
+
+ /*  edit(editCatalogForm:FormGroup,catalogID:any,catalogName:any,catalogType:any,material:any,capacity:any,catalogDescription:any,work:any,dispatch:any,imageType:any){
     this.showEdit = !this.showEdit;
     this.updateModel=new CatalogUpdateModel(
       catalogID.value,
@@ -117,26 +158,11 @@ export class CatalogAddUpdateComponent implements OnInit {
  
      }, error => {
        console.log(error);
-     });
-  }
+     }); */
+  
 
 
-  del(editCatalogForm:FormGroup,catalogID:any){
-    this.showEdit = !this.showEdit;
-    this.deleteModel=new CatalogDeleteModel(
-      catalogID.value
-    )
 
-    this.productService.deleteCatalog(this.deleteModel).subscribe(data => {
-      this.catalogs=data
-       console.log(this.catalogs);
- 
-     }, error => {
-       console.log(error);
-     });
-
-
-  }
 
 
 }

@@ -2,109 +2,70 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-md-9 mx-auto">
+      <div class="col-md-8 mx-auto">
 
         <div class="container-fluid">
           <div class="row">
 
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="form-group">
                 <label>Catalog Name</label>
               </div>
             </div>
-
-            <div class="col-md-2 ">
+            <div class="col-md-3">
               <div class="form-group">
                 <label>Category type</label>
               </div>
             </div>
 
-            <div class="col-md-1 ">
+            <div class="col-md-3 ">
               <div class="form-group">
                 <label>Material</label>
               </div>
             </div>
 
-            <div class="col-md-1 ">
+            <div class="col-md-3 ">
               <div class="form-group">
-                <label>Capacity</label>
+                <label>Edit</label>
               </div>
             </div>
-
-            <div class="col-md-2 ">
-              <div class="form-group">
-                <label>Catalog Description</label>
-              </div>
-            </div>
-
-
-            <div class="col-md-2 ">
-              <div class="form-group">
-                <label>Work</label>
-              </div>
-            </div>
-
-            <div class="col-md-1 ">
-              <div class="form-group">
-                <label>Dispatch</label>
-              </div>
-            </div>
-
-            <div class="col-md-1 ">
-              <div class="form-group">
-                <label>imageType</label>
-              </div>
-            </div>
-
 
 
           </div>
         </div>
         <div class="container">
-          
-          <div class="row" *ngFor="let catalog of catalogs">
 
-            <div class="col-md-2 form-group">
+          <div class="row" *ngFor="let catalog of catalogs">
+ 
+ 
+            <input class="form-control" type="text"  hidden  formControlName="catalogId"  [value]="catalog._id" #catalogID/> 
+            <div class="col-md-3 form-group"> 
               {{catalog.catalogName}}
             </div>
 
-            <div class="col-md-2 form-group">
+            <div class="col-md-3 form-group">
               {{catalog.catalogType}}
             </div>
 
-            <div class="col-md-1 form-group">
+            <div class="col-md-3 form-group">
               {{catalog.material}}
             </div>
 
-
             <div class="col-md-1 form-group">
-              {{catalog.capacity}}
-            </div>
-
-            <div class="col-md-2 form-group">
-              {{catalog.catalogDescription}}
-            </div>
-
-            <div class="col-md-2 form-group">
-              {{catalog.work}}
-            </div>
-
-
-            <div class="col-md-1 form-group">
-              {{catalog.dispatch}}
+              
+                <button class="btn btn-success pull-right"  (click)="update(viewCatalogForm,catalogID.value)" >Update</button>
+              
             </div>
 
             <div class="col-md-1 form-group">
-              {{catalog.imageType}}
+                 <button class="btn btn-danger pull-right" (click)="catalogDelete(viewCatalogForm,catalogID)">Delete</button>
             </div>
 
           </div>
 
         </div>
 
-        <div class="form-group">
-            <a  [routerLink]="['/Catalog']"><button class="btn btn-success pull-right" >Edit</button></a>
-        </div>
+
 
       </div>
     </div>
