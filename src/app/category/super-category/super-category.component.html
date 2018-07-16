@@ -1,8 +1,8 @@
 <div class="pageBoxLg ">
-  <label class="pageBoxLg-label d-sm-none d-md-block">Super Category</label>
+  <label class="pageBoxLg-label display-none-small">Super Category</label>
   <div>
     <form [formGroup]="superCategoryForm" novalidate (ngSubmit)="add(superCategoryForm)">
-      <div class="container-fluid">
+      <div class="container-fluid container-fuid-padding-small">
         <div class="row ">
           <div class="form-group col-sm-12 col-md-5">
             <div class="textContainer">
@@ -35,18 +35,18 @@
 
         <!--show the table-->
         <div *ngIf="showDetails">
-          <div class="row gridRow d-sm-none d-md-block">
-            <div class="col-md-5">
+          <div class="row gridRowHeader display-none-small">
+            <div class="col-md-5 vcenterHeader">
               <div class="form-group">
                 <label>Category Name</label>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 vcenterHeader">
               <div class="form-group">
                 <label>Category Description</label>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 vcenterHeader">
               <div>
                 <label>Edit</label>
               </div>
@@ -55,15 +55,25 @@
           <!--data-->
           <div *ngIf="!showEdit">
             <div class="row gridRow" *ngFor="let cat of superCategories">
-              <div class="col-md-5 form-group">
+              <div class="col-sm-12  display-none-large">
+                <label class="gridLabel">Category Name:</label>
+              </div>
+              <div class="col-sm-12 col-md-5 vcenter form-group">
                 {{cat.categoryName}}
               </div>
-              <div class="col-md-5 form-group">
+              <div class="col-sm-12  display-none-large">
+                <label class="gridLabel">Category Description:</label>
+              </div>
+              <div class="col-sm-12 col-md-5 vcenter form-group">
                 {{cat.categoryDescription}}
               </div>
-              <div class="col-md-2">
-                <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
+              <div class="col-md-2 vcenter display-none-small">
+                <a class="gridEdit" (click)="toggleEdit()">Edit</a>
               </div>
+              <div class="editImage display-none-large" (click)="toggleEdit()">
+                <i class="fa fa-edit "></i>
+              </div>
+              
             </div>
           </div>
           <div *ngIf="showEdit">

@@ -6,7 +6,6 @@ body {
   font-weight: 500;
 }
 
-
 .whiteColor {
   color: rgba(255, 255, 255, 255) !important;
 }
@@ -31,9 +30,9 @@ body {
   color: #fff;
 }
 
-.paddingMarginZero{
+.paddingMarginZero {
   padding: 0;
-  margin: 0 ;
+  margin: 0;
 }
 
 .textContainer {
@@ -45,19 +44,36 @@ body {
   padding: 10px 10px 10px 5px;
 }
 
-.appTextBox:focus::-webkit-input-placeholder { color:transparent; }
-.appTextBox:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
-.appTextBox:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
-.appTextBox:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+.appTextBox:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.appTextBox:focus:-moz-placeholder {
+  color: transparent;
+}
+
+/* FF 4-18 */
+
+.appTextBox:focus::-moz-placeholder {
+  color: transparent;
+}
+
+/* FF 19+ */
+
+.appTextBox:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+/* IE 10+ */
 
 .appTextBoxSpan {
   visibility: hidden;
   position: absolute;
 }
 
-.textContainer input:focus ~ span , .textContainer input:valid ~ span  {
+.textContainer input:focus~span,
+.textContainer input:valid~span {
   visibility: visible;
-
   position: absolute;
   top: 0;
   left: 10px;
@@ -65,9 +81,9 @@ body {
   font-size: 8pt;
   border-radius: 8px;
   padding: 0px 5px;
-  transition: padding 3s ;
-  -moz-transition: padding 3s ;
-  -webkit-transition: padding 3s ;
+  transition: padding 3s;
+  -moz-transition: padding 3s;
+  -webkit-transition: padding 3s;
 }
 
 .pageBox {
@@ -79,49 +95,85 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.gridRow{
+.gridRowHeader {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
-    margin: 12px;
+  margin: 12px 0px;
+  background-color: #FF527B;
 }
 
-@media screen and (max-width: 992px) {
+.gridRow {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+  margin: 12px 0px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+
+
+.gridEdit {
+  cursor: pointer;
+  color: blue !important;
+}
+
+@media screen and (max-width: 992px) { /*Small */
   .pageBox {
     width: 90%;
   }
-
-  .pageBoxLg{
-    padding-top:60px;
+  .pageBoxLg {
+    padding-top: 60px;
   }
-  
+  .display-none-small {
+    display: none;
+  }
+  .container-fuid-padding-small{
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .editImage{
+    position: absolute;
+    right: 15px;
+  }
+
+  .gridLabel{
+    color:#ff00b1;
+    font-size: 8pt;
+  }
 }
 
-@media screen and (min-width: 992px) {
-  .btnpink-textbox-inline{
+@media screen and (min-width: 992px) { 
+  /* Large */
+  .btnpink-textbox-inline {
     margin-top: 14px;
   }
-
-  .pageBoxLg{
-    border:1px solid #570015;
-    margin:60px 20px 20px 20px;
-    padding:20px;
+  .pageBoxLg {
+    border: 1px solid #570015;
+    margin: 60px 20px 20px 20px;
+    padding: 20px;
     position: relative;
     background: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-  
-  
-  
-  .pageBoxLg-label{
+  .pageBoxLg-label {
     position: absolute;
     top: -10px;
     left: 10px;
     background: white;
     padding: 0px 5px;
-    transition: padding 3s ;
-    -moz-transition: padding 3s ;
-    -webkit-transition: padding 3s ;
+    transition: padding 3s;
+    -moz-transition: padding 3s;
+    -webkit-transition: padding 3s;
+  }
+
+  .vcenterHeader {
+    top: 8px;
+  }
+  
+  .vcenter {
+    top: 6px;
+  }
+
+  .display-none-large {
+    display: none;
   }
 }
-
-
-
