@@ -9,7 +9,6 @@ export class CatalogData {
     imageType: string;
 
     constructor(
-       
         catalogName: string,
         catalogType: string,
         material: string,
@@ -19,18 +18,15 @@ export class CatalogData {
         dispatch: string,
         imageType: string
 
-
     ) {
-        
         this.catalogName = catalogName;
         this.catalogType = catalogType;
-        this.material=material;
-        this.capacity=capacity;
-        this.catalogDescription=catalogDescription;
-        this.work=work;
-        this.dispatch=dispatch;
-        this.imageType=imageType
+        this.material = material;
+        this.capacity = capacity;
+        this.catalogDescription = catalogDescription;
+        this.work = work;
+        this.dispatch = dispatch;
+        this.imageType = imageType;
 
     }
-   
 }

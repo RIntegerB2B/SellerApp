@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
+import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-view',
@@ -7,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb: FormBuilder,
+    private productService: ProductService, private navHeaderService: NavHeaderService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }

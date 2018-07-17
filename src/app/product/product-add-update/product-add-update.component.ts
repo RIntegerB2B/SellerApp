@@ -3,8 +3,8 @@ import { ProductService } from '../product.service';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import{CatalogDetail} from './catalog.model';
-import {Product} from './product.model'
+import {CatalogDetail} from './catalog.model';
+import {Product} from './product.model';
 
 @Component({
   selector: 'app-product-add-update',
@@ -13,9 +13,9 @@ import {Product} from './product.model'
 })
 export class ProductAddUpdateComponent implements OnInit {
 
-  productForm:FormGroup
-Catalogs:CatalogDetail[]=[];
-productModel:Product
+  productForm: FormGroup;
+Catalogs: CatalogDetail[] = [];
+productModel: Product;
 
   constructor(private fb: FormBuilder,
     private productService: ProductService, private navHeaderService: NavHeaderService,
@@ -24,31 +24,31 @@ productModel:Product
 
 
   ngOnInit() {
-    this.catalog()
+    this.catalog();
     this.navHeaderService.hideMenuTransparent();
 this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.productForm = this.fb.group({
-      productName:['', Validators.required],
-      price:['', Validators.required],
-      sizeDescription:['', Validators.required],
-      productTypeDesc:['', Validators.required],
-      size:['', Validators.required],
-      productDescription:['', Validators.required],
-      cod:['', Validators.required],
-      dispatchDesc:['', Validators.required],
-      watsAppDesc:['', Validators.required],
-      imageType:['', Validators.required]
+      productName: ['', Validators.required],
+      price: ['', Validators.required],
+      sizeDescription: ['', Validators.required],
+      productTypeDesc: ['', Validators.required],
+      size: ['', Validators.required],
+      productDescription: ['', Validators.required],
+      cod: ['', Validators.required],
+      dispatchDesc: ['', Validators.required],
+      watsAppDesc: ['', Validators.required],
+      imageType: ['', Validators.required]
 
     });
 
   }
   catalog() {
     this.productService.findCatalog().subscribe(data => {
-      this.Catalogs=data;
-      console.log(data)
+      this.Catalogs = data;
+      console.log(data);
     }, error => {
       console.log(error);
     });
@@ -59,10 +59,10 @@ this.createForm();
 }
 
 
-productSave(productForm:FormGroup,id:any){
+productSave(productForm: FormGroup, id: any) {
 
 
-  this.productModel=new Product(
+  this.productModel = new Product(
   id,
     productForm.controls.productName.value,
     productForm.controls.price.value,
@@ -74,11 +74,11 @@ productSave(productForm:FormGroup,id:any){
     productForm.controls.dispatchDesc.value,
     productForm.controls.watsAppDesc.value,
     productForm.controls.imageType.value
-  )
-console.log(this.productModel)
+  );
+console.log(this.productModel);
 
 
-  this.productForm.reset()
+  this.productForm.reset();
 
   this.productService.addProduct(this.productModel).subscribe(data => {
     console.log(data);

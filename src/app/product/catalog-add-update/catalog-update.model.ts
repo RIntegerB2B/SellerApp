@@ -1,5 +1,5 @@
 export class CatalogUpdateModel {
-    _id:string;
+    _id: string;
     catalogName: string;
     catalogType: string;
     material: string;
@@ -10,7 +10,7 @@ export class CatalogUpdateModel {
     imageType: string;
 
     constructor(
-       _id:string,
+       _id: string,
         catalogName: string,
         catalogType: string,
         material: string,
@@ -22,16 +22,15 @@ export class CatalogUpdateModel {
 
 
     ) {
-        this._id=_id;
+        this._id = _id;
         this.catalogName = catalogName;
         this.catalogType = catalogType;
-        this.material=material;
-        this.capacity=capacity;
-        this.catalogDescription=catalogDescription;
-        this.work=work;
-        this.dispatch=dispatch;
-        this.imageType=imageType
+        this.material = material;
+        this.capacity = capacity;
+        this.catalogDescription = catalogDescription;
+        this.work = work;
+        this.dispatch = dispatch;
+        this.imageType = imageType;
 
     }
-   
 }

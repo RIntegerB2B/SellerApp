@@ -4,7 +4,7 @@ import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 /* import { CatalogModel } from './catalog.model'; */
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {CatalogData}from '././catalog.model'
+import {CatalogData} from '././catalog.model';
 import {CatalogUpdateModel} from './catalog-update.model';
 
 
@@ -24,66 +24,61 @@ export class CatalogAddUpdateComponent implements OnInit {
   loadedCatalogModel: CatalogModel = new CatalogModel(); */
 
   catalogId: string;
-  catalogModel:CatalogData
-  loadedCatalogModel:CatalogData
-  updateModel:CatalogUpdateModel
-  showEdit:boolean
-  catalogForm:FormGroup
- 
-
+  catalogModel: CatalogData;
+  loadedCatalogModel: CatalogData;
+  updateModel: CatalogUpdateModel;
+  showEdit: boolean;
+  catalogForm: FormGroup;
+  showUpdate: boolean;
 
   constructor(private fb: FormBuilder,
     private productService: ProductService, private navHeaderService: NavHeaderService,
     private activatedRoute: ActivatedRoute) {
       this.catalogId = this.activatedRoute.snapshot.paramMap.get('id') ;
-      console.log(this.catalogId)
+      console.log(this.catalogId);
     }
-
-    
 
   ngOnInit() {
     this.createForm();
     this.navHeaderService.hideMenuTransparent();
-    /* this.catalog(); */
-
     if (this.catalogId) {
-      this.loadCatalog(this.catalogId);
-    } 
-  }
-
-  loadCatalog(catId: string) {
-   /*  loadedCatalogModel = getCatalog(catId);
-    this.catalogForm.setValue({
-      catalogName:    this.loadedCatalogModel.catalogName
-     
-   }); */
-  }
+      this.getCatalog(this.catalogId);
+  }}
 
   createForm() {
     this.catalogForm = this.fb.group({
+      catalogId: [''],
       catalogName: [''],
-      catalogType:[''],
-      material:[''],
-      capacity:[''],
-      catalogDescription:[''],
-      work:[''],
-      dispatch:[''],
-      imageType:['']
+      catalogType: [''],
+      material: [''],
+      capacity: [''],
+      catalogDescription: [''],
+      work: [''],
+      dispatch: [''],
+      imageType: ['']
     });
-
-   
   }
 
- /*  getCatalog(id){
-   
-      this.productService.catalog(id).subscribe(data => {
-       
-        console.log(data)
+  getCatalog(catId) {
+    this.showUpdate = true;
+      this.productService.getCatalog(this.catalogId).subscribe(data => {
+        this.loadedCatalogModel = data;
+        console.log(this.loadedCatalogModel);
+        this.catalogForm.setValue({
+          catalogName: this.loadedCatalogModel.catalogName,
+          catalogType: this.loadedCatalogModel.catalogType,
+          material : this.loadedCatalogModel.material,
+          capacity : this.loadedCatalogModel.capacity,
+          catalogDescription: this.loadedCatalogModel.catalogDescription,
+          work: this.loadedCatalogModel.work,
+          dispatch : this.loadedCatalogModel.dispatch,
+          imageType : this.loadedCatalogModel.imageType,
+           catalogId : catId
+        });
       }, error => {
         console.log(error);
       });
-    
-  } */
+  }
 
   /* handleFileInput(files: FileList, loadedImage) {
     this.fileToUpload = files.item(0);
@@ -102,24 +97,15 @@ export class CatalogAddUpdateComponent implements OnInit {
     };
   } */
 
- /*  catalog() {
-    this.productService.showCatalog().subscribe(data => {
-      this.catalogModel=data;
-      console.log(data)
-    }, error => {
-      console.log(error);
-    });
-  }
-   */
+
   toggleEdit() {
     this.showEdit = !this.showEdit;
   }
 
 
-  catalogSave(catalogForm:FormGroup){
+  catalogSave(catalogForm: FormGroup) {
 
-
-    this.catalogModel=new CatalogData(
+    this.catalogModel = new CatalogData(
       catalogForm.controls.catalogName.value,
       catalogForm.controls.catalogType.value,
       catalogForm.controls.material.value,
@@ -128,8 +114,8 @@ export class CatalogAddUpdateComponent implements OnInit {
       catalogForm.controls.work.value,
       catalogForm.controls.dispatch.value,
       catalogForm.controls.imageType.value
-    )
-    this.catalogForm.reset()
+    );
+    this.catalogForm.reset();
 
     this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
       console.log(createdCatalog);
@@ -137,10 +123,11 @@ export class CatalogAddUpdateComponent implements OnInit {
   }
 
 
- /*  edit(editCatalogForm:FormGroup,catalogID:any,catalogName:any,catalogType:any,material:any,capacity:any,catalogDescription:any,work:any,dispatch:any,imageType:any){
-    this.showEdit = !this.showEdit;
-    this.updateModel=new CatalogUpdateModel(
-      catalogID.value,
+  edit(editCatalogForm: FormGroup, catalogId: any,
+  catalogName: any, catalogType: any, material: any, capacity: any,
+  catalogDescription: any, work: any, dispatch: any, imageType: any)  {
+    this.updateModel = new CatalogUpdateModel(
+      catalogId.value,
       catalogName.value,
       catalogType.value,
       material.value,
@@ -149,20 +136,12 @@ export class CatalogAddUpdateComponent implements OnInit {
       work.value,
       dispatch.value,
       imageType.value
-    )
-
+    );
+this.catalogForm.reset();
 
     this.productService.editCatalog(this.updateModel).subscribe(data => {
-      this.catalogs=data
-       console.log(this.catalogs);
- 
      }, error => {
        console.log(error);
-     }); */
-  
-
-
-
-
-
+     });
+    }
 }

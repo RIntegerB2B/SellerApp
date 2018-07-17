@@ -24,7 +24,7 @@ const routes: Routes = [
     { path: 'SuperCategory', component: SuperCategoryComponent },
     { path: 'MainCategory', component: MainCategoryComponent },
     { path: 'Catalog', component: CatalogAddUpdateComponent },
-    {path:'Catalog/:catalogID',component:CatalogAddUpdateComponent},
+    {path:'Catalog/:id',component:CatalogAddUpdateComponent},
     {path:'CatalogView',component: CatalogViewComponent },
     {path:'Product',component:ProductAddUpdateComponent},
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
