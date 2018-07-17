@@ -51,6 +51,17 @@ export class SuperCategoryComponent implements OnInit {
     this.showEdit = !this.showEdit;
   }
 
+  editGridRow(cat) {
+    this.superCategories.map(cat => {
+      cat.editing = false;
+    });
+    cat.editing = true;
+  }
+
+  cancel(cat) {
+    cat.editing = false;
+  }
+
   add(superCategoryForm: FormGroup) {
     this.showDetails = true;
     this.userModel = new SuperCategory(
@@ -84,14 +95,14 @@ export class SuperCategoryComponent implements OnInit {
       superCatDesc.value
     );
 
-    
+
     superCategoryForm.reset()
 
     this.categoryService.editCategory(this.newModel).subscribe(data => {
 
-    
-     this.superCategories=data
-    
+
+      this.superCategories = data
+
       console.log(this.superCategories);
 
     }, error => {
@@ -109,13 +120,13 @@ export class SuperCategoryComponent implements OnInit {
     this.showDetails = true;
     this.deleteModel = new Delete(
       superCatId.value,
-      
+
 
     );
     superCategoryForm.reset()
 
     this.categoryService.deleteCategory(this.deleteModel).subscribe(data => {
-this.superCategories=data
+      this.superCategories = data
     }, error => {
       console.log(error);
     });
@@ -125,18 +136,18 @@ this.superCategories=data
 
 
 
- category() {
-    
+  category() {
+
     this.categoryService.showCategory().subscribe(name => {
 
-      this.superCategories=name;
+      this.superCategories = name;
 
       console.log(name)
-     
+
     }, error => {
       console.log(error);
     });
-  } 
+  }
 
 }
 

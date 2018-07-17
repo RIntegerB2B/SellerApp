@@ -2,7 +2,6 @@ export class Edit {
     _id: Number;
     categoryName: string;
     categoryDescription: string;
-    //editable:Boolean;
     constructor(
         _id: Number,
         categoryName: string,

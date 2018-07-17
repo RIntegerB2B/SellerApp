@@ -34,7 +34,7 @@
 
 
         <!--show the table-->
-        <div *ngIf="showDetails">
+        <div>
           <div class="row gridRowHeader display-none-small">
             <div class="col-md-5 vcenterHeader">
               <div class="form-group">
@@ -53,8 +53,9 @@
             </div>
           </div>
           <!--data-->
-          <div *ngIf="!showEdit">
-            <div class="row gridRow" *ngFor="let cat of superCategories">
+
+          <div  *ngFor="let cat of superCategories">
+            <div class="row gridRow" *ngIf="!cat.editing">
               <div class="col-sm-12  display-none-large">
                 <label class="gridLabel">Category Name:</label>
               </div>
@@ -68,33 +69,36 @@
                 {{cat.categoryDescription}}
               </div>
               <div class="col-md-2 vcenter display-none-small">
-                <a class="gridEdit" (click)="toggleEdit()">Edit</a>
+                <a class="gridEdit" (click)="editGridRow(cat)">Edit</a>
               </div>
-              <div class="editImage display-none-large" (click)="toggleEdit()">
+              <div class="editImage display-none-large" (click)="editGridRow(cat)">
                 <i class="fa fa-edit "></i>
               </div>
-              
+
             </div>
-          </div>
-          <div *ngIf="showEdit">
-            <div class="row gridRow" *ngFor="let cat of superCategories">
+            <div class="row gridRow gridRowEditPadding" *ngIf="cat.editing">
               <input class="form-control" hidden type="text" formControlName="_id" [value]="cat._id" #superCatId />
 
-              <div class="col-md-5 form-group">
+              <div class="col-md-4 col-sm-12 form-group">
                 <input class="form-control" type="text" formControlName="uName" [value]="cat.categoryName" #superCatName/>
               </div>
 
-              <div class="col-md-5">
+              <div class="col-md-4 col-sm-12 form-group">
                 <input class="form-control" type="text" formControlName="uDesc" [value]="cat.categoryDescription" #superCatDesc/>
               </div>
-
-              <div class="col-md-1">
-                <input type="button" class="btn btn-success btn-block" value="Update" (click)="edit(superCategoryForm, superCatId,superCatName,superCatDesc)"
+<div class="row">
+              <div class="col-md-4 col-sm-4 form-group">
+                <input type="button" class="btn btn-success" value="Update" (click)="edit(superCategoryForm, superCatId,superCatName,superCatDesc)"
                 />
               </div>
 
-              <div class="col-md-1">
-                <input type="button" class="btn btn-danger btn-block" value="Delete" (click)="delete(superCategoryForm, superCatId)" />
+              <div class="col-md-4 col-sm-4 form-group">
+                <input type="button" class="btn btn-danger" value="Delete" (click)="delete(superCategoryForm, superCatId)" />
+              </div>
+
+              <div class="col-md-4 col-sm-4 form-group">
+                  <input type="button" class="btn btnPink" value="Cancel" (click)="cancel(cat)" />
+                </div>
               </div>
             </div>
           </div>

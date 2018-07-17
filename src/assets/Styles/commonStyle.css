@@ -115,6 +115,10 @@ body {
   color: blue !important;
 }
 
+.gridRowEditPadding{
+  padding-top:10px;
+}
+
 @media screen and (max-width: 992px) { /*Small */
   .pageBox {
     width: 90%;
