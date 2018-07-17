@@ -6,8 +6,6 @@
         <div class="">
 
           <div class="form-group">
-           
-
           <select #selectElem (change)="setNewUser(selectElem.value)"  class="hideLabel form-control" >
             <option>Select super category</option>
             <option *ngFor="let name of Categoryname" [value]="name._id">

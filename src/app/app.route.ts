@@ -10,7 +10,8 @@ import { MainCategoryComponent } from './category/main-category/main-category.co
 import { CatalogAddUpdateComponent } from './product/catalog-add-update/catalog-add-update.component';
 import {SubCategoryComponent} from './category/sub-category/sub-category.component';
 import {CatalogViewComponent} from './product/catalog-view/catalog-view.component';
-import {CatalogAddComponent} from './product/catalog-add/catalog-add.component'
+import {ProductAddUpdateComponent} from './product/product-add-update/product-add-update.component'
+
 
 const routes: Routes = [
     { path: 'AddCategory', component: AddCategoryComponent },
@@ -23,8 +24,9 @@ const routes: Routes = [
     { path: 'SuperCategory', component: SuperCategoryComponent },
     { path: 'MainCategory', component: MainCategoryComponent },
     { path: 'Catalog', component: CatalogAddUpdateComponent },
-    {path:'CatalogAdd',component: CatalogAddComponent},
+    {path:'Catalog/:id',component:CatalogAddUpdateComponent},
     {path:'CatalogView',component: CatalogViewComponent },
+    {path:'Product',component:ProductAddUpdateComponent},
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: '**', redirectTo: 'Home', pathMatch: 'full' },
    

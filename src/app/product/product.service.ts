@@ -6,9 +6,12 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { AppSetting } from '../config/appSetting';
 import {CatalogModel} from './catalog-add/catalog.model';
 import {CatalogViewModel} from './catalog-view/catalog-view.model';
-import {CatalogData} from './catalog-add-update/catalog.model'
+import {CatalogData} from './catalog-add-update/catalog.model';
 import { CatalogUpdateModel} from './catalog-add-update/catalog-update.model';
-import {CatalogDeleteModel} from './catalog-add-update/catalog-delete.model'
+import {CatalogDelete} from './catalog-view/catalog-delete.model';
+import {CatalogDetail} from './product-add-update/catalog.model';
+import {Product} from './product-add-update/product.model';
+
 
 @Injectable()
 export class ProductService {
@@ -34,36 +37,46 @@ export class ProductService {
     throw new Error('Method not implemented.');
   }
 
-  catalogCreate(catalogModel: CatalogModel): Observable<CatalogModel> {
+  catalogCreate(catalogModel: CatalogData): Observable<CatalogModel> {
     const calatalogUrl = 'catalog';
     const url: string = this.serviceUrl + calatalogUrl;
-    return this.httpClient.post<CatalogModel>(url, catalogModel);
+    return this.httpClient.post<CatalogData>(url, catalogModel);
   }
 
-  showCatalog():Observable<any> {
+  showCatalog(): Observable<any> {
     const calatalogUrl = 'catalog';
     const url: string = this.serviceUrl + calatalogUrl;
     return this.httpClient.get<CatalogData[]>(url);
   }
 
 
- /*  editMainCategory(edit: CategoryEdit): Observable<any> {
-    const Caturl = 'category/';
-    const mainurl = "/mainCategory/"
-    const url: string = this.serviceUrl + Caturl + edit._id + mainurl + edit.mainCategory._id
-    return this.httpClient.put<CategoryEdit>(url, edit.mainCategory, httpOptions);
-  } */
-
-  editCatalog(edit:CatalogUpdateModel):Observable<any>{
+  editCatalog(edit: CatalogUpdateModel): Observable<any> {
     const Caturl = 'catalog/';
-    const url: string = this.serviceUrl + Caturl + edit._id 
-    return this.httpClient.put<CatalogData[]>(url, edit);
+    const url: string = this.serviceUrl + Caturl + edit._id;  return this.httpClient.put<CatalogData[]>(url, edit);
   }
 
 
-  deleteCatalog(del:CatalogDeleteModel):Observable<any>{
+  deleteCatalog(catalogDelete: CatalogDelete): Observable<any> {
     const Caturl = 'catalog/';
-    const url: string = this.serviceUrl + Caturl + del._id 
+    const url: string = this.serviceUrl + Caturl + catalogDelete._id ;
     return this.httpClient.delete<CatalogData[]>(url);
+  }
+
+  getCatalog(id): Observable<any> {
+    const Caturl = 'catalog/';
+    const url: string = this.serviceUrl + Caturl + id ;
+    return this.httpClient.get<CatalogData[]>(url);
+  }
+
+  findCatalog(): Observable<any> {
+    const Caturl = 'catalog/';
+    const url: string = this.serviceUrl + Caturl ;
+    return this.httpClient.get<CatalogDetail[]>(url);
+  }
+
+  addProduct(product: Product): Observable<Product> {
+    const productUrl = 'catalog/product';
+    const url: string = this.serviceUrl + productUrl;
+    return this.httpClient.post<Product>(url, product );
   }
 }

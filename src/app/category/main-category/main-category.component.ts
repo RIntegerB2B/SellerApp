@@ -63,7 +63,7 @@ export class MainCategoryComponent implements OnInit {
       mainCategoryForm.controls.mainCategoryName.value,
       mainCategoryForm.controls.mainCategoryDescription.value
     );
-
+console.log(this.mainModel)
     mainCategoryForm.reset()
     this.categoryService.addMainCategory(this.mainModel).subscribe(data => {
       console.log(data)

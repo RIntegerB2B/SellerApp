@@ -3,7 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators, NgForm } from '@angular/
 import { Router } from '@angular/router';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import {ProductService} from '../../product/product.service';
-import {CatalogViewModel} from './catalog-view.model'
+import {CatalogViewModel} from './catalog-view.model';
+import {CatalogDelete} from '../catalog-view/catalog-delete.model';
 
 @Component({
   selector: 'app-catalog-view',
@@ -12,26 +13,59 @@ import {CatalogViewModel} from './catalog-view.model'
 })
 export class CatalogViewComponent implements OnInit {
 
-  viewCatalogForm:FormGroup
-catalogs:CatalogViewModel[]=[]
+  viewCatalogForm: FormGroup;
+catalogs: CatalogViewModel[] = [];
+deleteModel: CatalogDelete;
+catalogId: string;
+catalogValue;
+id;
+
 
   constructor(private fb: FormBuilder, private router: Router, private productService: ProductService,
     private navHeaderService: NavHeaderService) { }
 
   ngOnInit() {
     this.navHeaderService.hideMenuTransparent();
-    this.catalog()
+    this.catalog();
+    this.createForm();
   }
 
-  
+
+  createForm() {
+    this.viewCatalogForm = this.fb.group({
+      catalogId: [''],
+    });
+  }
+
   catalog() {
     this.productService.showCatalog().subscribe(data => {
-      this.catalogs=data;
-      console.log(data)
+      this.catalogs = data;
+      console.log(data);
     }, error => {
       console.log(error);
     });
   }
-  
+  update(viewCatalogForm: FormGroup, catalogID: any) {
+   this.id = catalogID.value;
+    /* console.log(this.id); */
+    this.router.navigate(['/Catalog', this.id] );
+  }
+
+
+
+  catalogDelete(editCatalogForm: FormGroup, catalogID: any) {
+    this.deleteModel = new CatalogDelete(
+      catalogID.value
+    );
+
+    this.productService.deleteCatalog(this.deleteModel).subscribe(data => {
+      this.catalogs = data;
+       console.log(this.catalogs);
+     }, error => {
+       console.log(error);
+     });
+
+
+  }
 
 }

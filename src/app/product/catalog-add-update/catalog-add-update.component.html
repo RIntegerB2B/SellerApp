@@ -1,241 +1,125 @@
-<form [formGroup]="editCatalogForm" novalidate style="padding-top:60px">
+<form [formGroup]="catalogForm" style="padding-top:60px"  novalidate>
   <div class="container-fluid">
     <div class="row">
-
-      <div class="col-md-4 mx-auto">
-
-        <div class="container-fluid">
-          <div class="row">
+      <div class="col-md-6  mx-auto">
 
 
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Catalog Name</label>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Category type</label>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Material</label>
-              </div>
-            </div>
-
+        <input type="text"  hidden placeholder="Catalog Id" class="form-control required appTextBox" required formControlName="catalogId" #catalogId/>
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Catalog Name" class="form-control required appTextBox" required formControlName="catalogName" #catalogName/>
+            <span class="appTextBoxSpan">Catalog Name</span>
           </div>
+          <div *ngIf="catalogForm.get('catalogName').errors
+                               && !catalogForm.get('catalogName').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('catalogName').errors.required">Please enter Catalog Name</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Catalog Type" class="form-control required appTextBox" required formControlName="catalogType" #catalogType
+            />
+            <span class="appTextBoxSpan">Catalog type</span>
+          </div>
+          <div *ngIf="catalogForm.get('catalogType').errors
+                               && !catalogForm.get('catalogType').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('catalogType').errors.required">Please enter Catalog type</div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Material" class="form-control required appTextBox" required formControlName="material"  #material/>
+            <span class="appTextBoxSpan">Material</span>
+          </div>
+          <div *ngIf="catalogForm.get('material').errors
+                                 && !catalogForm.get('material').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('material').errors.required">Please enter Material</div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Capacity" class="form-control required appTextBox" required formControlName="capacity" #capacity/>
+            <span class="appTextBoxSpan">Capacity</span>
+          </div>
+          <div *ngIf="catalogForm.get('capacity').errors
+                                   && !catalogForm.get('capacity').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('capacity').errors.required">Please enter Capacity</div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Catalog Description" class="form-control required appTextBox" required formControlName="catalogDescription" #catalogDescription/>
+            <span class="appTextBoxSpan">Catalog Description</span>
+          </div>
+          <div *ngIf="catalogForm.get('catalogDescription').errors
+                                     && !catalogForm.get('catalogDescription').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('catalogDescription').errors.required">Please enter catalogDescription</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Work" class="form-control required appTextBox" required formControlName="work" #work/>
+            <span class="appTextBoxSpan">Work</span>
+          </div>
+          <div *ngIf="catalogForm.get('work').errors
+                                       && !catalogForm.get('work').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('work').errors.required">Please enter Work</div>
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Dispatch" class="form-control required appTextBox" required formControlName="dispatch" #dispatch/>
+            <span class="appTextBoxSpan">Dispatch</span>
+          </div>
+          <div *ngIf="catalogForm.get('dispatch').errors
+                                       && !catalogForm.get('dispatch').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('dispatch').errors.required">Please enter Dispatch</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="ImageType" class="form-control required appTextBox" required formControlName="imageType" #imageType/>
+            <span class="appTextBoxSpan">ImageType</span>
+          </div>
+          <div *ngIf="catalogForm.get('imageType').errors
+                                         && !catalogForm.get('imageType').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('imageType').errors.required">Please enter ImageType</div>
+          </div>
+        </div>
+
+        <div *ngIf="!showUpdate">
+          <input type="submit" class="btn btnPink btn-block" value="Save"  (click)="catalogSave(catalogForm)"/>
+        </div>
+
+        <div *ngIf="showUpdate">
+          <input type="submit" class="btn btnPink btn-block" value="Update"  (click)="edit(editeditCatalogForm, catalogId,
+          catalogName, catalogType, material, capacity,
+          catalogDescription, work, dispatch, imageType)"/>
         </div>
       </div>
 
-
-
-      <div class="col-md-4 mx-auto">
-
-        <div class="container-fluid">
-          <div class="row">
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Capacity</label>
-              </div>
-            </div>
-
-            <div class="col-md-4 ">
-              <div class="form-group">
-                <label>Catalog Description</label>
-              </div>
-            </div>
-
-            <div class="col-md-4 ">
-              <div class="form-group">
-                <label>Work</label>
-              </div>
-            </div>
-          </div>
+      <div class="col-md-3 form-group">
+        <div>
+          <img #loadedImage style="width: 180px; height: 345px;" />
         </div>
-
+        <!-- <div>
+          <input type="file" formControlName="catalogImage" class="btn btnPink btn-block" id="file" (change)="handleFileInput($event.target.files, loadedImage)">
+        </div> -->
       </div>
-
-      <div class="col-md-4 mx-auto">
-
-        <div class="container-fluid">
-          <div class="row">
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Dispatch</label>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>imageType</label>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-
-
-      <div class="container-fluid">
-        <div *ngIf="!showEdit">
-        <div class="row" *ngFor="let catalog of catalogs">
-
-          <div class="col-md-4 mx-auto">
-
-            <div class="container-fluid">
-              <div class="row">
-
-                <div class="col-md-4 form-group">
-                  {{catalog.catalogName}}
-                </div>
-
-                <div class="col-md-4 form-group">
-                  {{catalog.catalogType}}
-                </div>
-
-                <div class="col-md-4 form-group">
-                  {{catalog.material}}
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-md-4 mx-auto">
-
-            <div class="container-fluid">
-              <div class="row">
-
-
-                <div class="col-md-4 form-group">
-                  {{catalog.capacity}}
-                </div>
-
-                <div class="col-md-4 form-group">
-                  {{catalog.catalogDescription}}
-                </div>
-
-                <div class="col-md-4 form-group">
-                  {{catalog.work}}
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 mx-auto">
-
-            <div class="container-fluid">
-              <div class="row">
-
-                <div class="col-md-4 form-group">
-                  {{catalog.dispatch}}
-                </div>
-
-                <div class="col-md-4 form-group">
-                  {{catalog.imageType}}
-                </div>
-
-                <div class="col-md-4">
-                  <input type="button" class="btn btn-primary btn-block" value="Edit" (click)="toggleEdit()" />
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-
-      <div class="container-fluid">
-
-          <div *ngIf="showEdit">
-          <div class="row" *ngFor="let catalog of catalogs">
-  
-            <div class="col-md-4 mx-auto">
-  
-              <div class="container-fluid">
-                <div class="row">
-                    <input class="form-control" type="text"  hidden formControlName="catalogName"  [value]="catalog._id" #catalogID/>
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="catalogName" [value]="catalog.catalogName" #catalogName/>
-                  </div>
-  
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="catalogType" [value]="catalog.catalogType" #catalogType/>
-                  </div>
-  
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="material" [value]="catalog.material" #material/>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-  
-            <div class="col-md-4 mx-auto">
-  
-              <div class="container-fluid">
-                <div class="row" >
-  
-  
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="capacity" [value]="catalog.capacity" #capacity/>
-                   
-                  </div>
-  
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="catalogDescription" [value]="catalog.catalogDescription" #catalogDescription/>
-                   
-                  </div>
-  
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="work" [value]="catalog.work" #work/>
-                   
-                  </div>
-  
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-md-4 mx-auto">
-  
-              <div class="container-fluid">
-                <div class="row">
-  
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="dispatch" [value]="catalog.dispatch" #dispatch/>
-                  </div>
-  
-                  <div class="col-md-4 form-group">
-                      <input class="form-control" type="text" formControlName="imageType" [value]="catalog.imageType" #imageType/>
-                  </div>
-  
-                  <div class="col-md-2">
-                    <input type="button" class="btn btn-success btn-block" value="update" (click)="edit(editCatalogForm,catalogID,catalogName,catalogType,material,capacity,catalogDescription,work,dispatch,imageType)" />
-                  </div>
-
-                  <div class="col-md-2">
-                      <input type="button" class="btn btn-danger btn-block" value="delete" (click)="del(editCatalogForm,catalogID)" />
-                    </div>
-  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-
-
     </div>
+
   </div>
 </form>
