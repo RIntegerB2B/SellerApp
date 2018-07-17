@@ -1,7 +1,7 @@
 export class Delete {
-    _id: Number;
+    _id: string;
     constructor(
-        _id: Number,
+        _id: string,
     ) {
         this._id = _id;
     }

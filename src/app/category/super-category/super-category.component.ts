@@ -85,45 +85,13 @@ export class SuperCategoryComponent implements OnInit {
 
 
 
-  edit(superCategoryForm: FormGroup, superCatId: any, superCatName: any, superCatDesc: any) {
-    this.showEdit = !this.showEdit;
-    console.log(superCatId.value);
-    this.showDetails = true;
-    this.newModel = new Edit(
-      superCatId.value,
-      superCatName.value,
-      superCatDesc.value
-    );
 
-
-    superCategoryForm.reset()
-
-    this.categoryService.editCategory(this.newModel).subscribe(data => {
-
-
-      this.superCategories = data
-
-      console.log(this.superCategories);
-
-    }, error => {
-      console.log(error);
-    });
-
-  }
-
-
-
-
-  delete(superCategoryForm: FormGroup, superCatId: any) {
-    this.showEdit = !this.showEdit;
-
-    this.showDetails = true;
+  delete(superCategoryForm: FormGroup, cat: SuperCategory) {
+    cat.editing = false;
     this.deleteModel = new Delete(
-      superCatId.value,
-
-
+      cat._id
     );
-    superCategoryForm.reset()
+    superCategoryForm.reset();
 
     this.categoryService.deleteCategory(this.deleteModel).subscribe(data => {
       this.superCategories = data

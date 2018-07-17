@@ -54,7 +54,7 @@
           </div>
           <!--data-->
 
-          <div  *ngFor="let cat of superCategories">
+          <div *ngFor="let cat of superCategories">
             <div class="row gridRow" *ngIf="!cat.editing">
               <div class="col-sm-12  display-none-large">
                 <label class="gridLabel">Category Name:</label>
@@ -86,17 +86,17 @@
               <div class="col-md-4 col-sm-12 form-group">
                 <input class="form-control" type="text" formControlName="uDesc" [value]="cat.categoryDescription" #superCatDesc/>
               </div>
-<div class="row">
-              <div class="col-md-4 col-sm-4 form-group">
-                <input type="button" class="btn btn-success" value="Update" (click)="edit(superCategoryForm, superCatId,superCatName,superCatDesc)"
-                />
-              </div>
+              <div class="row">
+                <div class="col-md-4 col-sm-4 form-group">
+                  <input type="button" class="btn btn-success" value="Update" (click)="editGridRow(cat)"
+                  />
+                </div>
 
-              <div class="col-md-4 col-sm-4 form-group">
-                <input type="button" class="btn btn-danger" value="Delete" (click)="delete(superCategoryForm, superCatId)" />
-              </div>
+                <div class="col-md-4 col-sm-4 form-group">
+                  <input type="button" class="btn btn-danger" value="Delete" (click)="delete(superCategoryForm, cat)" />
+                </div>
 
-              <div class="col-md-4 col-sm-4 form-group">
+                <div class="col-md-4 col-sm-4 form-group">
                   <input type="button" class="btn btnPink" value="Cancel" (click)="cancel(cat)" />
                 </div>
               </div>
