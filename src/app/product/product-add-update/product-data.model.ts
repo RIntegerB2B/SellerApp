@@ -1,5 +1,4 @@
-export class Product {
-    _id: string;
+export class ProductData {
     productName: string;
     price: Number;
     sizeDescription: string;
@@ -11,7 +10,6 @@ export class Product {
     watsAppDesc: string;
     imageType: string;
     constructor(
-        _id: string,
         productName: string,
         price: Number,
         sizeDescription: string,
@@ -23,7 +21,6 @@ export class Product {
         watsAppDesc: string,
         imageType: string
     ) {
-        this._id = _id;
         this.productName = productName;
         this.price = price;
         this.sizeDescription = sizeDescription;

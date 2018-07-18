@@ -1,8 +1,9 @@
-<form [formGroup]="productForm" style="padding-top:60px" (ngSubmit)="productSave(productForm ,selectElem.value)" novalidate>
+<form [formGroup]="productForm" style="padding-top:60px"  novalidate>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6  mx-auto">
 
+     
           <div class="form-group">
               <select #selectElem (change)="setNewUser(selectElem.value)"  class="hideLabel form-control" >
                 <option>Select Catalog Name</option>
@@ -11,6 +12,9 @@
                 </option>
             </select>
                </div>  
+              
+
+               
 
         <div class="form-group">
           <div class="textContainer">
@@ -139,10 +143,12 @@
             <div [hidden]="!productForm.get('imageType').errors.required">Please enter Image Type</div>
           </div>
         </div>
-        <input type="submit" class="btn btnPink btn-block" value="Save" [disabled]='!productForm.valid'/>
+        <!-- <input type="text" placeholder="id" class="form-control required appTextBox" required formControlName="id" /> -->
+        <input type="text"  hidden  placeholder="Catalog Id" class="form-control required appTextBox" required formControlName="catalogId" #catalogId/>
+        <div *ngIf="!showUpdate"><input type="submit" class="btn btnPink btn-block" value="Save" (click)="productSave(productForm ,selectElem.value)" /></div>
+        <div *ngIf="showUpdate"><input type="submit" class="btn btnPink btn-block" value="Update" (click)="productUpdate(productForm,selectElem.value,catalogId.value)" [disabled]='!productForm.valid'/></div>
       </div>
-
-
+     
     </div>
 
   </div>

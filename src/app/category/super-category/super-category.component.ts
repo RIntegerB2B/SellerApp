@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import { SuperCategory } from './super-category.model';
 import { CategoryService } from '../category.service';
-import { Edit } from '../super-category/edit.model'
-import { Delete } from '../super-category/delete-model'
+import { Edit } from '../super-category/edit.model';
+import { Delete } from '../super-category/delete-model';
 
 @Component({
   selector: 'app-super-category',
@@ -15,12 +15,12 @@ import { Delete } from '../super-category/delete-model'
 export class SuperCategoryComponent implements OnInit {
 
   superCategories: SuperCategory[] = [];
-
+  res;
   superCategoryForm: FormGroup;
   newModel: Edit;
   userModel: SuperCategory;
   deleteModel: Delete;
-  showDetails: boolean = true;
+  showDetails: Boolean = true;
   showEdit: boolean;
 
 
@@ -30,7 +30,7 @@ export class SuperCategoryComponent implements OnInit {
   ngOnInit() {
     this.navHeaderService.hideMenuTransparent();
     this.createForm();
-    this.category()
+    this.category();
 
   }
 
@@ -38,7 +38,7 @@ export class SuperCategoryComponent implements OnInit {
     this.superCategoryForm = this.fb.group({
       categoryName: ['', Validators.required],
       categoryDescription: ['', Validators.required],
-      uName: [], //code added
+      uName: [],
       uDesc: [],
       _id: []
 
@@ -52,7 +52,7 @@ export class SuperCategoryComponent implements OnInit {
   }
 
   editGridRow(cat) {
-    this.superCategories.map(cat => {
+    this.superCategories.map(category => {
       cat.editing = false;
     });
     cat.editing = true;
@@ -70,12 +70,11 @@ export class SuperCategoryComponent implements OnInit {
       superCategoryForm.controls.categoryDescription.value
     );
 
-    superCategoryForm.reset()
+    superCategoryForm.reset();
     this.categoryService.addCat(this.userModel).subscribe(data => {
-      var res = JSON.parse(data._body)
-      this.superCategories.push(res);
+      this.res = JSON.parse(data._body);
+      this.superCategories.push( this.res );
 
-      console.log(res)
       console.log(this.superCategories);
 
     }, error => {
@@ -83,7 +82,18 @@ export class SuperCategoryComponent implements OnInit {
     });
   }
 
-
+  update(superCategoryForm: FormGroup, cat: any, superCatName: any , superCatDesc: any) {
+    this.newModel = new Edit(
+      cat,
+     superCatName,
+     superCatDesc
+    );
+    this.categoryService.editCategory(this.newModel).subscribe(data => {
+      this.superCategories = data;
+    }, error => {
+      console.log(error);
+    });
+  }
 
 
   delete(superCategoryForm: FormGroup, cat: SuperCategory) {
@@ -94,15 +104,12 @@ export class SuperCategoryComponent implements OnInit {
     superCategoryForm.reset();
 
     this.categoryService.deleteCategory(this.deleteModel).subscribe(data => {
-      this.superCategories = data
+      this.superCategories = data;
     }, error => {
       console.log(error);
     });
 
   }
-
-
-
 
   category() {
 
@@ -110,7 +117,7 @@ export class SuperCategoryComponent implements OnInit {
 
       this.superCategories = name;
 
-      console.log(name)
+      console.log(name);
 
     }, error => {
       console.log(error);

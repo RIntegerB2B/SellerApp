@@ -14,12 +14,22 @@ import {Product} from './product.model';
 export class ProductAddUpdateComponent implements OnInit {
 
   productForm: FormGroup;
-Catalogs: CatalogDetail[] = [];
+Catalogs: CatalogDetail ;
 productModel: Product;
+catalogId;
+productId;
+showUpdate: Boolean;
+id;
+
 
   constructor(private fb: FormBuilder,
     private productService: ProductService, private navHeaderService: NavHeaderService,
     private activatedRoute: ActivatedRoute) {
+      this.catalogId = this.activatedRoute.snapshot.paramMap.get('id') ;
+      this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
+    /*  this.id = this.catalogId; */
+      console.log(this.catalogId);
+      console.log(this.productId);
      }
 
 
@@ -27,7 +37,14 @@ productModel: Product;
     this.catalog();
     this.navHeaderService.hideMenuTransparent();
 this.createForm();
+if (this.catalogId) {
+  if (this.productId) {
+ this.getCatalog(this.catalogId , this.productId);
   }
+}
+  }
+   /*  let cat = this.activatedRoute.paramMap.get('id') ; */
+
 
   createForm() {
     this.productForm = this.fb.group({
@@ -40,8 +57,8 @@ this.createForm();
       cod: ['', Validators.required],
       dispatchDesc: ['', Validators.required],
       watsAppDesc: ['', Validators.required],
-      imageType: ['', Validators.required]
-
+      imageType: ['', Validators.required],
+      catalogId: ['']
     });
 
   }
@@ -73,7 +90,7 @@ productSave(productForm: FormGroup, id: any) {
     productForm.controls.cod.value,
     productForm.controls.dispatchDesc.value,
     productForm.controls.watsAppDesc.value,
-    productForm.controls.imageType.value
+    productForm.controls.imageType.value,
   );
 console.log(this.productModel);
 
@@ -81,6 +98,50 @@ console.log(this.productModel);
   this.productForm.reset();
 
   this.productService.addProduct(this.productModel).subscribe(data => {
+    console.log(data);
+  });
+}
+
+
+getCatalog(id, productId) {
+  this.showUpdate = true;
+  this.productService.getProduct(id, productId).subscribe(data => {
+    this.productModel = data;
+    this.productForm.setValue({
+      catalogId: this.productModel._id,
+      productName: this.productModel.productName,
+      price: this.productModel.price,
+      sizeDescription: this.productModel.sizeDescription,
+      productTypeDesc: this.productModel.productTypeDesc,
+      size: this.productModel.size,
+      productDescription: this.productModel.productDescription,
+      cod: this.productModel.cod,
+      dispatchDesc: this.productModel.dispatchDesc,
+      watsAppDesc: this.productModel.watsAppDesc,
+      imageType: this.productModel.imageType
+    }
+    );
+    console.log(data);
+  });
+}
+
+
+productUpdate(productForm: FormGroup, selectElem: any, catalogId: any) {
+  this.productModel = new Product(
+    catalogId,
+    productForm.controls.productName.value,
+    productForm.controls.price.value,
+    productForm.controls.sizeDescription.value,
+    productForm.controls.productTypeDesc.value,
+    productForm.controls.size.value,
+   productForm.controls.productDescription.value,
+    productForm.controls.cod.value,
+    productForm.controls.dispatchDesc.value,
+    productForm.controls.watsAppDesc.value,
+    productForm.controls.imageType.value
+  );
+  this.productForm.reset();
+this.productService.updateProduct(selectElem, this.productModel).subscribe(data => {
     console.log(data);
   });
 }
