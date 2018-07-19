@@ -4,9 +4,9 @@ import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 /* import { CatalogModel } from './catalog.model'; */
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {CatalogData} from '././catalog.model';
-import {CatalogUpdateModel} from './catalog-update.model';
-
+import { CatalogData } from '././catalog.model';
+import { CatalogUpdateModel } from './catalog-update.model';
+import { CatalogImageData } from './catalogImageData.model';
 
 
 @Component({
@@ -23,6 +23,12 @@ export class CatalogAddUpdateComponent implements OnInit {
   catalogImageBlob: Blob;
   loadedCatalogModel: CatalogModel = new CatalogModel(); */
 
+  catalogImageData: CatalogImageData = new CatalogImageData();
+  fileToUpload: File = null;
+  reader: FileReader = new FileReader();
+  catalogImageBlob: Blob;
+  catalogImageBytes: Uint8Array;
+
   catalogId: string;
   catalogModel: CatalogData;
   loadedCatalogModel: CatalogData;
@@ -30,20 +36,24 @@ export class CatalogAddUpdateComponent implements OnInit {
   showEdit: boolean;
   catalogForm: FormGroup;
   showUpdate: boolean;
+  catalogImageUi: string;
+  catalogImageText: string;
+  loadedImageText: string;
 
   constructor(private fb: FormBuilder,
     private productService: ProductService, private navHeaderService: NavHeaderService,
     private activatedRoute: ActivatedRoute) {
-      this.catalogId = this.activatedRoute.snapshot.paramMap.get('id') ;
-      console.log(this.catalogId);
-    }
+    this.catalogId = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.catalogId);
+  }
 
   ngOnInit() {
     this.createForm();
     this.navHeaderService.hideMenuTransparent();
     if (this.catalogId) {
       this.getCatalog(this.catalogId);
-  }}
+    }
+  }
 
   createForm() {
     this.catalogForm = this.fb.group({
@@ -61,41 +71,41 @@ export class CatalogAddUpdateComponent implements OnInit {
 
   getCatalog(catId) {
     this.showUpdate = true;
-      this.productService.getCatalog(this.catalogId).subscribe(data => {
-        this.loadedCatalogModel = data;
-        console.log(this.loadedCatalogModel);
-        this.catalogForm.setValue({
-          catalogName: this.loadedCatalogModel.catalogName,
-          catalogType: this.loadedCatalogModel.catalogType,
-          material : this.loadedCatalogModel.material,
-          capacity : this.loadedCatalogModel.capacity,
-          catalogDescription: this.loadedCatalogModel.catalogDescription,
-          work: this.loadedCatalogModel.work,
-          dispatch : this.loadedCatalogModel.dispatch,
-          imageType : this.loadedCatalogModel.imageType,
-           catalogId : catId
-        });
-      }, error => {
-        console.log(error);
+    this.productService.getCatalog(this.catalogId).subscribe(data => {
+      this.loadedCatalogModel = data;
+      console.log(this.loadedCatalogModel);
+      this.catalogForm.setValue({
+        catalogName: this.loadedCatalogModel.catalogName,
+        catalogType: this.loadedCatalogModel.catalogType,
+        material: this.loadedCatalogModel.material,
+        capacity: this.loadedCatalogModel.capacity,
+        catalogDescription: this.loadedCatalogModel.catalogDescription,
+        work: this.loadedCatalogModel.work,
+        dispatch: this.loadedCatalogModel.dispatch,
+        imageType: this.loadedCatalogModel.imageType,
+        catalogId: catId
       });
+    }, error => {
+      console.log(error);
+    });
   }
 
-  /* handleFileInput(files: FileList, loadedImage) {
+  handleFileInput(files: FileList, loadedImage) {
     this.fileToUpload = files.item(0);
-    this.fileToUpload = files[0];
+    this.catalogImageData.catalogImage = this.fileToUpload = files[0];
     this.reader.readAsArrayBuffer(this.fileToUpload);
     this.reader.onload = () => {
       const fileResult = this.reader.result;
-      const bytes = new Uint8Array(fileResult);
-      this.catalogImageBlob = new Blob([bytes.buffer]);
+      this.catalogImageBytes = new Uint8Array(fileResult);
+      this.catalogImageBlob = new Blob([this.catalogImageBytes.buffer]);
       const reader1 = new FileReader();
       reader1.readAsDataURL(this.catalogImageBlob);
-      reader1.onload = function () {
+      reader1.onload = (e: Event & { target: { result: string } }) => {
         loadedImage.src = reader1.result;
       };
-
     };
-  } */
+    this.uploadImage();
+  }
 
 
   toggleEdit() {
@@ -113,8 +123,10 @@ export class CatalogAddUpdateComponent implements OnInit {
       catalogForm.controls.catalogDescription.value,
       catalogForm.controls.work.value,
       catalogForm.controls.dispatch.value,
-      catalogForm.controls.imageType.value
+      catalogForm.controls.imageType.value,
+
     );
+    this.catalogModel.catalogImageName = this.catalogImageData.catalogImage.name;
     this.catalogForm.reset();
 
     this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
@@ -124,8 +136,8 @@ export class CatalogAddUpdateComponent implements OnInit {
 
 
   edit(editCatalogForm: FormGroup, catalogId: any,
-  catalogName: any, catalogType: any, material: any, capacity: any,
-  catalogDescription: any, work: any, dispatch: any, imageType: any)  {
+    catalogName: any, catalogType: any, material: any, capacity: any,
+    catalogDescription: any, work: any, dispatch: any, imageType: any) {
     this.updateModel = new CatalogUpdateModel(
       catalogId.value,
       catalogName.value,
@@ -137,11 +149,18 @@ export class CatalogAddUpdateComponent implements OnInit {
       dispatch.value,
       imageType.value
     );
-this.catalogForm.reset();
+    this.catalogForm.reset();
 
     this.productService.editCatalog(this.updateModel).subscribe(data => {
-     }, error => {
-       console.log(error);
-     });
-    }
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  uploadImage() {
+    this.productService.uploadCatalogImage(this.catalogImageData).subscribe(data => {
+    }, error => {
+      console.log(error);
+    });
+  }
 }

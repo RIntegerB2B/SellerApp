@@ -7,6 +7,9 @@ export class CatalogData {
     work: string;
     dispatch: string;
     imageType: string;
+    catalogImage: string;
+    catalogImageText: string;
+    catalogImageName: string;
 
     constructor(
         catalogName: string,
@@ -27,6 +30,5 @@ export class CatalogData {
         this.work = work;
         this.dispatch = dispatch;
         this.imageType = imageType;
-
     }
 }

@@ -4,14 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AppSetting } from '../config/appSetting';
-import {CatalogModel} from './catalog-add/catalog.model';
-import {CatalogViewModel} from './catalog-view/catalog-view.model';
-import {CatalogData} from './catalog-add-update/catalog.model';
-import { CatalogUpdateModel} from './catalog-add-update/catalog-update.model';
-import {CatalogDelete} from './catalog-view/catalog-delete.model';
-import {CatalogDetail} from './product-add-update/catalog.model';
-import {Product} from './product-add-update/product.model';
-
+import { CatalogModel } from './catalog-add/catalog.model';
+import { CatalogViewModel } from './catalog-view/catalog-view.model';
+import { CatalogData } from './catalog-add-update/catalog.model';
+import { CatalogUpdateModel } from './catalog-add-update/catalog-update.model';
+import { CatalogDelete } from './catalog-view/catalog-delete.model';
+import { CatalogDetail } from './product-add-update/catalog.model';
+import { Product } from './product-add-update/product.model';
+import { CatalogImageData } from './catalog-add-update/catalogImageData.model';
 
 @Injectable()
 export class ProductService {
@@ -52,31 +52,39 @@ export class ProductService {
 
   editCatalog(edit: CatalogUpdateModel): Observable<any> {
     const Caturl = 'catalog/';
-    const url: string = this.serviceUrl + Caturl + edit._id;  return this.httpClient.put<CatalogData[]>(url, edit);
+    const url: string = this.serviceUrl + Caturl + edit._id; return this.httpClient.put<CatalogData[]>(url, edit);
   }
 
 
   deleteCatalog(catalogDelete: CatalogDelete): Observable<any> {
     const Caturl = 'catalog/';
-    const url: string = this.serviceUrl + Caturl + catalogDelete._id ;
+    const url: string = this.serviceUrl + Caturl + catalogDelete._id;
     return this.httpClient.delete<CatalogData[]>(url);
   }
 
   getCatalog(id): Observable<any> {
     const Caturl = 'catalog/';
-    const url: string = this.serviceUrl + Caturl + id ;
+    const url: string = this.serviceUrl + Caturl + id;
     return this.httpClient.get<CatalogData[]>(url);
   }
 
   findCatalog(): Observable<any> {
     const Caturl = 'catalog/';
-    const url: string = this.serviceUrl + Caturl ;
+    const url: string = this.serviceUrl + Caturl;
     return this.httpClient.get<CatalogDetail[]>(url);
   }
 
   addProduct(product: Product): Observable<Product> {
     const productUrl = 'catalog/product';
     const url: string = this.serviceUrl + productUrl;
-    return this.httpClient.post<Product>(url, product );
+    return this.httpClient.post<Product>(url, product);
+  }
+
+  uploadCatalogImage(catalogImageData: CatalogImageData): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append('file', catalogImageData.catalogImage, catalogImageData.catalogImage.name);
+    const productUrl = 'catalogImage';
+    const url: string = this.serviceUrl + productUrl;
+    return this.httpClient.post<boolean>(url, formData);
   }
 }

@@ -113,12 +113,13 @@
 
       <div class="col-md-3 form-group">
         <div>
-          <img #loadedImage style="width: 180px; height: 345px;" />
+          <img  [src] ="this.loadedCatalogModel?.catalogImageName" #loadedImage style="width: 180px; height: 345px;" />
         </div>
-        <!-- <div>
-          <input type="file" formControlName="catalogImage" class="btn btnPink btn-block" id="file" (change)="handleFileInput($event.target.files, loadedImage)">
-        </div> -->
+         <div>
+          <input type="file" name="file" class="btn btnPink btn-block" id="file" (change)="handleFileInput($event.target.files, loadedImage)">
+        </div> 
       </div>
+      <input type="button" class="btn btnPink btn-block" value="Upload"  (click)="uploadImage()"/>
     </div>
 
   </div>

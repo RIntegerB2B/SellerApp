@@ -51,8 +51,8 @@ export class CatalogAddComponent implements OnInit {
     )
     this.catalogForm.reset()
 
-    this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
+  /*  this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
       console.log(createdCatalog);
-    });
+    }); */
   }
 }
