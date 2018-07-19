@@ -10,8 +10,8 @@ import { MainCategoryComponent } from './category/main-category/main-category.co
 import { CatalogAddUpdateComponent } from './product/catalog-add-update/catalog-add-update.component';
 import {SubCategoryComponent} from './category/sub-category/sub-category.component';
 import {CatalogViewComponent} from './product/catalog-view/catalog-view.component';
-import {ProductAddUpdateComponent} from './product/product-add-update/product-add-update.component'
-
+import {ProductAddUpdateComponent} from './product/product-add-update/product-add-update.component';
+import {ProductViewComponent} from './product/product-view/product-view.component';
 
 const routes: Routes = [
     { path: 'AddCategory', component: AddCategoryComponent },
@@ -24,14 +24,14 @@ const routes: Routes = [
     { path: 'SuperCategory', component: SuperCategoryComponent },
     { path: 'MainCategory', component: MainCategoryComponent },
     { path: 'Catalog', component: CatalogAddUpdateComponent },
-    {path:'Catalog/:id',component:CatalogAddUpdateComponent},
-    {path:'CatalogView',component: CatalogViewComponent },
-    {path:'Product',component:ProductAddUpdateComponent},
+    {path: 'Catalog/:id', component: CatalogAddUpdateComponent},
+    {path: 'CatalogView', component: CatalogViewComponent },
+    {path: 'Product', component: ProductAddUpdateComponent},
+    {path: 'ProductView' , component: ProductViewComponent},
+    {path: 'Catalog/:id/Product/:productId' , component: ProductAddUpdateComponent},
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
-    { path: '**', redirectTo: 'Home', pathMatch: 'full' },
-   
+    { path: '**', redirectTo: 'Home', pathMatch: 'full' }
 
-    
 ];
 
 export const Routing = RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' });

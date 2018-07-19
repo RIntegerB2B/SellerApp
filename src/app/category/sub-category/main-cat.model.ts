@@ -1,4 +1,4 @@
-import { MainCatOnSub } from "./mai-cat-detail.model";
+import { MainCatOnSub } from './mai-cat-detail.model';
 export class MainCatDetail {
     _id: string;
     categoryName: string;

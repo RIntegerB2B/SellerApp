@@ -1,21 +1,19 @@
 import { MainCatData } from './main-cat-data.model';
 
 export class CategoryDetail {
-    _id:string;
-    categoryName:string;
-    categoryDescription:string;
-    mainCategory : MainCatData;
+    _id: string;
+    categoryName: string;
+    categoryDescription: string;
+    mainCategory: MainCatData;
     constructor(
-        _id:string,
+        _id: string,
         categoryName: string,
-        categoryDescription:string,
+        categoryDescription: string,
         mainCategory: MainCatData
-       ) 
-       {
-           this._id=_id;
+       ) {
+           this._id = _id;
         this.categoryName = categoryName;
-        this.categoryDescription=categoryDescription;
-        this.mainCategory=mainCategory;
-        
+        this.categoryDescription = categoryDescription;
+        this.mainCategory = mainCategory;
     }
 }

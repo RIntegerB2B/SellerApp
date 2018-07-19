@@ -12,6 +12,9 @@ import { CatalogDelete } from './catalog-view/catalog-delete.model';
 import { CatalogDetail } from './product-add-update/catalog.model';
 import { Product } from './product-add-update/product.model';
 import { CatalogImageData } from './catalog-add-update/catalogImageData.model';
+import {Catalogs} from './product-view/catalog.model';
+
+
 
 @Injectable()
 export class ProductService {
@@ -86,5 +89,32 @@ export class ProductService {
     const productUrl = 'catalogImage';
     const url: string = this.serviceUrl + productUrl;
     return this.httpClient.post<boolean>(url, formData);
+  }
+  getProductById(id): Observable<any> {
+    const catUrl = 'catalog/';
+    const productUrl = '/product';
+    const url: string = this.serviceUrl + catUrl + id + productUrl;
+    return this.httpClient.get<Catalogs[]>(url);
+  }
+
+  deleteProduct(id, productId): Observable<Catalogs[]> {
+    const catUrl = 'catalog/';
+    const productUrl = '/product/';
+    const url: string = this.serviceUrl + catUrl + id + productUrl + productId;
+    return this.httpClient.delete<Catalogs[]>(url);
+  }
+
+  getProduct(id, productId): Observable<any> {
+    const Caturl = 'catalog/';
+    const productUrl = '/product/';
+    const url: string = this.serviceUrl + Caturl +  id + productUrl + productId;
+    return this.httpClient.get<CatalogData[]>(url);
+  }
+
+  updateProduct(id, edit: Product): Observable<any> {
+    const Caturl = 'catalog/';
+    const productUrl = '/product/';
+    const url: string = this.serviceUrl + Caturl + id + productUrl + edit._id;
+    return this.httpClient.put<Product[]>(url, edit);
   }
 }

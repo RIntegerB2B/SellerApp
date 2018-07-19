@@ -1,14 +1,12 @@
 export class SuperCategoryName {
-    _id:Number;
+    _id: Number;
     categoryName: string;
     constructor(
-        _id:Number,
-        categoryName: string,
-       
-       ) 
-       {
-           this._id=_id;
+        _id: Number,
+        categoryName: string
+       )
+    {
+           this._id = _id;
         this.categoryName = categoryName;
-        
     }
 }
