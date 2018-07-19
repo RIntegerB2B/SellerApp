@@ -104,7 +104,7 @@ export class CatalogAddUpdateComponent implements OnInit {
         loadedImage.src = reader1.result;
       };
     };
-    this.uploadImage();
+
   }
 
 
@@ -132,6 +132,7 @@ export class CatalogAddUpdateComponent implements OnInit {
     this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
       console.log(createdCatalog);
     });
+    this.uploadImage();
   }
 
 
@@ -149,12 +150,14 @@ export class CatalogAddUpdateComponent implements OnInit {
       dispatch.value,
       imageType.value
     );
+    this.updateModel.catalogImageName = this.catalogImageData.catalogImage.name;
     this.catalogForm.reset();
 
     this.productService.editCatalog(this.updateModel).subscribe(data => {
     }, error => {
       console.log(error);
     });
+    this.uploadImage();
   }
 
   uploadImage() {

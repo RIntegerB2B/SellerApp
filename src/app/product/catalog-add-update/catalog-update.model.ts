@@ -8,6 +8,7 @@ export class CatalogUpdateModel {
     work: string;
     dispatch: string;
     imageType: string;
+    catalogImageName: string;
 
     constructor(
        _id: string,
