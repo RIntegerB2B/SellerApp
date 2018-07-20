@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="container">
-          <div class="row" *ngFor="let catalog of Catalogs.products">
+          <div class="row" *ngFor="let catalog of Catalogs?.products">
             <input class="form-control" type="text" hidden formControlName="productId" [value]="catalog._id" #productId/>
             <div class="col-md-3 form-group">
               {{catalog.productName}}

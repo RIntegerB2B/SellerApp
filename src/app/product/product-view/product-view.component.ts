@@ -14,7 +14,7 @@ import { Catalogs } from './catalog.model';
 })
 export class ProductViewComponent implements OnInit {
   catalogData: CatalogName[] = [];
-  Catalogs: Catalogs[] = [];
+  Catalogs: Catalogs;
   headerCatSelectedData;
   viewProductForm: FormGroup;
   id;

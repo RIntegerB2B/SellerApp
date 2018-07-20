@@ -29,7 +29,7 @@ export class MainCategoryComponent implements OnInit {
   headerCatSelectedData;
   headCatSelected;
   showMaincat: Boolean ;
-  mainCat: MainCat[] = [];
+  mainCat: MainCat;
   catUpdateModel: SuperCatID;
   mainCatUpdateModel: MainCatUpdate;
   supCatId;

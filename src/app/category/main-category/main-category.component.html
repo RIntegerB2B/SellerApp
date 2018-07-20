@@ -78,7 +78,7 @@
 
             </div> 
 
-         <div *ngFor="let cat of mainCat.mainCategory">
+         <div *ngFor="let cat of mainCat?.mainCategory">
             <div class="row gridRow" *ngIf="!cat.editing">
               <div class="col-sm-12  display-none-large">
                 <label class="gridLabel">Category Name:</label>

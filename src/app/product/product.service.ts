@@ -99,11 +99,11 @@ export class ProductService {
     return this.httpClient.get<Catalogs[]>(url);
   }
 
-  deleteProduct(id, productId): Observable<Catalogs[]> {
+  deleteProduct(id, productId): Observable<Catalogs> {
     const catUrl = 'catalog/';
     const productUrl = '/product/';
     const url: string = this.serviceUrl + catUrl + id + productUrl + productId;
-    return this.httpClient.delete<Catalogs[]>(url);
+    return this.httpClient.delete<Catalogs>(url);
   }
 
   getProduct(id, productId): Observable<any> {
