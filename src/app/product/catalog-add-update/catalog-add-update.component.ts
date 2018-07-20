@@ -140,15 +140,15 @@ export class CatalogAddUpdateComponent implements OnInit {
     catalogName: any, catalogType: any, material: any, capacity: any,
     catalogDescription: any, work: any, dispatch: any, imageType: any) {
     this.updateModel = new CatalogUpdateModel(
-      catalogId.value,
-      catalogName.value,
-      catalogType.value,
-      material.value,
-      capacity.value,
-      catalogDescription.value,
-      work.value,
-      dispatch.value,
-      imageType.value
+      catalogId,
+      catalogName,
+      catalogType,
+      material,
+      capacity,
+      catalogDescription,
+      work,
+      dispatch,
+      imageType
     );
     this.updateModel.catalogImageName = this.catalogImageData.catalogImage.name;
     this.catalogForm.reset();

@@ -11,7 +11,7 @@ export class CatalogUpdateModel {
     catalogImageName: string;
 
     constructor(
-       _id: string,
+        _id: string,
         catalogName: string,
         catalogType: string,
         material: string,

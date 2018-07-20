@@ -7,18 +7,24 @@
         <div class="container-fluid">
           <div class="row">
 
-            <div class="col-md-3">
+              <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Catalog</label>
+                  </div>
+                </div>
+
+            <div class="col-md-2">
               <div class="form-group">
                 <label>Catalog Name</label>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label>Category type</label>
               </div>
             </div>
 
-            <div class="col-md-3 ">
+            <div class="col-md-2 ">
               <div class="form-group">
                 <label>Material</label>
               </div>
@@ -34,31 +40,38 @@
           </div>
         </div>
         <div class="container">
+           
+               
 
           <div class="row" *ngFor="let catalog of catalogs">
- 
- 
-            <input class="form-control" type="text"  hidden  formControlName="catalogId"  [value]="catalog._id" #catalogID/> 
-            <div class="col-md-3 form-group"> 
+
+              <!-- <div class="col-md-3 form-group">
+                  <img [src]="this.catalog?.catalogImageName" style="width: 180px; height: 145px;" />
+                </div> -->
+
+            <input class="form-control" type="text" hidden formControlName="catalogId" [value]="catalog._id" #catalogID/>
+            
+
+            <div class="col-md-2 form-group">
               {{catalog.catalogName}}
             </div>
 
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
               {{catalog.catalogType}}
             </div>
 
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
               {{catalog.material}}
             </div>
 
             <div class="col-md-1 form-group">
-              
-                <button class="btn btn-success pull-right"  (click)="update(viewCatalogForm,catalogID)" >Update</button>
-              
+
+              <button class="btn btn-success pull-right" (click)="update(viewCatalogForm,catalogID)">Update</button>
+
             </div>
 
             <div class="col-md-1 form-group">
-                 <button class="btn btn-danger pull-right" (click)="catalogDelete(viewCatalogForm,catalogID)">Delete</button>
+              <button class="btn btn-danger pull-right" (click)="catalogDelete(viewCatalogForm,catalogID)">Delete</button>
             </div>
 
           </div>

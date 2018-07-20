@@ -27,6 +27,7 @@ import { SubCategoryData } from './sub-category/sub-cat-data.model';
 import { MainCategoryData } from './sub-category/main-cat-data.model';
 import { SubCatEdit } from './sub-category/edit.model';
 import { SubCatDelete } from './sub-category/delete.model';
+import {MainCatUpdate} from './main-category/cat-update.model';
 
 
 const httpOptions = {
@@ -147,10 +148,10 @@ export class CategoryService {
 
   }
 
-  editMainCategory( edit: MainCatDetail): Observable<any> {
+  editMainCategory(id, edit: MainCatUpdate): Observable<any> {
     const Caturl = 'category/';
     const mainurl = '/mainCategory/';
-    const url: string = this.serviceUrl + Caturl  + mainurl + edit._id;
+    const url: string = this.serviceUrl + Caturl  + id + mainurl + edit._id;
     return this.httpClient.put<CategoryEdit>(url, edit, httpOptions);
   }
 

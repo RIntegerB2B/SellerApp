@@ -4,8 +4,8 @@ import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {CatalogName} from './catalog-name.model';
-import {Catalogs} from './catalog.model';
+import { CatalogName } from './catalog-name.model';
+import { Catalogs } from './catalog.model';
 
 @Component({
   selector: 'app-product-view',
@@ -13,7 +13,7 @@ import {Catalogs} from './catalog.model';
   styleUrls: ['./product-view.component.css']
 })
 export class ProductViewComponent implements OnInit {
-catalogData: CatalogName[] = [];
+  catalogData: CatalogName[] = [];
   Catalogs: Catalogs[] = [];
   headerCatSelectedData;
   viewProductForm: FormGroup;
@@ -46,29 +46,29 @@ catalogData: CatalogName[] = [];
 
   setCatalog(id) {
     console.log(id);
-  this.headerCatSelectedData = id;
-  this.productService.getProductById(this.headerCatSelectedData).subscribe(data => {
-    this.Catalogs = data;
-    console.log(this.Catalogs);
-  }, error => {
-    console.log(error);
-  });
-}
+    this.headerCatSelectedData = id;
+    this.productService.getProductById(this.headerCatSelectedData).subscribe(data => {
+      this.Catalogs = data;
+      console.log(this.Catalogs);
+    }, error => {
+      console.log(error);
+    });
+  }
 
-productDelete(viewProductForm: FormGroup, selectElem: any, productId: any) {
+  productDelete(viewProductForm: FormGroup, selectElem: any, productId: any) {
 
 
-  this.productService.deleteProduct(selectElem.value, productId.value).subscribe(data => {
-    this.Catalogs = data;
-    console.log(this.Catalogs);
-  }, error => {
-    console.log(error);
-  });
-}
+    this.productService.deleteProduct(selectElem.value, productId.value).subscribe(data => {
+      this.Catalogs = data;
+      console.log(this.Catalogs);
+    }, error => {
+      console.log(error);
+    });
+  }
 
-productUpdate(viewProductForm: FormGroup, selectElem: any, productId: any) {
-  this.id = selectElem.value;
-  this.productId = productId.value;
-  this.router.navigate(['/Catalog', this.id , 'Product' , this.productId] );
-}
+  productUpdate(viewProductForm: FormGroup, selectElem: any, productId: any) {
+    this.id = selectElem.value;
+    this.productId = productId.value;
+    this.router.navigate(['/Catalog', this.id, 'Product', this.productId]);
+  }
 }

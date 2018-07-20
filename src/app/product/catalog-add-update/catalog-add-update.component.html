@@ -1,13 +1,15 @@
-<form [formGroup]="catalogForm" style="padding-top:60px"  novalidate>
+<form [formGroup]="catalogForm" style="padding-top:60px" novalidate>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6  mx-auto">
 
 
-        <input type="text"  hidden placeholder="Catalog Id" class="form-control required appTextBox" required formControlName="catalogId" #catalogId/>
+        <input type="text" hidden placeholder="Catalog Id" class="form-control required appTextBox" required formControlName="catalogId"
+          #catalogId/>
         <div class="form-group">
           <div class="textContainer">
-            <input type="text" placeholder="Catalog Name" class="form-control required appTextBox" required formControlName="catalogName" #catalogName/>
+            <input type="text" placeholder="Catalog Name" class="form-control required appTextBox" required formControlName="catalogName"
+              #catalogName/>
             <span class="appTextBoxSpan">Catalog Name</span>
           </div>
           <div *ngIf="catalogForm.get('catalogName').errors
@@ -18,8 +20,8 @@
 
         <div class="form-group">
           <div class="textContainer">
-            <input type="text" placeholder="Catalog Type" class="form-control required appTextBox" required formControlName="catalogType" #catalogType
-            />
+            <input type="text" placeholder="Catalog Type" class="form-control required appTextBox" required formControlName="catalogType"
+              #catalogType />
             <span class="appTextBoxSpan">Catalog type</span>
           </div>
           <div *ngIf="catalogForm.get('catalogType').errors
@@ -31,7 +33,7 @@
 
         <div class="form-group">
           <div class="textContainer">
-            <input type="text" placeholder="Material" class="form-control required appTextBox" required formControlName="material"  #material/>
+            <input type="text" placeholder="Material" class="form-control required appTextBox" required formControlName="material" #material/>
             <span class="appTextBoxSpan">Material</span>
           </div>
           <div *ngIf="catalogForm.get('material').errors
@@ -55,7 +57,8 @@
 
         <div class="form-group">
           <div class="textContainer">
-            <input type="text" placeholder="Catalog Description" class="form-control required appTextBox" required formControlName="catalogDescription" #catalogDescription/>
+            <input type="text" placeholder="Catalog Description" class="form-control required appTextBox" required formControlName="catalogDescription"
+              #catalogDescription/>
             <span class="appTextBoxSpan">Catalog Description</span>
           </div>
           <div *ngIf="catalogForm.get('catalogDescription').errors
@@ -91,7 +94,8 @@
 
         <div class="form-group">
           <div class="textContainer">
-            <input type="text" placeholder="ImageType" class="form-control required appTextBox" required formControlName="imageType" #imageType/>
+            <input type="text" placeholder="ImageType" class="form-control required appTextBox" required formControlName="imageType"
+              #imageType/>
             <span class="appTextBoxSpan">ImageType</span>
           </div>
           <div *ngIf="catalogForm.get('imageType').errors
@@ -101,23 +105,23 @@
         </div>
 
         <div *ngIf="!showUpdate">
-          <input type="submit" class="btn btnPink btn-block" value="Save"  (click)="catalogSave(catalogForm)"/>
+          <input type="submit" class="btn btnPink btn-block" value="Save" (click)="catalogSave(catalogForm)" />
         </div>
 
         <div *ngIf="showUpdate">
-          <input type="submit" class="btn btnPink btn-block" value="Update"  (click)="edit(editeditCatalogForm, catalogId,
-          catalogName, catalogType, material, capacity,
-          catalogDescription, work, dispatch, imageType)"/>
+          <input type="submit" class="btn btnPink btn-block" value="Update" (click)="edit(editeditCatalogForm, catalogId.value,
+          catalogName.value, catalogType.value, material.value, capacity.value,
+          catalogDescription.value, work.value, dispatch.value, imageType.value)" />
         </div>
       </div>
 
       <div class="col-md-3 form-group">
         <div>
-          <img  [src] ="this.loadedCatalogModel?.catalogImageName" #loadedImage style="width: 180px; height: 345px;" />
+          <img [src]="this.loadedCatalogModel?.catalogImageName" #loadedImage style="width: 180px; height: 345px;" />
         </div>
-         <div>
+        <div>
           <input type="file" name="file" class="btn btnPink btn-block" id="file" (change)="handleFileInput($event.target.files, loadedImage)">
-        </div> 
+        </div>
       </div>
     </div>
 

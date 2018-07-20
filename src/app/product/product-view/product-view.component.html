@@ -1,88 +1,72 @@
 <form [formGroup]="viewProductForm" novalidate style="padding-top:60px">
-    <div class="container-fluid">
-      <div class="row">
-  
-        <div class="col-md-8 mx-auto">
-  
-          <div class="container-fluid">
-  
-            <div class="form-group">
-              <select #selectElem (change)="setCatalog(selectElem.value)" class="hideLabel form-control">
-                <option>Select Catalog Name</option>
-                <option *ngFor="let catalog of catalogData" [value]="catalog._id">
-                  {{catalog.catalogName}}
-                </option>
-              </select>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="container-fluid">
+          <div class="form-group">
+            <select #selectElem (change)="setCatalog(selectElem.value)" class="hideLabel form-control">
+              <option>Select Catalog Name</option>
+              <option *ngFor="let catalog of catalogData" [value]="catalog._id">
+                {{catalog.catalogName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Product Name</label>
+              </div>
             </div>
-  
-            <div class="row">
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Product Name</label>
-                </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Prize</label>
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Prize</label>
-                </div>
+            </div>
+
+            <div class="col-md-3 ">
+              <div class="form-group">
+                <label>Size Description</label>
               </div>
-  
-              <div class="col-md-3 ">
-                <div class="form-group">
-                  <label>Size Description</label>
-                </div>
+            </div>
+
+            <div class="col-md-3 ">
+              <div class="form-group">
+                <label>Edit</label>
               </div>
-  
-              <div class="col-md-3 ">
-                <div class="form-group">
-                  <label>Edit</label>
-                </div>
-              </div>
-  
-  
             </div>
           </div>
-          <div class="container">
-  
-            <div class="row" *ngFor="let catalog of Catalogs.products">
-  
-              
-                <input class="form-control" type="text"   hidden formControlName="productId"  [value]="catalog._id" #productId/>  
-              <div class="col-md-3 form-group">
-                {{catalog.productName}}
-              </div>
-  
-              <div class="col-md-3 form-group">
-                {{catalog.price}}
-              </div>
-  
-              <div class="col-md-3 form-group">
-                {{catalog.sizeDescription}}
-              </div>
-  
-              <div class="col-md-1 form-group">
-  
-                <button class="btn btn-success pull-right" (click)="productUpdate(viewProductForm,selectElem,productId)">Update</button>
-  
-              </div>
-  
-              <div class="col-md-1 form-group">
-                <button class="btn btn-danger pull-right" (click)="productDelete(viewProductForm,selectElem,productId)">Delete</button>
-              </div>
-  
-              <div class="col-md-1 form-group">
-                <a [routerLink]="['/Product']">
-                  <button class="btn btn-danger pull-right">Cancel</button>
-                </a>
-              </div>
-  
+        </div>
+        <div class="container">
+          <div class="row" *ngFor="let catalog of Catalogs.products">
+            <input class="form-control" type="text" hidden formControlName="productId" [value]="catalog._id" #productId/>
+            <div class="col-md-3 form-group">
+              {{catalog.productName}}
             </div>
-  
+
+            <div class="col-md-3 form-group">
+              {{catalog.price}}
+            </div>
+
+            <div class="col-md-3 form-group">
+              {{catalog.sizeDescription}}
+            </div>
+
+            <div class="col-md-1 form-group">
+              <button class="btn btn-success pull-right" (click)="productUpdate(viewProductForm,selectElem,productId)">Update</button>
+            </div>
+
+            <div class="col-md-1 form-group">
+              <button class="btn btn-danger pull-right" (click)="productDelete(viewProductForm,selectElem,productId)">Delete</button>
+            </div>
+            <div class="col-md-1 form-group">
+              <a [routerLink]="['/Product']">
+                <button class="btn btn-danger pull-right">Cancel</button>
+              </a>
+            </div>
           </div>
-  
-  
-  
         </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>

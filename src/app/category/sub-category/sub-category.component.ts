@@ -5,16 +5,16 @@ import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import { CategoryService } from '../category.service';
 import { SuperID } from './sup-cat-id.model';
 import { SuperCatDetail } from './sup-cat-detail.model';
-import { MainCatDetail } from './main-cat.model'
+import { MainCatDetail } from './main-cat.model';
 import { SuperCatIdAndMainCat } from './super-cat-model';
 import { SubCategory } from './sub-cat-detail.model';
 import { MainCatIdAndSub } from './main-cat-id.model';
 import { MainCatView } from './main-cat-view.model';
 import { SuperCatView } from './super-cat-view.model';
-import { MainCategoryData } from './main-cat-data.model'
+import { MainCategoryData } from './main-cat-data.model';
 import { SubCategoryData } from './sub-cat-data.model';
 import { SubCatEdit } from './edit.model';
-import { SubCatDelete } from './delete.model'
+import { SubCatDelete } from './delete.model';
 
 @Component({
   selector: 'app-sub-category',
@@ -63,7 +63,7 @@ export class SubCategoryComponent implements OnInit {
       supID: [''],
       _id: [''],
       name: [''],
-
+      mainCat: [''],
       desc: ['']
     });
 
@@ -99,7 +99,7 @@ export class SubCategoryComponent implements OnInit {
     this.headCatSelected1 = id1;
     console.log(this.headCatSelected1);
 
-    this.mainCategoryIdModel = new MainCatView(this.headCatSelected1)
+    this.mainCategoryIdModel = new MainCatView(this.headCatSelected1);
 
     this.superCategoryIdModel = new SuperCatView(
       this.headCatSelected,
@@ -128,7 +128,13 @@ export class SubCategoryComponent implements OnInit {
     this.showEdit = !this.showEdit;
 
   }
+  editGridRow(cat) {
+    cat.editing = true;
+  }
 
+  cancel(cat) {
+    cat.editing = false;
+  }
   save(subCategoryForm: FormGroup, superCat: any, mainCategory: any) {
     this.showDetails = true;
 
@@ -145,7 +151,7 @@ export class SubCategoryComponent implements OnInit {
     this.superModel = new SuperCatIdAndMainCat(
       superCat,
       this.mainCategoryModel
-    )
+    );
 
     subCategoryForm.reset();
     this.categoryService.addSubCategory(this.superModel).subscribe(data => {
@@ -178,7 +184,7 @@ export class SubCategoryComponent implements OnInit {
   }
 
   delete(subCategoryForm, selectData: any, selectData2: any, subCatId: any) {
-    this.showEdit = false
+    this.showEdit = false;
 
     this.subCatDelete = new SubCatDelete(
       selectData,
@@ -187,8 +193,8 @@ export class SubCategoryComponent implements OnInit {
     );
 
     this.categoryService.deleteSubCategory(this.subCatDelete).subscribe(data => {
-     this.subCategoryData = data
-      console.log(data)
+     this.subCategoryData = data;
+      console.log(data);
 
 
     }, error => {

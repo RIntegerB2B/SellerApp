@@ -10,6 +10,7 @@ export class Product {
     dispatchDesc: string;
     watsAppDesc: string;
     imageType: string;
+    productImageName: string;
     constructor(
         _id: string,
         productName: string,

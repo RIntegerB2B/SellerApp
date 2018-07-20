@@ -9,7 +9,6 @@ export class CatalogModel {
     imageType: string;
 
     constructor(
-       
         catalogName: string,
         catalogType: string,
         material: string,
@@ -21,16 +20,14 @@ export class CatalogModel {
 
 
     ) {
-        
         this.catalogName = catalogName;
         this.catalogType = catalogType;
-        this.material=material;
-        this.capacity=capacity;
-        this.catalogDescription=catalogDescription;
-        this.work=work;
-        this.dispatch=dispatch;
-        this.imageType=imageType
+        this.material = material;
+        this.capacity = capacity;
+        this.catalogDescription = catalogDescription;
+        this.work = work;
+        this.dispatch = dispatch;
+        this.imageType = imageType;
 
     }
-   
 }

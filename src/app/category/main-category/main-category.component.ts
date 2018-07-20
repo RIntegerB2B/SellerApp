@@ -9,8 +9,8 @@ import {MainCategoryDetail} from './main-categoryDetail.model';
 import {MainCat} from '../main-category/main-cat.model';
 import {SuperCategoryID} from './super-cat-detail.model';
 import {MainCatDetail} from '../main-category/main-cat-detail.model';
-
-
+import {SuperCatID} from '../main-category/main-cat-update.model';
+import {MainCatUpdate} from './cat-update.model';
 @Component({
   selector: 'app-main-category',
   templateUrl: './main-category.component.html',
@@ -30,7 +30,9 @@ export class MainCategoryComponent implements OnInit {
   headCatSelected;
   showMaincat: Boolean ;
   mainCat: MainCat[] = [];
-  updateModel: MainCatDetail;
+  catUpdateModel: SuperCatID;
+  mainCatUpdateModel: MainCatUpdate;
+  supCatId;
 
   constructor(private fb: FormBuilder, private router: Router, private categoryService: CategoryService,
     private navHeaderService: NavHeaderService) {
@@ -132,15 +134,16 @@ delete(editCategoryForm: FormGroup, supId: any, mainCatId: any) {
 }
 
 
-/* update(editCategoryForm: FormGroup, supId: any, mainCatId: any, mainCatName: any, mainCatDesc: any) {
-  /* this.mainCategoryModel = new MainCatData(mainCatId.value, mainCatName.value, mainCatDesc.value);
-  this.updateModel = new MainCatDetail(
-    mainCatId.value,
-    mainCatName.value,
-    mainCatDesc.value
-  );
+update(editCategoryForm: FormGroup, supId: any, mainCatId: any, mainCatName: any, mainCatDesc: any) {
+this.supCatId = supId.value;
 
-  this.categoryService.editMainCategory(supId, this.updateModel).subscribe(data => {
+ this.mainCatUpdateModel = new MainCatUpdate(
+   mainCatId.value,
+   mainCatName.value,
+   mainCatDesc.value
+ );
+
+  this.categoryService.editMainCategory(supId.value, this.mainCatUpdateModel).subscribe(data => {
    this.mainCat = data;
     console.log(data);
   },
@@ -148,6 +151,6 @@ delete(editCategoryForm: FormGroup, supId: any, mainCatId: any) {
     console.log(error);
   }
 );
-} */
+}
 
 }

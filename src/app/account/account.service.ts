@@ -60,8 +60,6 @@ export class AccountService {
             catchError(this.handleError<PwdChangeReset>('Pwd Change Reset'))
           );
     } */
-    
 
 
-        
     }

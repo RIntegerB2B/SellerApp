@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators, NgForm } from '@angular/
 import { Router } from '@angular/router';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 import {ProductService} from '../../product/product.service';
-import {CatalogModel} from './catalog.model'
+import {CatalogModel} from './catalog.model';
 
 @Component({
   selector: 'app-catalog-add',
@@ -11,8 +11,8 @@ import {CatalogModel} from './catalog.model'
   styleUrls: ['./catalog-add.component.css']
 })
 export class CatalogAddComponent implements OnInit {
-  catalogForm:FormGroup
-  catalogModel:CatalogModel
+  catalogForm: FormGroup;
+  catalogModel: CatalogModel;
 
   constructor(private fb: FormBuilder, private router: Router, private productService: ProductService,
     private navHeaderService: NavHeaderService) { }
@@ -24,22 +24,22 @@ export class CatalogAddComponent implements OnInit {
 
   createForm() {
     this.catalogForm = this.fb.group({
-      catalogName:['', Validators.required],
-      catalogType:['', Validators.required],
-      material:['', Validators.required],
-      capacity:['', Validators.required],
-      catalogDescription:['', Validators.required],
-      work:['', Validators.required],
-      dispatch:['', Validators.required],
-      imageType:['', Validators.required],
-      catalogImage:['']
+      catalogName: ['', Validators.required],
+      catalogType: ['', Validators.required],
+      material: ['', Validators.required],
+      capacity: ['', Validators.required],
+      catalogDescription: ['', Validators.required],
+      work: ['', Validators.required],
+      dispatch: ['', Validators.required],
+      imageType: ['', Validators.required],
+      catalogImage: ['']
 
     });
   }
 
 
-  catalogSave(catalogForm:FormGroup){
-    this.catalogModel=new CatalogModel(
+  catalogSave(catalogForm: FormGroup) {
+    this.catalogModel = new CatalogModel(
       catalogForm.controls.catalogName.value,
       catalogForm.controls.catalogType.value,
       catalogForm.controls.material.value,
@@ -48,8 +48,8 @@ export class CatalogAddComponent implements OnInit {
       catalogForm.controls.work.value,
       catalogForm.controls.dispatch.value,
       catalogForm.controls.imageType.value
-    )
-    this.catalogForm.reset()
+    );
+    this.catalogForm.reset();
 
   /*  this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
       console.log(createdCatalog);

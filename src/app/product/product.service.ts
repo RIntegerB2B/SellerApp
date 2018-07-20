@@ -12,7 +12,8 @@ import { CatalogDelete } from './catalog-view/catalog-delete.model';
 import { CatalogDetail } from './product-add-update/catalog.model';
 import { Product } from './product-add-update/product.model';
 import { CatalogImageData } from './catalog-add-update/catalogImageData.model';
-import {Catalogs} from './product-view/catalog.model';
+import { Catalogs } from './product-view/catalog.model';
+import { ProductImageData } from './product-add-update/productImageData.model';
 
 
 
@@ -55,7 +56,8 @@ export class ProductService {
 
   editCatalog(edit: CatalogUpdateModel): Observable<any> {
     const Caturl = 'catalog/';
-    const url: string = this.serviceUrl + Caturl + edit._id; return this.httpClient.put<CatalogData[]>(url, edit);
+    const url: string = this.serviceUrl + Caturl + edit._id;
+    return this.httpClient.put<CatalogData[]>(url, edit);
   }
 
 
@@ -107,7 +109,7 @@ export class ProductService {
   getProduct(id, productId): Observable<any> {
     const Caturl = 'catalog/';
     const productUrl = '/product/';
-    const url: string = this.serviceUrl + Caturl +  id + productUrl + productId;
+    const url: string = this.serviceUrl + Caturl + id + productUrl + productId;
     return this.httpClient.get<CatalogData[]>(url);
   }
 
@@ -116,5 +118,13 @@ export class ProductService {
     const productUrl = '/product/';
     const url: string = this.serviceUrl + Caturl + id + productUrl + edit._id;
     return this.httpClient.put<Product[]>(url, edit);
+  }
+
+  uploadProductImage(productImageData: ProductImageData): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append('file', productImageData.productImage, productImageData.productImage.name);
+    const productUrl = 'productImage';
+    const url: string = this.serviceUrl + productUrl;
+    return this.httpClient.post<boolean>(url, formData);
   }
 }

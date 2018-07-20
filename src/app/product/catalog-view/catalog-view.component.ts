@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
-import {ProductService} from '../../product/product.service';
-import {CatalogViewModel} from './catalog-view.model';
-import {CatalogDelete} from '../catalog-view/catalog-delete.model';
+import { ProductService } from '../../product/product.service';
+import { CatalogViewModel } from './catalog-view.model';
+import { CatalogDelete } from '../catalog-view/catalog-delete.model';
+import {CatalogImage} from './catalogImageData.model';
 
 @Component({
   selector: 'app-catalog-view',
@@ -14,13 +15,12 @@ import {CatalogDelete} from '../catalog-view/catalog-delete.model';
 export class CatalogViewComponent implements OnInit {
 
   viewCatalogForm: FormGroup;
-catalogs: CatalogViewModel[] = [];
-deleteModel: CatalogDelete;
-catalogId: string;
-catalogValue;
-id;
-
-
+  catalogs: CatalogViewModel ;
+  deleteModel: CatalogDelete;
+  catalogId: string;
+  catalogValue;
+  id;
+  catlogImage: CatalogImage = new CatalogImage();
   constructor(private fb: FormBuilder, private router: Router, private productService: ProductService,
     private navHeaderService: NavHeaderService) { }
 
@@ -33,22 +33,23 @@ id;
 
   createForm() {
     this.viewCatalogForm = this.fb.group({
-      catalogId: [''],
+      catalogId: ['']
     });
   }
 
   catalog() {
     this.productService.showCatalog().subscribe(data => {
       this.catalogs = data;
-      console.log(data);
+     /*  this.catalogs.catalogImageName = this.catlogImage.catalogImage.name; */
+      console.log( data);
     }, error => {
       console.log(error);
     });
   }
   update(viewCatalogForm: FormGroup, catalogID: any) {
-   this.id = catalogID.value;
+    this.id = catalogID.value;
     /* console.log(this.id); */
-    this.router.navigate(['/Catalog', this.id] );
+    this.router.navigate(['/Catalog', this.id]);
   }
 
 
@@ -60,10 +61,10 @@ id;
 
     this.productService.deleteCatalog(this.deleteModel).subscribe(data => {
       this.catalogs = data;
-       console.log(this.catalogs);
-     }, error => {
-       console.log(error);
-     });
+      console.log(this.catalogs);
+    }, error => {
+      console.log(error);
+    });
 
 
   }
