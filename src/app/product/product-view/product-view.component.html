@@ -41,6 +41,10 @@
           <div class="row" *ngFor="let catalog of Catalogs?.products">
             <input class="form-control" type="text" hidden formControlName="productId" [value]="catalog._id" #productId/>
             <div class="col-md-3 form-group">
+                <img [src]="this.catalog?.productImageName" style="width: 180px; height: 145px;" />
+              </div>
+
+            <div class="col-md-3 form-group">
               {{catalog.productName}}
             </div>
 

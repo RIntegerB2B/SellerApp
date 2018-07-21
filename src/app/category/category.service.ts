@@ -205,7 +205,7 @@ export class CategoryService {
     const mainurl = '/mainCategory/';
     const suburl = '/subCategory/';
     const url: string = this.serviceUrl + Caturl + del.categoryId + mainurl + del.mainCategoryId + suburl + del.subCategoryId;
-    return this.httpClient.delete<CategoryEdit>(url);
+    return this.httpClient.delete<SubCategoryData>(url);
   }
 
 }

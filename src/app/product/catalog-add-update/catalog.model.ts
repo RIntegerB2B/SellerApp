@@ -7,8 +7,6 @@ export class CatalogData {
     work: string;
     dispatch: string;
     imageType: string;
-    /* catalogImage: string;
-    catalogImageText: string; */
     catalogImageName: string;
 
     constructor(

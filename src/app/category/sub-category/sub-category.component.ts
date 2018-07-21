@@ -37,7 +37,7 @@ export class SubCategoryComponent implements OnInit {
   mainCategoryModel: MainCatIdAndSub;
   superCategoryIdModel: SuperCatView;
   mainCategoryIdModel: MainCatView;
-  mainCategoryDetail: MainCategoryData[] = [];
+  mainCategoryDetail: MainCategoryData;
   subCategoryData: SubCategoryData[] = [];
   showEdit;
   subCatEdit: SubCatEdit;
@@ -95,9 +95,9 @@ export class SubCategoryComponent implements OnInit {
   getSubCategory(id, id1) {
     this.showSubData = true;
     this.headCatSelected = id;
-    console.log(this.headCatSelected);
+   // console.log(this.headCatSelected);
     this.headCatSelected1 = id1;
-    console.log(this.headCatSelected1);
+   // console.log(this.headCatSelected1);
 
     this.mainCategoryIdModel = new MainCatView(this.headCatSelected1);
 
@@ -107,8 +107,8 @@ export class SubCategoryComponent implements OnInit {
     );
 
     this.categoryService.showSubCategory(this.superCategoryIdModel).subscribe(data => {
-      this.subCategoryData = data;
-      console.log(this.subCategoryData);
+      this.mainCategoryDetail = data;
+      console.log( this.mainCategoryDetail);
 
       console.log(data);
     });
@@ -164,16 +164,17 @@ export class SubCategoryComponent implements OnInit {
   }
 
 
-  edit(subCategoryForm, selectData: any, selectData2: any, subCatId: any, subCatName: any, subCatDesc: any) {
+  edit(subCategoryForm, select3: any, selectData2: any, subCatId: any, subCatName: any, subCatDesc: any) {
     this.showEdit = false;
     this.subCatEdit = new SubCatEdit(
-      selectData,
+      select3,
       selectData2,
       subCatId,
       subCatName,
       subCatDesc
     );
     this.categoryService.editSubCategory(this.subCatEdit).subscribe(data => {
+      this.mainCategoryDetail = data;
       console.log(data);
 
 
@@ -183,17 +184,17 @@ export class SubCategoryComponent implements OnInit {
 
   }
 
-  delete(subCategoryForm, selectData: any, selectData2: any, subCatId: any) {
+  delete(subCategoryForm, select3: any, selectData2: any, subCatId: any) {
     this.showEdit = false;
 
     this.subCatDelete = new SubCatDelete(
-      selectData,
+      select3,
       selectData2,
       subCatId
     );
 
     this.categoryService.deleteSubCategory(this.subCatDelete).subscribe(data => {
-     this.subCategoryData = data;
+      this.mainCategoryDetail = data;
       console.log(data);
 
 
