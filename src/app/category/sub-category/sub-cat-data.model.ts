@@ -2,7 +2,7 @@
 export class SubCategoryData {
     _id: string;
     subCategoryName: string;
-    subCategoryDescription: string
+    subCategoryDescription: string;
     constructor(
         _id: string,
         subCategoryName: string,
@@ -10,6 +10,6 @@ export class SubCategoryData {
     ) {
         this._id = _id;
         this.subCategoryName = subCategoryName;
-        this.subCategoryDescription = subCategoryDescription
+        this.subCategoryDescription = subCategoryDescription;
     }
 }

@@ -80,6 +80,7 @@
 
          <div *ngFor="let cat of mainCat?.mainCategory">
             <div class="row gridRow" *ngIf="!cat.editing">
+              
               <div class="col-sm-12  display-none-large">
                 <label class="gridLabel">Category Name:</label>
               </div>
@@ -114,6 +115,7 @@
               <div class="col-md-4 col-sm-12 form-group">
                 <input class="form-control" type="text" formControlName="uDesc" [value]="cat.mainCategoryDescription" #mainCatDesc/>
               </div>
+
               <div class="row">
                 <div class="col-md-4 col-sm-4 form-group">
                   <input type="button" class="btn btn-success" value="Update" (click)="update(mainCategoryForm, supId,mainCatId,mainCatName,mainCatDesc)"
@@ -127,6 +129,7 @@
                 <div class="col-md-4 col-sm-4 form-group">
                   <input type="button" class="btn btnPink" value="Cancel" (click)="cancel(cat)" />
                 </div>
+
               </div>
             </div>
           </div> 

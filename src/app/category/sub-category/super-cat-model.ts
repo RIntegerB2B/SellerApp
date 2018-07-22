@@ -1,4 +1,4 @@
-import { MainCatIdAndSub } from "./main-cat-id.model";
+import { MainCatIdAndSub } from './main-cat-id.model';
 export class SuperCatIdAndMainCat {
     _id: string;
 

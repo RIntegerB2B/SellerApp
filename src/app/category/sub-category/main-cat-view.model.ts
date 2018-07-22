@@ -1,6 +1,6 @@
 
 export class MainCatView {
-    mainCategoryId: string
+    mainCategoryId: string;
     constructor(
         mainCategoryId: string,
     ) {
