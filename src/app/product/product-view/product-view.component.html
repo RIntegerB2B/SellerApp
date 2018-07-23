@@ -11,20 +11,30 @@
               </option>
             </select>
           </div>
+          
+          
 
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
-                <label>Product Name</label>
+                <label>Product </label>
               </div>
             </div>
-            <div class="col-md-3">
+
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>Product Name</label>
+                </div>
+              </div>
+              </div>
+            <div class="col-md-2">
               <div class="form-group">
                 <label>Prize</label>
               </div>
             </div>
 
-            <div class="col-md-3 ">
+            <div class="col-md-2 ">
               <div class="form-group">
                 <label>Size Description</label>
               </div>
@@ -44,15 +54,15 @@
                 <img [src]="this.catalog?.productImageName" style="width: 180px; height: 145px;" />
               </div>
 
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
               {{catalog.productName}}
             </div>
 
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
               {{catalog.price}}
             </div>
 
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
               {{catalog.sizeDescription}}
             </div>
 
@@ -63,11 +73,7 @@
             <div class="col-md-1 form-group">
               <button class="btn btn-danger pull-right" (click)="productDelete(viewProductForm,selectElem,productId)">Delete</button>
             </div>
-            <div class="col-md-1 form-group">
-              <a [routerLink]="['/Product']">
-                <button class="btn btn-danger pull-right">Cancel</button>
-              </a>
-            </div>
+           
           </div>
         </div>
       </div>
