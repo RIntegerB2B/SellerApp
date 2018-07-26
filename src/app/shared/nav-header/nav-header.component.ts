@@ -32,6 +32,7 @@ export class NavHeaderComponent implements OnInit {
   }
 
   subscribe() {
+    alert('subscribe');
     this.swPush.requestSubscription({
       serverPublicKey: this.VAPID_PUBLIC_KEY
     })
