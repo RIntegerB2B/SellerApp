@@ -12,6 +12,7 @@ import {SubCategoryComponent} from './category/sub-category/sub-category.compone
 import {CatalogViewComponent} from './product/catalog-view/catalog-view.component';
 import {ProductAddUpdateComponent} from './product/product-add-update/product-add-update.component';
 import {ProductViewComponent} from './product/product-view/product-view.component';
+import { BuyerComponent } from './buyer/buyer/buyer.component';
 
 const routes: Routes = [
     { path: 'AddCategory', component: AddCategoryComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
     {path: 'CatalogView', component: CatalogViewComponent },
     {path: 'Product', component: ProductAddUpdateComponent},
     {path: 'ProductView' , component: ProductViewComponent},
+    {path: 'Buyer' , component: BuyerComponent},
     {path: 'Catalog/:id/Product/:productId' , component: ProductAddUpdateComponent},
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: '**', redirectTo: 'Home', pathMatch: 'full' }

@@ -37,8 +37,8 @@ import { CatalogViewComponent } from './product/catalog-view/catalog-view.compon
 import { ProductViewComponent } from './product/product-view/product-view.component';
 import { SubCategoryComponent } from './category/sub-category/sub-category.component';
 import { CatalogAddComponent } from './product/catalog-add/catalog-add.component';
-
-
+import { BuyerComponent} from './buyer/buyer/buyer.component';
+import { BuyerDetailsService } from '../app/buyer/buyer-details.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,8 @@ import { CatalogAddComponent } from './product/catalog-add/catalog-add.component
     CatalogViewComponent,
     ProductViewComponent,
     SubCategoryComponent,
-    CatalogAddComponent
+    CatalogAddComponent,
+    BuyerComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +78,7 @@ import { CatalogAddComponent } from './product/catalog-add/catalog-add.component
   providers: [
     AccountService,
     NavHeaderService,
+    BuyerDetailsService,
     ProductService],
   bootstrap: [AppComponent]
 })

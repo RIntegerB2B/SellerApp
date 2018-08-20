@@ -1,0 +1,81 @@
+<form [formGroup]="viewBuyerForm" style="padding-top:60px">
+<div class="pageBoxLg ">
+  <label class="pageBoxLg-label display-none-small">Buyer Details</label>
+  <div>
+      <div class="container-fluid container-fuid-padding-small">
+    
+         <!--show the table-->
+        <div>
+            <div class="col-sm-12 col-md-4 vcenter form-group">
+                
+                <select  (change)="getSelected($event.target.value)" formControlName="userType" class="form-control">
+                    <option>Please Select User Type</option>    
+                        <option *ngFor="let userType of userTypes">
+                            {{userType}}
+                        </option>
+                    </select>
+              </div>
+          <div class="row gridRowHeader display-none-small">
+              
+            <div class="col-md-3 vcenterHeader">
+              <div class="form-group">
+                <label>Buyer Name</label>
+              </div>
+            </div>
+            <div class="col-md-3 vcenterHeader">
+              <div class="form-group">
+                <label>Mobile Number</label>
+              </div>
+            </div>
+            <div class="col-md-3 vcenterHeader">
+              <div>
+                <label>Location</label>
+              </div>
+            </div>
+            <div class="col-md-3 vcenterHeader">
+              <div>
+                <label>User Type</label>
+              </div>
+            </div>
+          </div> 
+          <!--data-->
+
+         <div *ngFor="let data of buyerDetail">
+            <div class="row gridRow">
+              
+              <div class="col-sm-12  display-none-large">
+                <label class="gridLabel">Buyer Name:</label>
+              </div>
+              
+              <div class="col-sm-12 col-md-3 vcenter form-group">
+                {{data.name }}
+              </div>
+              <div class="col-sm-12  display-none-large">
+                <label class="gridLabel">Mobile Number:</label>
+              </div>
+              <div class="col-sm-12 col-md-3 vcenter form-group">
+                {{data.mobileNumber}}
+              </div>
+              <div class="col-sm-12  display-none-large">
+                <label class="gridLabel">Location:</label>
+              </div>
+              <div class="col-sm-12 col-md-3 vcenter form-group">
+                {{data.location }}
+              </div>
+              <div class="col-sm-12  display-none-large">
+                <label class="gridLabel">User Type:</label>
+              </div>
+              <div class="col-sm-12 col-md-3 vcenter form-group">
+                {{data.userType }}
+              </div>
+            </div>
+          </div> 
+         
+          
+          <!--data closing-->
+          <!--clossing-->
+        </div>
+      </div> 
+  </div>
+</div>
+</form>

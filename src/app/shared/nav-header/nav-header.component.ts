@@ -17,7 +17,6 @@ export class NavHeaderComponent implements OnInit {
   constructor(public navHeaderService: NavHeaderService, private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
-    
   }
   toggleMainMenu() {
     this.isMainCollapsed = !this.isMainCollapsed;
