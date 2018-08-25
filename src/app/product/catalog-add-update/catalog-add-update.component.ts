@@ -3,6 +3,7 @@ import { ProductService } from '../product.service';
 import { NavHeaderService } from '../../shared/nav-header/nav-header.service';
 /* import { CatalogModel } from './catalog.model'; */
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CatalogData } from '././catalog.model';
 import { CatalogUpdateModel } from './catalog-update.model';
@@ -42,7 +43,7 @@ export class CatalogAddUpdateComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private productService: ProductService, private navHeaderService: NavHeaderService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute, private router: Router) {
     this.catalogId = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.catalogId);
   }
@@ -133,6 +134,7 @@ export class CatalogAddUpdateComponent implements OnInit {
       console.log(createdCatalog);
     });
     this.uploadImage();
+  this.router.navigate(['/CatalogView']);
   }
 
 
