@@ -20,13 +20,13 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <label>Category type</label>
+                <label>Style Code</label>
               </div>
             </div>
 
             <div class="col-md-2 ">
               <div class="form-group">
-                <label>Material</label>
+                <label>M.O.Q</label>
               </div>
             </div>
 
@@ -57,19 +57,19 @@
             </div>
 
             <div class="col-md-2 form-group">
-              {{catalog.catalogType}}
+              {{catalog.styleCode}}
             </div>
 
             <div class="col-md-2 form-group">
-              {{catalog.material}}
+              {{catalog.moq}}
             </div>
 
-            <div class="col-md-1 form-group">
+          <!--   <div class="col-md-1 form-group">
 
               <button class="btn btn-success pull-right" (click)="update(viewCatalogForm,catalogID)">Update</button>
 
             </div>
-
+ -->
             <div class="col-md-1 form-group">
               <button class="btn btn-danger pull-right" (click)="catalogDelete(viewCatalogForm,catalogID)">Delete</button>
             </div>

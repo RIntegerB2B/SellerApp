@@ -17,11 +17,6 @@ export class CatalogUpdateModel {
         material: string,
         capacity: string,
         catalogDescription: string,
-        work: string,
-        dispatch: string,
-        imageType: string
-
-
     ) {
         this._id = _id;
         this.catalogName = catalogName;
@@ -29,9 +24,5 @@ export class CatalogUpdateModel {
         this.material = material;
         this.capacity = capacity;
         this.catalogDescription = catalogDescription;
-        this.work = work;
-        this.dispatch = dispatch;
-        this.imageType = imageType;
-
     }
 }

@@ -1,4 +1,4 @@
-export class CatalogViewModel {
+/* export class CatalogViewModel {
     catalogName: string;
     catalogType: string;
     material: string;
@@ -29,5 +29,26 @@ export class CatalogViewModel {
         this.dispatch = dispatch;
         this.imageType = imageType;
 
+    }
+} */
+export class CatalogViewModel {
+    catalogName: string;
+    catalogImageName: string;
+    catalogTitle: string;
+    styleCode: string;
+    moq: string;
+    catalogDescription: string;
+    constructor(
+        catalogTitle: string,
+        catalogName: string,
+        styleCode: string,
+        moq: string,
+        catalogDescription: string,
+    ) {
+        this.catalogTitle = catalogTitle;
+        this.catalogName = catalogName;
+        this.styleCode = styleCode;
+        this.moq = moq;
+        this.catalogDescription = catalogDescription;
     }
 }

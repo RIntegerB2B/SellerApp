@@ -51,9 +51,9 @@ export class CatalogAddUpdateComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.navHeaderService.hideMenuTransparent();
-    if (this.catalogId) {
+   /*  if (this.catalogId) {
       this.getCatalog(this.catalogId);
-    }
+    } */
   }
 
   createForm() {
@@ -66,11 +66,14 @@ export class CatalogAddUpdateComponent implements OnInit {
       catalogDescription: [''],
       work: [''],
       dispatch: [''],
-      imageType: ['']
+      imageType: [''],
+      styleCode: [''],
+      moq: [''],
+      catalogTitle: ['']
     });
   }
 
-  getCatalog(catId) {
+ /*  getCatalog(catId) {
     this.showUpdate = true;
     this.productService.getCatalog(this.catalogId).subscribe(data => {
       this.loadedCatalogModel = data;
@@ -89,7 +92,7 @@ export class CatalogAddUpdateComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-  }
+  } */
 
   handleFileInput(files: FileList, loadedImage) {
     this.fileToUpload = files.item(0);
@@ -114,7 +117,7 @@ export class CatalogAddUpdateComponent implements OnInit {
   }
 
 
-  catalogSave(catalogForm: FormGroup) {
+  /* catalogSave(catalogForm: FormGroup) {
 
     this.catalogModel = new CatalogData(
       catalogForm.controls.catalogName.value,
@@ -135,10 +138,27 @@ export class CatalogAddUpdateComponent implements OnInit {
     });
     this.uploadImage();
   this.router.navigate(['/CatalogView']);
+  } */
+
+  catalogSave(catalogForm: FormGroup) {
+
+    this.catalogModel = new CatalogData(
+      catalogForm.controls.catalogTitle.value,
+      catalogForm.controls.catalogName.value,
+      catalogForm.controls.styleCode.value,
+      catalogForm.controls.moq.value,
+      catalogForm.controls.catalogDescription.value,
+    );
+    this.catalogModel.catalogImageName = this.catalogImageData.catalogImage.name;
+    this.catalogForm.reset();
+
+    this.productService.catalogCreate(this.catalogModel).subscribe(createdCatalog => {
+      console.log(createdCatalog);
+    });
+    this.uploadImage();
+  this.router.navigate(['/CatalogView']);
   }
-
-
-  edit(editCatalogForm: FormGroup, catalogId: any,
+ /*  edit(editCatalogForm: FormGroup, catalogId: any,
     catalogName: any, catalogType: any, material: any, capacity: any,
     catalogDescription: any, work: any, dispatch: any, imageType: any) {
     this.updateModel = new CatalogUpdateModel(
@@ -160,7 +180,7 @@ export class CatalogAddUpdateComponent implements OnInit {
       console.log(error);
     });
     this.uploadImage();
-  }
+  } */
 
   uploadImage() {
     this.productService.uploadCatalogImage(this.catalogImageData).subscribe(data => {

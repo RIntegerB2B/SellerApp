@@ -41,7 +41,7 @@ export class ProductService {
     throw new Error('Method not implemented.');
   }
 
-  catalogCreate(catalogModel: CatalogData): Observable<CatalogModel> {
+  catalogCreate(catalogModel: CatalogData): Observable<CatalogData> {
     const calatalogUrl = 'catalog';
     const url: string = this.serviceUrl + calatalogUrl;
     return this.httpClient.post<CatalogData>(url, catalogModel);

@@ -1,4 +1,4 @@
-export class CatalogData {
+/* export class CatalogData {
     catalogName: string;
     catalogType: string;
     material: string;
@@ -27,5 +27,26 @@ export class CatalogData {
         this.work = work;
         this.dispatch = dispatch;
         this.imageType = imageType;
+    }
+} */
+export class CatalogData {
+    catalogName: string;
+    catalogImageName: string;
+    catalogTitle: string;
+    styleCode: string;
+    moq: string;
+    catalogDescription: string;
+    constructor(
+        catalogTitle: string,
+        catalogName: string,
+        styleCode: string,
+        moq: string,
+        catalogDescription: string,
+    ) {
+        this.catalogTitle = catalogTitle;
+        this.catalogName = catalogName;
+        this.styleCode = styleCode;
+        this.moq = moq;
+        this.catalogDescription = catalogDescription;
     }
 }

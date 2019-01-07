@@ -6,6 +6,18 @@
 
         <input type="text" hidden placeholder="Catalog Id" class="form-control required appTextBox" required formControlName="catalogId"
           #catalogId/>
+
+          <div class="form-group">
+            <div class="textContainer">
+              <input type="text" placeholder="Catalog Title" class="form-control required appTextBox" required formControlName="catalogTitle"
+                #catalogName/>
+              <span class="appTextBoxSpan">Catalog Title</span>
+            </div>
+            <div *ngIf="catalogForm.get('catalogTitle').errors
+                                 && !catalogForm.get('catalogTitle').pristine" class="alert alert-danger">
+              <div [hidden]="!catalogForm.get('catalogTitle').errors.required">Please enter Catalog Title</div>
+            </div>
+          </div>
         <div class="form-group">
           <div class="textContainer">
             <input type="text" placeholder="Catalog Name" class="form-control required appTextBox" required formControlName="catalogName"
@@ -20,6 +32,31 @@
 
         <div class="form-group">
           <div class="textContainer">
+            <input type="text" placeholder="Style Code" class="form-control required appTextBox" required formControlName="styleCode"
+              #catalogName/>
+            <span class="appTextBoxSpan">Style Code</span>
+          </div>
+          <div *ngIf="catalogForm.get('styleCode').errors
+                               && !catalogForm.get('styleCode').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('styleCode').errors.required">Please enter Style Code</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="textContainer">
+            <input type="text" placeholder="Minimum order Quantity" class="form-control  appTextBox" required formControlName="moq"
+              #catalogName/>
+            <span class="appTextBoxSpan">M.O.Q</span>
+          </div>
+          <div *ngIf="catalogForm.get('moq').errors
+                               && !catalogForm.get('moq').pristine" class="alert alert-danger">
+            <div [hidden]="!catalogForm.get('moq').errors.required">Please enter M.O.Q</div>
+          </div>
+        </div>
+
+
+        <!-- <div class="form-group">
+          <div class="textContainer">
             <input type="text" placeholder="Catalog Type" class="form-control required appTextBox" required formControlName="catalogType"
               #catalogType />
             <span class="appTextBoxSpan">Catalog type</span>
@@ -28,10 +65,10 @@
                                && !catalogForm.get('catalogType').pristine" class="alert alert-danger">
             <div [hidden]="!catalogForm.get('catalogType').errors.required">Please enter Catalog type</div>
           </div>
-        </div>
+        </div> -->
 
 
-        <div class="form-group">
+       <!--  <div class="form-group">
           <div class="textContainer">
             <input type="text" placeholder="Material" class="form-control required appTextBox" required formControlName="material" #material/>
             <span class="appTextBoxSpan">Material</span>
@@ -40,10 +77,10 @@
                                  && !catalogForm.get('material').pristine" class="alert alert-danger">
             <div [hidden]="!catalogForm.get('material').errors.required">Please enter Material</div>
           </div>
-        </div>
+        </div> -->
 
 
-        <div class="form-group">
+       <!--  <div class="form-group">
           <div class="textContainer">
             <input type="text" placeholder="Capacity" class="form-control required appTextBox" required formControlName="capacity" #capacity/>
             <span class="appTextBoxSpan">Capacity</span>
@@ -52,7 +89,7 @@
                                    && !catalogForm.get('capacity').pristine" class="alert alert-danger">
             <div [hidden]="!catalogForm.get('capacity').errors.required">Please enter Capacity</div>
           </div>
-        </div>
+        </div> -->
 
 
         <div class="form-group">
@@ -63,11 +100,11 @@
           </div>
           <div *ngIf="catalogForm.get('catalogDescription').errors
                                      && !catalogForm.get('catalogDescription').pristine" class="alert alert-danger">
-            <div [hidden]="!catalogForm.get('catalogDescription').errors.required">Please enter catalogDescription</div>
+            <div [hidden]="!catalogForm.get('catalogDescription').errors.required">Please enter Catalog Description</div>
           </div>
         </div>
 
-        <div class="form-group">
+       <!--  <div class="form-group">
           <div class="textContainer">
             <input type="text" placeholder="Work" class="form-control required appTextBox" required formControlName="work" #work/>
             <span class="appTextBoxSpan">Work</span>
@@ -76,12 +113,12 @@
                                        && !catalogForm.get('work').pristine" class="alert alert-danger">
             <div [hidden]="!catalogForm.get('work').errors.required">Please enter Work</div>
           </div>
-        </div>
+        </div> -->
 
 
 
 
-        <div class="form-group">
+       <!--  <div class="form-group">
           <div class="textContainer">
             <input type="text" placeholder="Dispatch" class="form-control required appTextBox" required formControlName="dispatch" #dispatch/>
             <span class="appTextBoxSpan">Dispatch</span>
@@ -90,9 +127,9 @@
                                        && !catalogForm.get('dispatch').pristine" class="alert alert-danger">
             <div [hidden]="!catalogForm.get('dispatch').errors.required">Please enter Dispatch</div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="form-group">
+       <!--  <div class="form-group">
           <div class="textContainer">
             <input type="text" placeholder="ImageType" class="form-control required appTextBox" required formControlName="imageType"
               #imageType/>
@@ -102,7 +139,7 @@
                                          && !catalogForm.get('imageType').pristine" class="alert alert-danger">
             <div [hidden]="!catalogForm.get('imageType').errors.required">Please enter ImageType</div>
           </div>
-        </div>
+        </div> -->
 
         <div *ngIf="!showUpdate">
           <input type="submit" class="btn btnPink btn-block" value="Save" (click)="catalogSave(catalogForm)" />
