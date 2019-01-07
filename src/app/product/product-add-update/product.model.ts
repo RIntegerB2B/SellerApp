@@ -6,7 +6,7 @@ export class Product {
     productTypeDesc: string;
     size: string;
     productDescription: string;
-    cod: Boolean;
+    cod: string;
     dispatchDesc: string;
     watsAppDesc: string;
     imageType: string;
@@ -19,7 +19,7 @@ export class Product {
         productTypeDesc: string,
         size: string,
         productDescription: string,
-        cod: Boolean,
+        cod: string,
         dispatchDesc: string,
         watsAppDesc: string,
         imageType: string
